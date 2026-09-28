@@ -1,0 +1,7 @@
+{
+  "ctx": 43008,
+  "vmt": 8192,
+  "state": "fatal",
+  "capacity": "",
+  "fatal": "FATAL server failed during startup | requested Engine runtime reservation requires 2204354560 bytes, but only 2185726976 bytes are available for runtime capacity"
+}

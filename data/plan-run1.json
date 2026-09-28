@@ -1,0 +1,2072 @@
+[
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 1,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.35,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 1,
+    "req": "count",
+    "ok": true,
+    "wall_s": 1.94,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 1,
+    "req": "code",
+    "ok": true,
+    "wall_s": 9.63,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', sans-serif;\n  }\n  .container { text-align: center; }\n  h1 { color: #fff; margin-bottom: 15px; font-size: 2rem; }\n  .toolbar {\n    display: flex;\n    gap: 10px;\n    justify-content: center;\n    margin-bottom: 15px;\n  }\n  .info {\n    background: #16213e;\n    color: #fff;\n    padding: 8px 16px;\n    border-radius: 6px;\n    font-size: 1.1rem;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    padding: 8px 18px;\n    border-radius: 6px;\n    cursor: pointer;\n    font-size: 1rem;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 6px;\n    border-radius: 8px;\n  }\n  .cell {\n    width: 36px;\n    height: 36px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    user-select: none;\n    font-size: 1.1rem;\n    font-weight: bold;\n    border-radius: 4px;\n    transition: background 0.1s;\n  }\n  .cell.hidden { background: #533483; }\n  .cell.hidden:hover { background: #6d4c99; }\n  .cell.revealed { background: #1a1a2e; }\n  .cell.flagged { background: #533483; }\n  .cell.exploded { background: #e94560 !important; animation: shake 0.3s; }\n  @keyframes shake {\n    0%,100%{transform:translate(0)}\n    25%{transform:translate(-2px,2px)}\n    50%{transform:translate(2px,-2px)}\n    75%{transform:translate(-2px,-2px)}\n  }\n  .overlay {\n    position: fixed;\n    top:0;left:0;right:0;bottom:0;\n    background:rgba(0,0,0,0.6);\n    display:none;\n    justify-content:center;\n    align-items:center;\n    z-index:10;\n  }\n  .overlay.show { display:flex; }\n  .overlay .box {\n    background:#16213e;\n    padding:30px 50px;\n    border-radius:10px;\n    color:#fff;\n    font-size:1.5rem;\n  }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <h1>🎮 扫雷</h1>\n  <div class=\"toolbar\">\n    <div class=\"info\" id=\"mineCount\">雷数: 0</div>\n    <button onclick=\"newGame()\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n</div>\n<div class=\"overlay\" id=\"overlay\">\n  <div class=\"box\">\n    <p id=\"resultText\">游戏结束</p>\n    <br><br>\n    <button onclick=\"newGame();hideOverlay()\">再来一局</button>\n  </div>\n</div>\n\n<script>\nconst ROWS = 9, COLS = 9, MINES = 10;\nlet board, revealed, flagged, minesLeft, gameOver, timer;\n\nfunction init() {\n  board = [];\n  for (let r = 0; r < ROWS; r++) {\n    board[r] = [];\n    for (let c = 0; c < COLS; c++) {\n      board[r][c] = { mine: false, count: 0, revealed: false, flag: false };\n    }\n  }\n  // 随机放雷\n  let placed = 0;\n  while (placed < MINES) {\n    const r = Math.floor(Math.random() * ROWS);\n    const c = Math.floor(Math.random() * COLS);\n    if (!board[r][c].mine) {\n      board[r][c].mine = true;\n      placed++;\n    }\n  }\n  // 计算邻雷数\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c < COLS; c++) {\n      let cnt = 0;\n      for (let dr = -1; dr <= 1; dr++) {\n        for (let dc = -1; dc <= 1; dc++) {\n          if (dr === 0 && dc === 0) continue;\n          const nr = r + dr, nc = c + dc;\n          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n            if (board[nr][nc].mine) cnt++;\n          }\n        }\n      }\n      board[r][c].count = cnt;\n    }\n  }\n  minesLeft = MINES;\n  gameOver = false;\n  render();\n}\n\nfunction render() {\n  const el = document.getElementById('board');\n  el.innerHTML = '';\n  el.style.gridTemplateColumns = `repeat(${COLS}, 36px)`;\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 1,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.74,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（0/1）或标准8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值，通常为 **{-1, 0, +1}**。这种技术旨在通过极低的数值表示空间来显著降低模型的存储占用和计算复杂度，同时尽可能保留原始模型的性能精度。\n\n### 技术原理与机制\n\n三元量化的核心思想是利用“稀疏性”和“对称性”。在训练过程中，模型通常采用特殊的损失函数（如 L1 范数正则化或特定的量化感知损失）引导网络学习出接近 -1、0 或 1 的权重分布。其中，“0”值的引入是关键创新：它允许网络在不增加额外参数数量的情况下，动态地屏蔽部分神经元连接，从而起到类似剪枝的效果。\n\n从数学角度看，若原始权重 $w$ 服从近似高斯分布，三元量化可视为对 $w$ 进行阈值截断后的符号取反操作。例如：\n$$ q(w) = \\begin{cases} \n-1 & \\text{if } w < -\\tau \\\\\n0 & \\text{if } |w| \\leq \\tau \\\\\n+1 & \\text{if } w > \\tau \n\\end{cases} $$\n其中 $\\tau$ 为可学习的阈值。这种映射使得矩阵乘法运算简化为加法、减法和移位操作，极大地减少了乘积累加器（MAC）的数量，尤其在边缘设备或移动端上具有显著的能效优势。\n\n### 优势与挑战\n\n**主要优势：**\n1. **极致压缩率**：相比 FP32，每个参数仅需约 1.58 bits（使用过余编码）甚至更少，存储体积缩小至原模型的几分之一"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 2,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.17,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 125
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 2,
+    "req": "count",
+    "ok": true,
+    "wall_s": 1.92,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 2,
+    "req": "code",
+    "ok": true,
+    "wall_s": 9.54,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', sans-serif;\n  }\n  .container { text-align: center; }\n  h1 { color: #fff; margin-bottom: 15px; font-size: 2rem; }\n  .toolbar {\n    display: flex;\n    gap: 10px;\n    justify-content: center;\n    margin-bottom: 15px;\n  }\n  .info {\n    background: #16213e;\n    color: #fff;\n    padding: 8px 16px;\n    border-radius: 6px;\n    font-size: 1.1rem;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    padding: 8px 18px;\n    border-radius: 6px;\n    cursor: pointer;\n    font-size: 1rem;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 6px;\n    border-radius: 8px;\n  }\n  .cell {\n    width: 36px;\n    height: 36px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    user-select: none;\n    font-size: 1.1rem;\n    font-weight: bold;\n    border-radius: 4px;\n    transition: background 0.1s;\n  }\n  .cell.hidden { background: #533483; }\n  .cell.hidden:hover { background: #6d4c99; }\n  .cell.revealed { background: #1a1a2e; }\n  .cell.flagged { background: #533483; }\n  .cell.exploded { background: #e94560 !important; animation: shake 0.3s; }\n  @keyframes shake {\n    0%,100%{transform:translate(0)}\n    25%{transform:translate(-2px,2px)}\n    50%{transform:translate(2px,-2px)}\n    75%{transform:translate(-2px,-2px)}\n  }\n  .overlay {\n    position: fixed;\n    top:0;left:0;right:0;bottom:0;\n    background:rgba(0,0,0,0.6);\n    display:none;\n    justify-content:center;\n    align-items:center;\n    z-index:10;\n  }\n  .overlay.show { display:flex; }\n  .overlay .box {\n    background:#16213e;\n    padding:30px 50px;\n    border-radius:10px;\n    color:#fff;\n    font-size:1.5rem;\n  }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <h1>🎮 扫雷</h1>\n  <div class=\"toolbar\">\n    <div class=\"info\" id=\"mineCount\">雷数: 0</div>\n    <button onclick=\"newGame()\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n</div>\n<div class=\"overlay\" id=\"overlay\">\n  <div class=\"box\">\n    <p id=\"resultText\">游戏结束</p>\n    <br><br>\n    <button onclick=\"newGame();hideOverlay()\">再来一局</button>\n  </div>\n</div>\n\n<script>\nconst ROWS = 9, COLS = 9, MINES = 10;\nlet board, revealed, flagged, minesLeft, gameOver, timer;\n\nfunction init() {\n  board = [];\n  for (let r = 0; r < ROWS; r++) {\n    board[r] = [];\n    for (let c = 0; c < COLS; c++) {\n      board[r][c] = { mine: false, count: 0, revealed: false, flag: false };\n    }\n  }\n  // 随机放雷\n  let placed = 0;\n  while (placed < MINES) {\n    const r = Math.floor(Math.random() * ROWS);\n    const c = Math.floor(Math.random() * COLS);\n    if (!board[r][c].mine) {\n      board[r][c].mine = true;\n      placed++;\n    }\n  }\n  // 计算邻雷数\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c < COLS; c++) {\n      let cnt = 0;\n      for (let dr = -1; dr <= 1; dr++) {\n        for (let dc = -1; dc <= 1; dc++) {\n          if (dr === 0 && dc === 0) continue;\n          const nr = r + dr, nc = c + dc;\n          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n            if (board[nr][nc].mine) cnt++;\n          }\n        }\n      }\n      board[r][c].count = cnt;\n    }\n  }\n  minesLeft = MINES;\n  gameOver = false;\n  render();\n}\n\nfunction render() {\n  const el = document.getElementById('board');\n  el.innerHTML = '';\n  el.style.gridTemplateColumns = `repeat(${COLS}, 36px)`;\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 2,
+    "req": "prose",
+    "ok": false,
+    "wall_s": 1.13,
+    "err": "An error occurred while sending the request.",
+    "usage": null,
+    "content": ""
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 3,
+    "req": "vision",
+    "ok": false,
+    "wall_s": 2.04,
+    "err": "由于目标计算机积极拒绝，无法连接。 (127.0.0.1:8086)",
+    "usage": null,
+    "content": ""
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 3,
+    "req": "count",
+    "ok": false,
+    "wall_s": 2.05,
+    "err": "由于目标计算机积极拒绝，无法连接。 (127.0.0.1:8086)",
+    "usage": null,
+    "content": ""
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 3,
+    "req": "code",
+    "ok": true,
+    "wall_s": 21.03,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex; justify-content: center; align-items: center;\n    min-height: 100vh; background: #1a1a2e; font-family: 'Segoe UI', sans-serif;\n  }\n  .game { text-align: center; }\n  .header { display: flex; gap: 16px; margin-bottom: 12px; }\n  .info {\n    background: #16213e; color: #fff; padding: 8px 14px;\n    border-radius: 6px; font-size: 18px; font-weight: bold; min-width: 70px;\n    text-align: center; user-select: none;\n  }\n  .btn {\n    background: #0f3460; color: #fff; border: none; padding: 8px 18px;\n    border-radius: 6px; cursor: pointer; font-size: 16px; transition: background .2s;\n  }\n  .btn:hover { background: #1a5276; }\n  .board {\n    display: grid; gap: 2px; background: #0b132b; padding: 8px;\n    border-radius: 8px; width: fit-content;\n  }\n  .cell {\n    width: 36px; height: 36px; display: flex; align-items: center;\n    justify-content: center; font-size: 18px; font-weight: bold;\n    background: #5d8fbf; border-radius: 4px; cursor: pointer;\n    user-select: none; transition: background .1s; position: relative;\n  }\n  .cell:hover { background: #7ab0d9; }\n  .cell.opened { background: #cfd8dc; cursor: default; }\n  .cell.flagged { background: #5d8fbf; }\n  .cell.mine { background: #ff4757; animation: pop .2s; }\n  .cell.exploded { background: #ff4757; animation: pop .2s; }\n  @keyframes pop { 0%{transform:scale(1)} 50%{transform:scale(1.3)} 100%{transform:scale(1)} }\n  .flag { font-size: 20px; }\n  .status { margin-top: 10px; font-size: 18px; color: #fff; min-height: 24px; }\n</style>\n</head>\n<body>\n<div class=\"game\">\n  <div class=\"header\">\n    <div class=\"info\" id=\"mines\">0</div>\n    <div class=\"info\" id=\"timer\">0</div>\n    <button class=\"btn\" id=\"newBtn\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n  <div class=\"status\" id=\"status\"></div>\n</div>\n\n<script>\n(function(){\n  const COLS = 16, ROWS = 10, MINES = 20;\n  let board, revealed, flagged, minesLeft, timer, running, firstClick;\n\n  function init(){\n    board = [];\n    for(let r=0;r<ROWS;r++){\n      board[r]=[];\n      for(let c=0;c<COLS;c++) board[r][c]={mine:false,revealed:false,flagged:false,count:0};\n    }\n    // place mines\n    let placed=0;\n    while(placed<MINES){\n      const r=Math.floor(Math.random()*ROWS), c=Math.floor(Math.random()*COLS);\n      if(!board[r][c].mine){ board[r][c].mine=true; placed++; }\n    }\n    // counts\n    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){\n      let n=0;\n      for(let dr=-1;dr<=1;dr++)for(let dc=-1;dc<=1;dc++){\n        if(dr===0&&dc===0)continue;\n        const nr=r+dr,nc=c+dc;\n        if(nr>=0&&nr<ROWS&&nc>=0&&nc<COLS&&board[nr][nc].mine)n++;\n      }\n      board[r][c].count=n;\n    }\n    render();\n    minesLeft=MINES;\n    timer=0; running=false; firstClick=true;\n    updateUI();\n    document.getElementById('status').textContent='';\n  }\n\n  function render(){\n    const b=document.getElementById('board');\n    b.innerHTML='';\n    b.style.gridTemplateColumns=`repeat(${COLS}, 36px)`;\n    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){\n      const cell=document.createElement('div');\n      cell.className='cell';\n      cell.dataset.r=r; cell.dataset.c=c;\n      cell.addEventListener('click',()=>onLeft(r,c));\n      cell.addEventListener('contextmenu',e=>{e.preventDefault();onRight(r,c);});\n      b.appendChild(cell);\n    }\n  }\n\n  function paintCell(r,c){\n    const el=document.querySelector(`[data-r=\"${r}\"][data-c=\"${c}\"]`);\n    const cell=board[r][c];\n    el.classList.remove('opened','flagged','mine','exploded');\n    el.textContent='';\n    if(cell.revealed){\n      el.classList.add('opened');\n      if(cell.mine){ el.classList.add('mine'); el.textContent='💥'; }\n      else if(cell.count>0) el.textContent=cell.count;\n    }else if(cell.flagged){\n      el.classList.add('flagged'); el.textContent='🚩';\n    }\n  }\n\n  function updateUI(){\n    document.getElementById('mines').textContent=minesLeft;\n    document.getElementById('timer').textContent=timer;\n  }\n\n  function onLeft(r,c){\n    if(!running && !firstClick) return;\n    if(board[r][c].revealed||board[r][c].flagged)return;\n    if(firstClick){\n      firstClick=false;\n      startTimer();\n"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048",
+    "rep": 3,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 7.21,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（Binary）或标准8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值：$-1$、$0$ 和 $+1$。这种技术旨在通过极致的参数压缩率，显著降低模型的存储占用和计算复杂度，从而满足边缘设备对资源敏感的需求。\n\n从数学原理来看，对于原始权重矩阵 $W \\in \\mathbb{R}^{m \\times n}$，三元量化过程通常涉及两个关键步骤：首先进行缩放，其次进行阈值截断。具体而言，每个权重 $w_{ij}$ 会被转换为 $q_{ij} = \\text{sign}(w_{ij}) \\cdot \\mathbb{I}(|w_{ij}| > \\tau)$，其中 $\\tau$ 是一个预设的阈值。若权重的绝对值小于等于该阈值，则被量化为 $0$；否则，保留其符号并量化为 $1$ 或 $-1$。这一机制不仅实现了数值域的极度稀疏化，还引入了结构稀疏性，使得后续的计算可以跳过大量零值项的乘加运算。\n\n在硬件实现层面，三元量化带来了显著的效率提升。由于权重仅包含三个可能的取值，传统的浮点乘法器可以被替换为简单的加法、减法或移位操作。例如，当权重为 $1$ 时，输出直接累加输入激活值；当权重为 $-1$ 时，输出减去输入激活值；当权重为 $0$ 时，无需任何计算。这种“算术逻辑单元（ALU）”级别的优化，极大地降低了能耗和延迟，特别适用于移动端NPU或FPGA等低功耗场景。\n\n然而，三元量化也面临着精度损失的挑战。由于动态范围被"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 1,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.29,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 1,
+    "req": "count",
+    "ok": true,
+    "wall_s": 3.19,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 1,
+    "req": "code",
+    "ok": true,
+    "wall_s": 14.45,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.25rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background .2s, transform .1s;\n  }\n  button:hover { background: #ff6b6b; }\n  button:active { transform: scale(.96); }\n  .board-wrap {\n    position: relative;\n    background: #16213e;\n    border-radius: 12px;\n    padding: 12px;\n    box-shadow: 0 8px 32px rgba(0,0,0,.4);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px; height: 38px;\n    display: flex; align-items: center; justify-content: center;\n    font-size: 1.1rem;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    transition: background .15s, transform .1s;\n    border: 1px solid #0f3460;\n    background: #0f3460;\n  }\n  .cell:hover:not(.opened) { background: #1a4a7a; }\n  .cell.opened {\n    background: #1a1a2e;\n    border-color: #333;\n    cursor: default;\n  }\n  .cell.flagged {\n    background: #16213e;\n    border-color: #e94560;\n  }\n  .cell.mine {\n    background: #e94560;\n    color: #fff;\n    animation: pop .25s ease;\n  }\n  @keyframes pop {\n    0% { transform: scale(.5); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }\n  }\n  .status {\n    margin-top: 12px;\n    font-size: 1.1rem;\n    min-height: 1.4em;\n    color: #aaa;\n  }\n  .status.win { color: #4ecdc4; }\n  .status.lose { color: #e94560; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCount\">💣 0</div>\n  <button id=\"newBtn\">重新开局</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16, ROWS = 10, MINES = 20;\n  const boardEl = document.getElementById('board');\n  const mineCountEl = document.getElementById('mineCount');\n  const statusEl = document.getElementById('status');\n  const newBtn = document.getElementById('newBtn');\n\n  let grid, revealed, flagged, minesLeft, gameOver, firstClick;\n\n  function init() {\n    grid = [];\n    revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    minesLeft = MINES;\n    gameOver = false;\n    firstClick = true;\n\n    // 生成雷（避开首点）\n    let placed = 0;\n    while (placed < MINES) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      if (!grid[r][c]) {\n        grid[r][c] = true;\n        placed++;\n      }\n    }\n\n    render();\n    updateCounter();\n    statusEl.textContent = '';\n    statusEl.className = 'status';\n  }\n\n  function neighbors(r, c) {\n    const dirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];\n    return dirs.map(([dr,dc]) => [r+dr, c+dc]).filter(([nr,nc]) =>\n      nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS\n    );\n  }\n\n  function countMines(r, c) {\n    return neighbors(r, c).filter(([nr,nc]) => grid[nr][nc]).length;\n  }\n\n  function reveal(r, c) {\n    if (gameOver || revealed[r][c] || flagged[r][c]) return;\n    revealed[r][c] = true;\n\n    if (grid[r][c]) {\n      gameOver = true;\n      revealAll();\n      statusEl.textContent = '💥 踩到雷"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 1,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.97,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（0/1）或标准8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值，通常为 **{-1, 0, +1}**。这种技术旨在通过极低的数值表示空间来显著降低模型的存储占用和计算复杂度，同时尽可能保留原始模型的性能精度。\n\n### 技术原理与机制\n\n三元量化的核心思想是利用“稀疏性”和“对称性”。在训练过程中，模型通常采用特殊的损失函数（如 L1 范数正则化）或特定的初始化策略，引导网络学习出大量接近于零的权重。随后，在量化阶段，这些权重被截断：\n*   大于阈值的权重映射为 **+1**；\n*   小于阈值的权重映射为 **-1**；\n*   绝对值小于阈值的权重映射为 **0**。\n\n这种映射方式使得模型参数矩阵具有极高的稀疏度。例如，在一个全连接层中，如果大部分权重被量化为 0，那么在前向传播时，对应的矩阵乘法操作实际上可以跳过大量的无效计算。此外，由于权重仅包含 -1、0、+1 三种状态，乘法和加法运算可以被简化为逻辑门电路级别的移位和累加操作，极大地提升了硬件执行效率。\n\n### 优势与应用场景\n\n1.  **极致压缩比**：相比 FP32 或 INT8 量化，Ternary 权重的信息密度极低。理论上，每个参数仅需 $\\log_2(3) \\approx 1.58$ bits 存储，相较于 FP32 的 32 bits，压缩率超过 20 倍。这使得大规模模型能够轻松加载到内存受限的边缘设备（如手机、嵌入式系统）中"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 2,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.22,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 125
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 2,
+    "req": "count",
+    "ok": true,
+    "wall_s": 3.14,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 24
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 2,
+    "req": "code",
+    "ok": true,
+    "wall_s": 14.36,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.25rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background .2s, transform .1s;\n  }\n  button:hover { background: #ff6b6b; }\n  button:active { transform: scale(.96); }\n  .board-wrap {\n    position: relative;\n    background: #16213e;\n    border-radius: 12px;\n    padding: 12px;\n    box-shadow: 0 8px 32px rgba(0,0,0,.4);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px; height: 38px;\n    display: flex; align-items: center; justify-content: center;\n    font-size: 1.1rem;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    transition: background .15s, transform .1s;\n    border: 1px solid #0f3460;\n    background: #0f3460;\n  }\n  .cell:hover:not(.opened) { background: #1a4a7a; }\n  .cell.opened {\n    background: #1a1a2e;\n    border-color: #333;\n    cursor: default;\n  }\n  .cell.flagged {\n    background: #16213e;\n    border-color: #e94560;\n  }\n  .cell.mine {\n    background: #e94560;\n    color: #fff;\n    animation: pop .25s ease;\n  }\n  @keyframes pop {\n    0% { transform: scale(.5); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }\n  }\n  .status {\n    margin-top: 12px;\n    font-size: 1.1rem;\n    min-height: 1.4em;\n    color: #aaa;\n  }\n  .status.win { color: #4ecdc4; }\n  .status.lose { color: #e94560; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCount\">💣 0</div>\n  <button id=\"newBtn\">重新开局</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16, ROWS = 10, MINES = 20;\n  const boardEl = document.getElementById('board');\n  const mineCountEl = document.getElementById('mineCount');\n  const statusEl = document.getElementById('status');\n  const newBtn = document.getElementById('newBtn');\n\n  let grid, revealed, flagged, minesLeft, gameOver, firstClick;\n\n  function init() {\n    grid = [];\n    revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    minesLeft = MINES;\n    gameOver = false;\n    firstClick = true;\n\n    // 生成雷（避开首点）\n    let placed = 0;\n    while (placed < MINES) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      if (!grid[r][c]) {\n        grid[r][c] = true;\n        placed++;\n      }\n    }\n\n    render();\n    updateCounter();\n    statusEl.textContent = '';\n    statusEl.className = 'status';\n  }\n\n  function neighbors(r, c) {\n    const dirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];\n    return dirs.map(([dr,dc]) => [r+dr, c+dc]).filter(([nr,nc]) =>\n      nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS\n    );\n  }\n\n  function countMines(r, c) {\n    return neighbors(r, c).filter(([nr,nc]) => grid[nr][nc]).length;\n  }\n\n  function reveal(r, c) {\n    if (gameOver || revealed[r][c] || flagged[r][c]) return;\n    revealed[r][c] = true;\n\n    if (grid[r][c]) {\n      gameOver = true;\n      revealAll();\n      statusEl.textContent = '💥 踩到雷"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 2,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.67,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。其核心思想是将原本以浮点数（如 FP32）或标准二进制整数（INT8/INT16）表示的神经网络权重，映射为仅包含三个离散值：**-1、0 和 +1**。这种极致的稀疏化与低精度结合策略，旨在通过大幅降低模型的存储占用和计算复杂度，从而提升在边缘设备上的推理效率。\n\n### 技术原理与机制\n\n传统量化通常将权重映射到 $[-K, K]$ 范围内的整数，而三元量化则进一步简化了数值域。对于原始权重矩阵 $W$，每个元素 $w_{ij}$ 根据其与阈值的相对位置被映射为：\n$$ q(w_{ij}) = \\begin{cases} -1 & \\text{if } w_{ij} < -\\theta \\\\ 0 & \\text{if } |w_{ij}| \\leq \\theta \\\\ +1 & \\text{if } w_{ij} > \\theta \\end{cases} $$\n其中 $\\theta$ 是一个可学习的阈值参数。这种映射不仅减少了位宽需求（从 32-bit 降至 1-bit 加一个共享符号/零指示），还引入了结构稀疏性——权重为零意味着该连接在正向传播中不贡献梯度或激活值，从而可以跳过相应的乘法-累加（MAC）运算。\n\n### 优势与应用场景\n\n1. **极致压缩比**：相比 INT8 量化，三元权重的存储体积仅为原模型的约 1/32（若忽略偏置项）。这使得大语言模型（LLM）或视觉Transformer（ViT）能够在内存受限的嵌入式设备上运行。\n2. **计算加速**：由于大量权重为零，矩阵乘法中的无效操作被显著减少。"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 3,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.21,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 125
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 3,
+    "req": "count",
+    "ok": true,
+    "wall_s": 3.14,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 24
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 3,
+    "req": "code",
+    "ok": true,
+    "wall_s": 14.38,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.25rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background .2s, transform .1s;\n  }\n  button:hover { background: #ff6b6b; }\n  button:active { transform: scale(.96); }\n  .board-wrap {\n    position: relative;\n    background: #16213e;\n    border-radius: 12px;\n    padding: 12px;\n    box-shadow: 0 8px 32px rgba(0,0,0,.4);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px; height: 38px;\n    display: flex; align-items: center; justify-content: center;\n    font-size: 1.1rem;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    transition: background .15s, transform .1s;\n    border: 1px solid #0f3460;\n    background: #0f3460;\n  }\n  .cell:hover:not(.opened) { background: #1a4a7a; }\n  .cell.opened {\n    background: #1a1a2e;\n    border-color: #333;\n    cursor: default;\n  }\n  .cell.flagged {\n    background: #16213e;\n    border-color: #e94560;\n  }\n  .cell.mine {\n    background: #e94560;\n    color: #fff;\n    animation: pop .25s ease;\n  }\n  @keyframes pop {\n    0% { transform: scale(.5); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }\n  }\n  .status {\n    margin-top: 12px;\n    font-size: 1.1rem;\n    min-height: 1.4em;\n    color: #aaa;\n  }\n  .status.win { color: #4ecdc4; }\n  .status.lose { color: #e94560; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCount\">💣 0</div>\n  <button id=\"newBtn\">重新开局</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16, ROWS = 10, MINES = 20;\n  const boardEl = document.getElementById('board');\n  const mineCountEl = document.getElementById('mineCount');\n  const statusEl = document.getElementById('status');\n  const newBtn = document.getElementById('newBtn');\n\n  let grid, revealed, flagged, minesLeft, gameOver, firstClick;\n\n  function init() {\n    grid = [];\n    revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    minesLeft = MINES;\n    gameOver = false;\n    firstClick = true;\n\n    // 生成雷（避开首点）\n    let placed = 0;\n    while (placed < MINES) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      if (!grid[r][c]) {\n        grid[r][c] = true;\n        placed++;\n      }\n    }\n\n    render();\n    updateCounter();\n    statusEl.textContent = '';\n    statusEl.className = 'status';\n  }\n\n  function neighbors(r, c) {\n    const dirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];\n    return dirs.map(([dr,dc]) => [r+dr, c+dc]).filter(([nr,nc]) =>\n      nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS\n    );\n  }\n\n  function countMines(r, c) {\n    return neighbors(r, c).filter(([nr,nc]) => grid[nr][nc]).length;\n  }\n\n  function reveal(r, c) {\n    if (gameOver || revealed[r][c] || flagged[r][c]) return;\n    revealed[r][c] = true;\n\n    if (grid[r][c]) {\n      gameOver = true;\n      revealAll();\n      statusEl.textContent = '💥 踩到雷"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048",
+    "rep": 3,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.66,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。其核心思想是将原本以浮点数（如 FP32）或标准二进制整数（INT8/INT16）表示的神经网络权重，映射为仅包含三个离散值：**-1、0 和 +1**。这种极致的稀疏化与低精度结合策略，旨在通过大幅降低模型的存储占用和计算复杂度，从而提升在边缘设备上的推理效率。\n\n### 技术原理与机制\n\n传统量化通常将权重映射到 $[-K, K]$ 范围内的整数，而三元量化则进一步简化了数值域。对于原始权重矩阵 $W$，每个元素 $w_{ij}$ 根据其与阈值的相对位置被映射为：\n$$ q(w_{ij}) = \\begin{cases} -1 & \\text{if } w_{ij} < -\\theta \\\\ 0 & \\text{if } |w_{ij}| \\leq \\theta \\\\ +1 & \\text{if } w_{ij} > \\theta \\end{cases} $$\n其中 $\\theta$ 是一个可学习的阈值参数。这种映射不仅减少了位宽需求（从 32-bit 降至 1-bit 加一个共享符号/零指示），还引入了结构稀疏性——权重为零意味着该连接在正向传播中不贡献梯度或激活值，从而可以跳过相应的乘法-累加（MAC）运算。\n\n### 优势与应用场景\n\n1. **极致压缩比**：相比 INT8 量化，三元权重的存储体积仅为原模型的约 1/32（若忽略偏置项）。这使得大语言模型（LLM）或视觉Transformer（ViT）能够在内存受限的嵌入式设备上运行。\n2. **计算加速**：由于大量权重为零，矩阵乘法中的无效操作被显著减少。"
+  },
+  {
+    "arm": "dflash2-K5-32k-v2048",
+    "rep": 1,
+    "req": "count",
+    "ok": true,
+    "wall_s": 2.41,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K5-32k-v2048",
+    "rep": 1,
+    "req": "code",
+    "ok": true,
+    "wall_s": 11.2,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.2rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 6px;\n    border-radius: 10px;\n    user-select: none;\n  }\n  .cell {\n    width: 38px;\n    height: 38px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 1.1rem;\n    font-weight: bold;\n    cursor: pointer;\n    border-radius: 4px;\n    transition: background 0.1s;\n    user-select: none;\n  }\n  .cell.hidden { background: #16213e; }\n  .cell.hidden:hover { background: #1a2a4a; }\n  .cell.revealed { background: #0f3460; cursor: default; }\n  .cell.flagged { background: #16213e; }\n  .cell.mine { background: #e94560; color: white; }\n  .cell.exploded { background: #ff4d4d; color: white; }\n  .cell.adjacent { outline: 2px solid #e94560; outline-offset: -2px; }\n  .status { margin-top: 12px; font-size: 1.1rem; min-height: 1.5em; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCounter\">💣 0</div>\n  <button id=\"restartBtn\">重开</button>\n</div>\n\n<div class=\"board\" id=\"board\"></div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16;\n  const ROWS = 10;\n  const MINE_COUNT = 40;\n\n  let board = [];       // 2D array of cells\n  let revealed = [];    // 2D boolean\n  let flagged = [];     // 2D boolean\n  let minesPlaced = false;\n  let gameOver = false;\n  let mineCountLeft = MINE_COUNT;\n  let timer = null;\n  let startTime = null;\n  let elapsed = 0;\n\n  const boardEl = document.getElementById('board');\n  const mineCounterEl = document.getElementById('mineCounter');\n  const statusEl = document.getElementById('status');\n  const restartBtn = document.getElementById('restartBtn');\n\n  function init() {\n    board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));\n    revealed = Array.from({ length: ROWS }, () => Array(COLS).fill(false));\n    flagged = Array.from({ length: ROWS }, () => Array(COLS).fill(false));\n    minesPlaced = false;\n    gameOver = false;\n    mineCountLeft = MINE_COUNT;\n    if (timer) clearInterval(timer);\n    startTime = null;\n    elapsed = 0;\n    render();\n    updateMineCounter();\n    statusEl.textContent = '';\n  }\n\n  function placeMines(firstR, firstC) {\n    let placed = 0;\n    while (placed < MINE_COUNT) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      // 避免第一格附近（3x3）放雷，保证首点安全\n      if (Math.abs(r - firstR) <= 1 && Math.abs(c - firstC) <= 1) continue;\n      if (board[r][c] === 0) {\n        board[r][c] = 1;\n        placed++;\n      }\n    }\n    minesPlaced = true;\n    computeNumbers();\n  }\n\n  function computeNumbers() {\n    for (let r = 0; r < ROWS; r++) {\n      for (let c = 0; c < COLS; c++) {\n        if (board[r][c] === 1) continue;\n        let count = 0;\n        for (let dr = -1; dr <= 1; dr++) {\n          for (let dc = -1; dc <= 1; dc++) {\n            if (dr === 0 && dc === 0) continue;\n            const nr = r + dr, nc = c + dc;\n            if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n              count += board[nr][nc];\n            }\n          }\n        }\n        board[r][c] = count;\n      }\n    }"
+  },
+  {
+    "arm": "dflash2-K5-32k-v2048",
+    "rep": 1,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.96,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。其核心思想是将原本以浮点数（如 FP32）或标准二进制整数（INT8/INT16）表示的神经网络权重，映射为仅包含三个离散值：**-1、0 和 +1**。这种极致的稀疏化与低精度结合策略，旨在通过大幅降低模型的存储占用和计算复杂度，从而提升在边缘设备上的推理效率。\n\n从数学实现角度来看，三元量化通常涉及两个关键步骤：**阈值确定**与**舍入映射**。首先，算法会根据权重的分布统计信息（如均值、方差或百分位数）设定特定的正负阈值 $\\tau$。随后，对于每一个原始权重 $w_i$，若 $w_i > \\tau$，则映射为 $+1$；若 $w_i < -\\tau$，则映射为 $-1$；否则映射为 $0$。这种映射方式不仅将数值范围压缩至最小，还天然引入了大量零值，使得后续的计算过程可以跳过大量的乘法操作（因为乘以零的结果为零），从而显著减少算术逻辑单元（ALU）的操作次数。\n\n尽管三元量化在理论上能带来极高的压缩率（相比 FP32 可节省约 97.5% 的存储空间），但其实际应用面临巨大的挑战。由于动态范围被极度压缩，模型在训练过程中难以维持足够的表达能力，容易导致精度损失严重。因此，业界通常采用**混合精度策略**或**结构化剪枝**作为辅助手段。例如，保留部分关键层的权重为 INT8 或 FP16，而将对精度影响较小的卷积核或全连接层进行三元量化。此外，为了缓解量化误差，许多研究引入“量化感知训练”（QAT, Quantization-Aware Training）技术，在反向传播时将量化操作视为"
+  },
+  {
+    "arm": "dflash2-K5-32k-v2048",
+    "rep": 2,
+    "req": "count",
+    "ok": true,
+    "wall_s": 2.39,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K5-32k-v2048",
+    "rep": 2,
+    "req": "code",
+    "ok": true,
+    "wall_s": 11.09,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.2rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 6px;\n    border-radius: 10px;\n    user-select: none;\n  }\n  .cell {\n    width: 38px;\n    height: 38px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 1.1rem;\n    font-weight: bold;\n    cursor: pointer;\n    border-radius: 4px;\n    transition: background 0.1s;\n    user-select: none;\n  }\n  .cell.hidden { background: #16213e; }\n  .cell.hidden:hover { background: #1a2a4a; }\n  .cell.revealed { background: #0f3460; cursor: default; }\n  .cell.flagged { background: #16213e; }\n  .cell.mine { background: #e94560; color: white; }\n  .cell.exploded { background: #ff4d4d; color: white; }\n  .cell.adjacent { outline: 2px solid #e94560; outline-offset: -2px; }\n  .status { margin-top: 12px; font-size: 1.1rem; min-height: 1.5em; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCounter\">💣 0</div>\n  <button id=\"restartBtn\">重开</button>\n</div>\n\n<div class=\"board\" id=\"board\"></div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16;\n  const ROWS = 10;\n  const MINE_COUNT = 40;\n\n  let board = [];       // 2D array of cells\n  let revealed = [];    // 2D boolean\n  let flagged = [];     // 2D boolean\n  let minesPlaced = false;\n  let gameOver = false;\n  let mineCountLeft = MINE_COUNT;\n  let timer = null;\n  let startTime = null;\n  let elapsed = 0;\n\n  const boardEl = document.getElementById('board');\n  const mineCounterEl = document.getElementById('mineCounter');\n  const statusEl = document.getElementById('status');\n  const restartBtn = document.getElementById('restartBtn');\n\n  function init() {\n    board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));\n    revealed = Array.from({ length: ROWS }, () => Array(COLS).fill(false));\n    flagged = Array.from({ length: ROWS }, () => Array(COLS).fill(false));\n    minesPlaced = false;\n    gameOver = false;\n    mineCountLeft = MINE_COUNT;\n    if (timer) clearInterval(timer);\n    startTime = null;\n    elapsed = 0;\n    render();\n    updateMineCounter();\n    statusEl.textContent = '';\n  }\n\n  function placeMines(firstR, firstC) {\n    let placed = 0;\n    while (placed < MINE_COUNT) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      // 避免第一格附近（3x3）放雷，保证首点安全\n      if (Math.abs(r - firstR) <= 1 && Math.abs(c - firstC) <= 1) continue;\n      if (board[r][c] === 0) {\n        board[r][c] = 1;\n        placed++;\n      }\n    }\n    minesPlaced = true;\n    computeNumbers();\n  }\n\n  function computeNumbers() {\n    for (let r = 0; r < ROWS; r++) {\n      for (let c = 0; c < COLS; c++) {\n        if (board[r][c] === 1) continue;\n        let count = 0;\n        for (let dr = -1; dr <= 1; dr++) {\n          for (let dc = -1; dc <= 1; dc++) {\n            if (dr === 0 && dc === 0) continue;\n            const nr = r + dr, nc = c + dc;\n            if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n              count += board[nr][nc];\n            }\n          }\n        }\n        board[r][c] = count;\n      }\n    }"
+  },
+  {
+    "arm": "dflash2-K5-32k-v2048",
+    "rep": 2,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 5.91,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（Binary）或常规8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值：**-1、0 和 +1**。这种设计不仅保留了比二值化更丰富的表达能力，同时显著降低了模型的存储占用和计算复杂度，是边缘计算、移动端AI以及实时推理场景中的重要优化手段。\n\n### 1. 核心原理与机制\n\n三元量化的核心思想在于通过“截断”或“阈值化”操作，将原本连续分布的权重值压缩至 $\\{-1, 0, 1\\}$ 这三个状态。通常，这一过程涉及两个关键步骤：\n\n*   **阈值设定**：根据权重的统计特性（如均值、方差或百分位数），确定两个阈值 $T_+$ 和 $T_-$。\n*   **映射规则**：\n    *   若权重 $w > T_+$，则映射为 $+1$；\n    *   若权重 $w < T_-$，则映射为 $-1$；\n    *   若 $T_- \\le w \\le T_+$，则映射为 $0$。\n\n其中，“0”值的引入是三元量化区别于二值化的关键。它允许模型在某些神经元连接上完全断开信号传递，从而起到类似剪枝（Pruning）的效果，进一步减少有效计算量。\n\n### 2. 技术优势\n\n#### （1）极致降低计算成本\n在传统矩阵乘法中，乘积项的计算量与权重非零元素的数量成正比。由于三元权重中包含大量0值，实际参与乘加运算（MACs, Multiply-Accumulate Operations）的次数大幅减少。例如，若50%的权重被量化为0，"
+  },
+  {
+    "arm": "dflash2-K5-32k-v2048",
+    "rep": 3,
+    "req": "count",
+    "ok": true,
+    "wall_s": 2.38,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K5-32k-v2048",
+    "rep": 3,
+    "req": "code",
+    "ok": true,
+    "wall_s": 11.1,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.2rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 6px;\n    border-radius: 10px;\n    user-select: none;\n  }\n  .cell {\n    width: 38px;\n    height: 38px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 1.1rem;\n    font-weight: bold;\n    cursor: pointer;\n    border-radius: 4px;\n    transition: background 0.1s;\n    user-select: none;\n  }\n  .cell.hidden { background: #16213e; }\n  .cell.hidden:hover { background: #1a2a4a; }\n  .cell.revealed { background: #0f3460; cursor: default; }\n  .cell.flagged { background: #16213e; }\n  .cell.mine { background: #e94560; color: white; }\n  .cell.exploded { background: #ff4d4d; color: white; }\n  .cell.adjacent { outline: 2px solid #e94560; outline-offset: -2px; }\n  .status { margin-top: 12px; font-size: 1.1rem; min-height: 1.5em; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCounter\">💣 0</div>\n  <button id=\"restartBtn\">重开</button>\n</div>\n\n<div class=\"board\" id=\"board\"></div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16;\n  const ROWS = 10;\n  const MINE_COUNT = 40;\n\n  let board = [];       // 2D array of cells\n  let revealed = [];    // 2D boolean\n  let flagged = [];     // 2D boolean\n  let minesPlaced = false;\n  let gameOver = false;\n  let mineCountLeft = MINE_COUNT;\n  let timer = null;\n  let startTime = null;\n  let elapsed = 0;\n\n  const boardEl = document.getElementById('board');\n  const mineCounterEl = document.getElementById('mineCounter');\n  const statusEl = document.getElementById('status');\n  const restartBtn = document.getElementById('restartBtn');\n\n  function init() {\n    board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));\n    revealed = Array.from({ length: ROWS }, () => Array(COLS).fill(false));\n    flagged = Array.from({ length: ROWS }, () => Array(COLS).fill(false));\n    minesPlaced = false;\n    gameOver = false;\n    mineCountLeft = MINE_COUNT;\n    if (timer) clearInterval(timer);\n    startTime = null;\n    elapsed = 0;\n    render();\n    updateMineCounter();\n    statusEl.textContent = '';\n  }\n\n  function placeMines(firstR, firstC) {\n    let placed = 0;\n    while (placed < MINE_COUNT) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      // 避免第一格附近（3x3）放雷，保证首点安全\n      if (Math.abs(r - firstR) <= 1 && Math.abs(c - firstC) <= 1) continue;\n      if (board[r][c] === 0) {\n        board[r][c] = 1;\n        placed++;\n      }\n    }\n    minesPlaced = true;\n    computeNumbers();\n  }\n\n  function computeNumbers() {\n    for (let r = 0; r < ROWS; r++) {\n      for (let c = 0; c < COLS; c++) {\n        if (board[r][c] === 1) continue;\n        let count = 0;\n        for (let dr = -1; dr <= 1; dr++) {\n          for (let dc = -1; dc <= 1; dc++) {\n            if (dr === 0 && dc === 0) continue;\n            const nr = r + dr, nc = c + dc;\n            if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n              count += board[nr][nc];\n            }\n          }\n        }\n        board[r][c] = count;\n      }\n    }"
+  },
+  {
+    "arm": "dflash2-K5-32k-v2048",
+    "rep": 3,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 5.9,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（Binary）或常规8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值：**-1、0 和 +1**。这种设计不仅保留了比二值化更丰富的表达能力，同时显著降低了模型的存储占用和计算复杂度，是边缘计算、移动端AI以及实时推理场景中的重要优化手段。\n\n### 1. 核心原理与机制\n\n三元量化的核心思想在于通过“截断”或“阈值化”操作，将原本连续分布的权重值压缩至 $\\{-1, 0, 1\\}$ 这三个状态。通常，这一过程涉及两个关键步骤：\n\n*   **阈值设定**：根据权重的统计特性（如均值、方差或百分位数），确定两个阈值 $T_+$ 和 $T_-$。\n*   **映射规则**：\n    *   若权重 $w > T_+$，则映射为 $+1$；\n    *   若权重 $w < T_-$，则映射为 $-1$；\n    *   若 $T_- \\le w \\le T_+$，则映射为 $0$。\n\n其中，“0”值的引入是三元量化区别于二值化的关键。它允许模型在某些神经元连接上完全断开信号传递，从而起到类似剪枝（Pruning）的效果，进一步减少有效计算量。\n\n### 2. 技术优势\n\n#### （1）极致降低计算成本\n在传统矩阵乘法中，乘积项的计算量与权重非零元素的数量成正比。由于三元权重中包含大量0值，实际参与乘加运算（MACs, Multiply-Accumulate Operations）的次数大幅减少。例如，若50%的权重被量化为0，"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 1,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.3,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 1,
+    "req": "count",
+    "ok": true,
+    "wall_s": 3.2,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 1,
+    "req": "code",
+    "ok": true,
+    "wall_s": 14.49,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.25rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background .2s, transform .1s;\n  }\n  button:hover { background: #ff6b6b; }\n  button:active { transform: scale(.96); }\n  .board-wrap {\n    position: relative;\n    background: #16213e;\n    border-radius: 12px;\n    padding: 12px;\n    box-shadow: 0 8px 32px rgba(0,0,0,.4);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px; height: 38px;\n    display: flex; align-items: center; justify-content: center;\n    font-size: 1.1rem;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    transition: background .15s, transform .1s;\n    border: 1px solid #0f3460;\n    background: #0f3460;\n  }\n  .cell:hover:not(.opened) { background: #1a4a7a; }\n  .cell.opened {\n    background: #1a1a2e;\n    border-color: #333;\n    cursor: default;\n  }\n  .cell.flagged {\n    background: #16213e;\n    border-color: #e94560;\n  }\n  .cell.mine {\n    background: #e94560;\n    color: #fff;\n    animation: pop .25s ease;\n  }\n  @keyframes pop {\n    0% { transform: scale(.5); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }\n  }\n  .status {\n    margin-top: 12px;\n    font-size: 1.1rem;\n    min-height: 1.4em;\n    color: #aaa;\n  }\n  .status.win { color: #4ecdc4; }\n  .status.lose { color: #e94560; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCount\">💣 0</div>\n  <button id=\"newBtn\">重新开局</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16, ROWS = 10, MINES = 20;\n  const boardEl = document.getElementById('board');\n  const mineCountEl = document.getElementById('mineCount');\n  const statusEl = document.getElementById('status');\n  const newBtn = document.getElementById('newBtn');\n\n  let grid, revealed, flagged, minesLeft, gameOver, firstClick;\n\n  function init() {\n    grid = [];\n    revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    minesLeft = MINES;\n    gameOver = false;\n    firstClick = true;\n\n    // 生成雷（避开首点）\n    let placed = 0;\n    while (placed < MINES) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      if (!grid[r][c]) {\n        grid[r][c] = true;\n        placed++;\n      }\n    }\n\n    render();\n    updateCounter();\n    statusEl.textContent = '';\n    statusEl.className = 'status';\n  }\n\n  function neighbors(r, c) {\n    const dirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];\n    return dirs.map(([dr,dc]) => [r+dr, c+dc]).filter(([nr,nc]) =>\n      nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS\n    );\n  }\n\n  function countMines(r, c) {\n    return neighbors(r, c).filter(([nr,nc]) => grid[nr][nc]).length;\n  }\n\n  function reveal(r, c) {\n    if (gameOver || revealed[r][c] || flagged[r][c]) return;\n    revealed[r][c] = true;\n\n    if (grid[r][c]) {\n      gameOver = true;\n      revealAll();\n      statusEl.textContent = '💥 踩到雷"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 1,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 7.0,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（0/1）或标准8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值，通常为 **{-1, 0, +1}**。这种技术旨在通过极低的数值表示空间来显著降低模型的存储占用和计算复杂度，同时尽可能保留原始模型的性能精度。\n\n### 技术原理与机制\n\n三元量化的核心思想是利用“稀疏性”和“对称性”。在训练过程中，模型通常采用特殊的损失函数（如 L1 范数正则化）或特定的初始化策略，引导网络学习出大量接近于零的权重。随后，在量化阶段，这些权重被截断：\n*   大于阈值的权重映射为 **+1**；\n*   小于阈值的权重映射为 **-1**；\n*   绝对值小于阈值的权重映射为 **0**。\n\n这种映射方式使得模型参数矩阵具有极高的稀疏度。例如，在一个全连接层中，如果大部分权重被量化为 0，那么在前向传播时，对应的矩阵乘法操作实际上可以跳过大量的无效计算。此外，由于权重仅包含 -1、0、+1 三种状态，乘法和加法运算可以被简化为逻辑门电路级别的移位和累加操作，极大地提升了硬件执行效率。\n\n### 优势与应用场景\n\n1.  **极致压缩比**：相比 FP32 或 INT8 量化，Ternary 权重的信息密度极低。理论上，每个参数仅需 $\\log_2(3) \\approx 1.58$ bits 存储，相较于 FP32 的 32 bits，压缩率超过 20 倍。这使得大规模模型能够轻松加载到内存受限的边缘设备（如手机、嵌入式系统）中"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 2,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.22,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 125
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 2,
+    "req": "count",
+    "ok": true,
+    "wall_s": 3.14,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 24
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 2,
+    "req": "code",
+    "ok": true,
+    "wall_s": 14.39,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.25rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background .2s, transform .1s;\n  }\n  button:hover { background: #ff6b6b; }\n  button:active { transform: scale(.96); }\n  .board-wrap {\n    position: relative;\n    background: #16213e;\n    border-radius: 12px;\n    padding: 12px;\n    box-shadow: 0 8px 32px rgba(0,0,0,.4);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px; height: 38px;\n    display: flex; align-items: center; justify-content: center;\n    font-size: 1.1rem;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    transition: background .15s, transform .1s;\n    border: 1px solid #0f3460;\n    background: #0f3460;\n  }\n  .cell:hover:not(.opened) { background: #1a4a7a; }\n  .cell.opened {\n    background: #1a1a2e;\n    border-color: #333;\n    cursor: default;\n  }\n  .cell.flagged {\n    background: #16213e;\n    border-color: #e94560;\n  }\n  .cell.mine {\n    background: #e94560;\n    color: #fff;\n    animation: pop .25s ease;\n  }\n  @keyframes pop {\n    0% { transform: scale(.5); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }\n  }\n  .status {\n    margin-top: 12px;\n    font-size: 1.1rem;\n    min-height: 1.4em;\n    color: #aaa;\n  }\n  .status.win { color: #4ecdc4; }\n  .status.lose { color: #e94560; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCount\">💣 0</div>\n  <button id=\"newBtn\">重新开局</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16, ROWS = 10, MINES = 20;\n  const boardEl = document.getElementById('board');\n  const mineCountEl = document.getElementById('mineCount');\n  const statusEl = document.getElementById('status');\n  const newBtn = document.getElementById('newBtn');\n\n  let grid, revealed, flagged, minesLeft, gameOver, firstClick;\n\n  function init() {\n    grid = [];\n    revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    minesLeft = MINES;\n    gameOver = false;\n    firstClick = true;\n\n    // 生成雷（避开首点）\n    let placed = 0;\n    while (placed < MINES) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      if (!grid[r][c]) {\n        grid[r][c] = true;\n        placed++;\n      }\n    }\n\n    render();\n    updateCounter();\n    statusEl.textContent = '';\n    statusEl.className = 'status';\n  }\n\n  function neighbors(r, c) {\n    const dirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];\n    return dirs.map(([dr,dc]) => [r+dr, c+dc]).filter(([nr,nc]) =>\n      nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS\n    );\n  }\n\n  function countMines(r, c) {\n    return neighbors(r, c).filter(([nr,nc]) => grid[nr][nc]).length;\n  }\n\n  function reveal(r, c) {\n    if (gameOver || revealed[r][c] || flagged[r][c]) return;\n    revealed[r][c] = true;\n\n    if (grid[r][c]) {\n      gameOver = true;\n      revealAll();\n      statusEl.textContent = '💥 踩到雷"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 2,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.67,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。其核心思想是将原本以浮点数（如 FP32）或标准二进制整数（INT8/INT16）表示的神经网络权重，映射为仅包含三个离散值：**-1、0 和 +1**。这种极致的稀疏化与低精度结合策略，旨在通过大幅降低模型的存储占用和计算复杂度，从而提升在边缘设备上的推理效率。\n\n### 技术原理与机制\n\n传统量化通常将权重映射到 $[-K, K]$ 范围内的整数，而三元量化则进一步简化了数值域。对于原始权重矩阵 $W$，每个元素 $w_{ij}$ 根据其与阈值的相对位置被映射为：\n$$ q(w_{ij}) = \\begin{cases} -1 & \\text{if } w_{ij} < -\\theta \\\\ 0 & \\text{if } |w_{ij}| \\leq \\theta \\\\ +1 & \\text{if } w_{ij} > \\theta \\end{cases} $$\n其中 $\\theta$ 是一个可学习的阈值参数。这种映射不仅减少了位宽需求（从 32-bit 降至 1-bit 加一个共享符号/零指示），还引入了结构稀疏性——权重为零意味着该连接在正向传播中不贡献梯度或激活值，从而可以跳过相应的乘法-累加（MAC）运算。\n\n### 优势与应用场景\n\n1. **极致压缩比**：相比 INT8 量化，三元权重的存储体积仅为原模型的约 1/32（若忽略偏置项）。这使得大语言模型（LLM）或视觉Transformer（ViT）能够在内存受限的嵌入式设备上运行。\n2. **计算加速**：由于大量权重为零，矩阵乘法中的无效操作被显著减少。"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 3,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.22,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 125
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 3,
+    "req": "count",
+    "ok": true,
+    "wall_s": 3.15,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 24
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 3,
+    "req": "code",
+    "ok": true,
+    "wall_s": 14.42,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.25rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background .2s, transform .1s;\n  }\n  button:hover { background: #ff6b6b; }\n  button:active { transform: scale(.96); }\n  .board-wrap {\n    position: relative;\n    background: #16213e;\n    border-radius: 12px;\n    padding: 12px;\n    box-shadow: 0 8px 32px rgba(0,0,0,.4);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px; height: 38px;\n    display: flex; align-items: center; justify-content: center;\n    font-size: 1.1rem;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    transition: background .15s, transform .1s;\n    border: 1px solid #0f3460;\n    background: #0f3460;\n  }\n  .cell:hover:not(.opened) { background: #1a4a7a; }\n  .cell.opened {\n    background: #1a1a2e;\n    border-color: #333;\n    cursor: default;\n  }\n  .cell.flagged {\n    background: #16213e;\n    border-color: #e94560;\n  }\n  .cell.mine {\n    background: #e94560;\n    color: #fff;\n    animation: pop .25s ease;\n  }\n  @keyframes pop {\n    0% { transform: scale(.5); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }\n  }\n  .status {\n    margin-top: 12px;\n    font-size: 1.1rem;\n    min-height: 1.4em;\n    color: #aaa;\n  }\n  .status.win { color: #4ecdc4; }\n  .status.lose { color: #e94560; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCount\">💣 0</div>\n  <button id=\"newBtn\">重新开局</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16, ROWS = 10, MINES = 20;\n  const boardEl = document.getElementById('board');\n  const mineCountEl = document.getElementById('mineCount');\n  const statusEl = document.getElementById('status');\n  const newBtn = document.getElementById('newBtn');\n\n  let grid, revealed, flagged, minesLeft, gameOver, firstClick;\n\n  function init() {\n    grid = [];\n    revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    minesLeft = MINES;\n    gameOver = false;\n    firstClick = true;\n\n    // 生成雷（避开首点）\n    let placed = 0;\n    while (placed < MINES) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      if (!grid[r][c]) {\n        grid[r][c] = true;\n        placed++;\n      }\n    }\n\n    render();\n    updateCounter();\n    statusEl.textContent = '';\n    statusEl.className = 'status';\n  }\n\n  function neighbors(r, c) {\n    const dirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];\n    return dirs.map(([dr,dc]) => [r+dr, c+dc]).filter(([nr,nc]) =>\n      nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS\n    );\n  }\n\n  function countMines(r, c) {\n    return neighbors(r, c).filter(([nr,nc]) => grid[nr][nc]).length;\n  }\n\n  function reveal(r, c) {\n    if (gameOver || revealed[r][c] || flagged[r][c]) return;\n    revealed[r][c] = true;\n\n    if (grid[r][c]) {\n      gameOver = true;\n      revealAll();\n      statusEl.textContent = '💥 踩到雷"
+  },
+  {
+    "arm": "mtp-d4-32k-v2048-b",
+    "rep": 3,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.66,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。其核心思想是将原本以浮点数（如 FP32）或标准二进制整数（INT8/INT16）表示的神经网络权重，映射为仅包含三个离散值：**-1、0 和 +1**。这种极致的稀疏化与低精度结合策略，旨在通过大幅降低模型的存储占用和计算复杂度，从而提升在边缘设备上的推理效率。\n\n### 技术原理与机制\n\n传统量化通常将权重映射到 $[-K, K]$ 范围内的整数，而三元量化则进一步简化了数值域。对于原始权重矩阵 $W$，每个元素 $w_{ij}$ 根据其与阈值的相对位置被映射为：\n$$ q(w_{ij}) = \\begin{cases} -1 & \\text{if } w_{ij} < -\\theta \\\\ 0 & \\text{if } |w_{ij}| \\leq \\theta \\\\ +1 & \\text{if } w_{ij} > \\theta \\end{cases} $$\n其中 $\\theta$ 是一个可学习的阈值参数。这种映射不仅减少了位宽需求（从 32-bit 降至 1-bit 加一个共享符号/零指示），还引入了结构稀疏性——权重为零意味着该连接在正向传播中不贡献梯度或激活值，从而可以跳过相应的乘法-累加（MAC）运算。\n\n### 优势与应用场景\n\n1. **极致压缩比**：相比 INT8 量化，三元权重的存储体积仅为原模型的约 1/32（若忽略偏置项）。这使得大语言模型（LLM）或视觉Transformer（ViT）能够在内存受限的嵌入式设备上运行。\n2. **计算加速**：由于大量权重为零，矩阵乘法中的无效操作被显著减少。"
+  },
+  {
+    "arm": "dflash2-K11-32k-v2048",
+    "rep": 1,
+    "req": "count",
+    "ok": true,
+    "wall_s": 2.33,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K11-32k-v2048",
+    "rep": 1,
+    "req": "code",
+    "ok": true,
+    "wall_s": 13.43,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', sans-serif;\n    color: #fff;\n  }\n  .container { text-align: center; }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 4px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    justify-content: center;\n    margin-bottom: 16px;\n  }\n  .info {\n    background: #16213e;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.1rem;\n    min-width: 90px;\n    text-align: center;\n    border: 1px solid #0f3460;\n  }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    border-radius: 6px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 4px;\n    border-radius: 8px;\n    user-select: none;\n  }\n  .cell {\n    width: 36px;\n    height: 36px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-size: 1.1rem;\n    font-weight: bold;\n    cursor: pointer;\n    border-radius: 4px;\n    transition: background 0.1s;\n    position: relative;\n  }\n  .cell.hidden { background: #16213e; }\n  .cell.hidden:hover { background: #1a2744; }\n  .cell.revealed { background: #0f3460; }\n  .cell.mine { background: #e94560; }\n  .cell.flagged { background: #16213e; }\n  .cell.flagged::after { content: '🚩'; font-size: 1.2rem; }\n  .cell.exploded { background: #c0392b; animation: pop 0.3s; }\n  @keyframes pop {\n    0% { transform: scale(1); }\n    50% { transform: scale(1.3); }\n    100% { transform: scale(1); }\n  }\n  .overlay {\n    position: fixed;\n    top: 0; left: 0; right: 0; bottom: 0;\n    background: rgba(0,0,0,0.7);\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    z-index: 10;\n  }\n  .overlay.hidden { display: none; }\n  .overlay .box {\n    background: #16213e;\n    padding: 32px 48px;\n    border-radius: 12px;\n    text-align: center;\n    border: 1px solid #0f3460;\n  }\n  .overlay h2 { font-size: 2rem; margin-bottom: 16px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <h1>扫 雷</h1>\n  <div class=\"toolbar\">\n    <div class=\"info\" id=\"mineCount\">💣 0</div>\n    <button onclick=\"newGame()\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"overlay hidden\" id=\"overlay\">\n  <div class=\"box\">\n    <h2 id=\"resultTitle\">游戏结束</h2>\n    <p id=\"resultText\"></p>\n    <br>\n    <button onclick=\"newGame(); showOverlay(false)\">再来一局</button>\n  </div>\n</div>\n\n<script>\nconst ROWS = 9, COLS = 9, MINES = 10;\nlet board, revealed, flagged, minesLeft, gameOver, timer;\n\nfunction init() {\n  board = [];\n  for (let r = 0; r < ROWS; r++) {\n    board[r] = [];\n    for (let c = 0; c < COLS; c++) {\n      board[r][c] = { mine: false, count: 0 };\n    }\n  }\n  // Place mines\n  let placed = 0;\n  while (placed < MINES) {\n    const r = Math.floor(Math.random() * ROWS);\n    const c = Math.floor(Math.random() * COLS);\n    if (!board[r][c].mine) {\n      board[r][c].mine = true;\n      placed++;\n    }\n  }\n  // Count neighbors\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c < COLS; c++) {\n      let cnt = 0;\n      for (let dr = -1; dr <= 1; dr++) {\n        for (let dc = -1; dc <= 1; dc++) {\n          if (dr === 0 && dc === 0) continue;\n          const nr = r + dr, nc = c + dc;\n          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n            if (board[nr][nc].mine) cnt++;\n          }\n        }\n      }\n      board[r][c].count = cnt;\n    }\n  }\n}\n\nfunction render() {\n"
+  },
+  {
+    "arm": "dflash2-K11-32k-v2048",
+    "rep": 1,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 9.67,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（Binary）或标准8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值：**-1、0 和 +1**。这种技术不仅保留了比纯二值化更丰富的表达能力，同时显著降低了模型的存储占用和计算复杂度，是边缘计算、移动端AI以及实时推理场景中的重要优化手段。\n\n### 1. 核心原理与机制\n\n三元量化的核心思想在于通过“截断”或“阈值化”操作，将原本连续分布的权重值压缩至 $\\{-1, 0, 1\\}$ 这三个状态。通常，这一过程涉及两个关键步骤：\n\n*   **阈值设定**：首先根据权重的统计特性（如均值、方差或百分位数）确定正负阈值 $T_+$ 和 $T_-$。\n*   **映射规则**：对于每个原始权重 $w$，若 $w > T_+$，则映射为 $+1$；若 $w < T_-$，则映射为 $-1$；否则映射为 $0$。\n\n引入“0”值的关键优势在于它允许模型保留部分神经元的有效激活信息，避免了二值化中所有非零权重被强制归一化为相同幅度所带来的信息损失。这使得三元网络在保持极低比特率的同时，仍能维持较高的分类或回归精度。\n\n### 2. 硬件加速与计算效率\n\n从硬件实现角度来看，三元量化带来了显著的算子简化：\n\n*   **乘法消除**：在传统矩阵乘法 $Y = XW$ 中，若 $W \\in \\{-1, 0, 1\\}$，则 $X_i \\times W_j$ 的结果仅为 $X_i$、$-X_i$"
+  },
+  {
+    "arm": "dflash2-K11-32k-v2048",
+    "rep": 2,
+    "req": "count",
+    "ok": true,
+    "wall_s": 2.34,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K11-32k-v2048",
+    "rep": 2,
+    "req": "code",
+    "ok": true,
+    "wall_s": 13.37,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', sans-serif;\n    color: #fff;\n  }\n  .container { text-align: center; }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 4px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    justify-content: center;\n    margin-bottom: 16px;\n  }\n  .info {\n    background: #16213e;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.1rem;\n    min-width: 90px;\n    text-align: center;\n    border: 1px solid #0f3460;\n  }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    border-radius: 6px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 4px;\n    border-radius: 8px;\n    user-select: none;\n  }\n  .cell {\n    width: 36px;\n    height: 36px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-size: 1.1rem;\n    font-weight: bold;\n    cursor: pointer;\n    border-radius: 4px;\n    transition: background 0.1s;\n    position: relative;\n  }\n  .cell.hidden { background: #16213e; }\n  .cell.hidden:hover { background: #1a2744; }\n  .cell.revealed { background: #0f3460; }\n  .cell.mine { background: #e94560; }\n  .cell.flagged { background: #16213e; }\n  .cell.flagged::after { content: '🚩'; font-size: 1.2rem; }\n  .cell.exploded { background: #c0392b; animation: pop 0.3s; }\n  @keyframes pop {\n    0% { transform: scale(1); }\n    50% { transform: scale(1.3); }\n    100% { transform: scale(1); }\n  }\n  .overlay {\n    position: fixed;\n    top: 0; left: 0; right: 0; bottom: 0;\n    background: rgba(0,0,0,0.7);\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    z-index: 10;\n  }\n  .overlay.hidden { display: none; }\n  .overlay .box {\n    background: #16213e;\n    padding: 32px 48px;\n    border-radius: 12px;\n    text-align: center;\n    border: 1px solid #0f3460;\n  }\n  .overlay h2 { font-size: 2rem; margin-bottom: 16px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <h1>扫 雷</h1>\n  <div class=\"toolbar\">\n    <div class=\"info\" id=\"mineCount\">💣 0</div>\n    <button onclick=\"newGame()\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"overlay hidden\" id=\"overlay\">\n  <div class=\"box\">\n    <h2 id=\"resultTitle\">游戏结束</h2>\n    <p id=\"resultText\"></p>\n    <br>\n    <button onclick=\"newGame(); showOverlay(false)\">再来一局</button>\n  </div>\n</div>\n\n<script>\nconst ROWS = 9, COLS = 9, MINES = 10;\nlet board, revealed, flagged, minesLeft, gameOver, timer;\n\nfunction init() {\n  board = [];\n  for (let r = 0; r < ROWS; r++) {\n    board[r] = [];\n    for (let c = 0; c < COLS; c++) {\n      board[r][c] = { mine: false, count: 0 };\n    }\n  }\n  // Place mines\n  let placed = 0;\n  while (placed < MINES) {\n    const r = Math.floor(Math.random() * ROWS);\n    const c = Math.floor(Math.random() * COLS);\n    if (!board[r][c].mine) {\n      board[r][c].mine = true;\n      placed++;\n    }\n  }\n  // Count neighbors\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c < COLS; c++) {\n      let cnt = 0;\n      for (let dr = -1; dr <= 1; dr++) {\n        for (let dc = -1; dc <= 1; dc++) {\n          if (dr === 0 && dc === 0) continue;\n          const nr = r + dr, nc = c + dc;\n          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n            if (board[nr][nc].mine) cnt++;\n          }\n        }\n      }\n      board[r][c].count = cnt;\n    }\n  }\n}\n\nfunction render() {\n"
+  },
+  {
+    "arm": "dflash2-K11-32k-v2048",
+    "rep": 2,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 10.43,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（Binary）或常规8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值：**-1、0 和 +1**。这种设计不仅保留了比二值化更丰富的表达能力，同时显著降低了存储带宽和计算复杂度，是平衡模型精度损失与硬件效率的关键折中方案。\n\n### 1. 核心机制与数学原理\n\n在标准全精度训练（如 FP32）中，权重 $w$ 通常服从近似高斯分布。三元量化的核心思想是通过“死区”（Dead Zone）处理来压缩动态范围。其映射函数通常定义为：\n\n$$\nq(w) = \\begin{cases} \n-1 & \\text{if } w < -\\theta \\\\\n0 & \\text{if } -\\theta \\leq w \\leq \\theta \\\\\n+1 & \\text{if } w > \\theta \n\\end{cases}\n$$\n\n其中 $\\theta$ 是一个可学习的阈值参数。通过引入零值，模型能够显式地表示“无贡献”的神经元连接，这在稀疏性优化中具有天然优势。相比二值量化（仅保留符号），三元量化避免了强制将小权重直接截断为极值，从而减少了梯度消失问题，使得模型在反向传播过程中更容易收敛到较优解。\n\n### 2. 计算效率与硬件友好性\n\n从硬件实现角度看，三元权重的最大优势在于**运算简化**。在传统矩阵乘法 $Y = XW$ 中，若 $W$ 为 FP32，需要执行大量的浮点乘法和累加操作。而在三元量化下：\n\n*   **加法替代乘法**：当权重为 $+1$ 时，相当于"
+  },
+  {
+    "arm": "dflash2-K11-32k-v2048",
+    "rep": 3,
+    "req": "count",
+    "ok": true,
+    "wall_s": 2.34,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K11-32k-v2048",
+    "rep": 3,
+    "req": "code",
+    "ok": true,
+    "wall_s": 13.35,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', sans-serif;\n    color: #fff;\n  }\n  .container { text-align: center; }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 4px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    justify-content: center;\n    margin-bottom: 16px;\n  }\n  .info {\n    background: #16213e;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.1rem;\n    min-width: 90px;\n    text-align: center;\n    border: 1px solid #0f3460;\n  }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    border-radius: 6px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 4px;\n    border-radius: 8px;\n    user-select: none;\n  }\n  .cell {\n    width: 36px;\n    height: 36px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-size: 1.1rem;\n    font-weight: bold;\n    cursor: pointer;\n    border-radius: 4px;\n    transition: background 0.1s;\n    position: relative;\n  }\n  .cell.hidden { background: #16213e; }\n  .cell.hidden:hover { background: #1a2744; }\n  .cell.revealed { background: #0f3460; }\n  .cell.mine { background: #e94560; }\n  .cell.flagged { background: #16213e; }\n  .cell.flagged::after { content: '🚩'; font-size: 1.2rem; }\n  .cell.exploded { background: #c0392b; animation: pop 0.3s; }\n  @keyframes pop {\n    0% { transform: scale(1); }\n    50% { transform: scale(1.3); }\n    100% { transform: scale(1); }\n  }\n  .overlay {\n    position: fixed;\n    top: 0; left: 0; right: 0; bottom: 0;\n    background: rgba(0,0,0,0.7);\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    z-index: 10;\n  }\n  .overlay.hidden { display: none; }\n  .overlay .box {\n    background: #16213e;\n    padding: 32px 48px;\n    border-radius: 12px;\n    text-align: center;\n    border: 1px solid #0f3460;\n  }\n  .overlay h2 { font-size: 2rem; margin-bottom: 16px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <h1>扫 雷</h1>\n  <div class=\"toolbar\">\n    <div class=\"info\" id=\"mineCount\">💣 0</div>\n    <button onclick=\"newGame()\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"overlay hidden\" id=\"overlay\">\n  <div class=\"box\">\n    <h2 id=\"resultTitle\">游戏结束</h2>\n    <p id=\"resultText\"></p>\n    <br>\n    <button onclick=\"newGame(); showOverlay(false)\">再来一局</button>\n  </div>\n</div>\n\n<script>\nconst ROWS = 9, COLS = 9, MINES = 10;\nlet board, revealed, flagged, minesLeft, gameOver, timer;\n\nfunction init() {\n  board = [];\n  for (let r = 0; r < ROWS; r++) {\n    board[r] = [];\n    for (let c = 0; c < COLS; c++) {\n      board[r][c] = { mine: false, count: 0 };\n    }\n  }\n  // Place mines\n  let placed = 0;\n  while (placed < MINES) {\n    const r = Math.floor(Math.random() * ROWS);\n    const c = Math.floor(Math.random() * COLS);\n    if (!board[r][c].mine) {\n      board[r][c].mine = true;\n      placed++;\n    }\n  }\n  // Count neighbors\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c < COLS; c++) {\n      let cnt = 0;\n      for (let dr = -1; dr <= 1; dr++) {\n        for (let dc = -1; dc <= 1; dc++) {\n          if (dr === 0 && dc === 0) continue;\n          const nr = r + dr, nc = c + dc;\n          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n            if (board[nr][nc].mine) cnt++;\n          }\n        }\n      }\n      board[r][c].count = cnt;\n    }\n  }\n}\n\nfunction render() {\n"
+  },
+  {
+    "arm": "dflash2-K11-32k-v2048",
+    "rep": 3,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 10.45,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（Binary）或常规8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值：**-1、0 和 +1**。这种设计不仅保留了比二值化更丰富的表达能力，同时显著降低了存储带宽和计算复杂度，是平衡模型精度损失与硬件效率的关键折中方案。\n\n### 1. 核心机制与数学原理\n\n在标准全精度训练（如 FP32）中，权重 $w$ 通常服从近似高斯分布。三元量化的核心思想是通过“死区”（Dead Zone）处理来压缩动态范围。其映射函数通常定义为：\n\n$$\nq(w) = \\begin{cases} \n-1 & \\text{if } w < -\\theta \\\\\n0 & \\text{if } -\\theta \\leq w \\leq \\theta \\\\\n+1 & \\text{if } w > \\theta \n\\end{cases}\n$$\n\n其中 $\\theta$ 是一个可学习的阈值参数。通过引入零值，模型能够显式地表示“无贡献”的神经元连接，这在稀疏性优化中具有天然优势。相比二值量化（仅保留符号），三元量化避免了强制将小权重直接截断为极值，从而减少了梯度消失问题，使得模型在反向传播过程中更容易收敛到较优解。\n\n### 2. 计算效率与硬件友好性\n\n从硬件实现角度看，三元权重的最大优势在于**运算简化**。在传统矩阵乘法 $Y = XW$ 中，若 $W$ 为 FP32，需要执行大量的浮点乘法和累加操作。而在三元量化下：\n\n*   **加法替代乘法**：当权重为 $+1$ 时，相当于"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 1,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.25,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 1,
+    "req": "count",
+    "ok": true,
+    "wall_s": 1.97,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 1,
+    "req": "code",
+    "ok": true,
+    "wall_s": 9.69,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', sans-serif;\n  }\n  .container { text-align: center; }\n  h1 { color: #fff; margin-bottom: 15px; font-size: 2rem; }\n  .toolbar {\n    display: flex;\n    gap: 10px;\n    justify-content: center;\n    margin-bottom: 15px;\n  }\n  .info {\n    background: #16213e;\n    color: #fff;\n    padding: 8px 16px;\n    border-radius: 6px;\n    font-size: 1.1rem;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    padding: 8px 18px;\n    border-radius: 6px;\n    cursor: pointer;\n    font-size: 1rem;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 6px;\n    border-radius: 8px;\n  }\n  .cell {\n    width: 36px;\n    height: 36px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    user-select: none;\n    font-size: 1.1rem;\n    font-weight: bold;\n    border-radius: 4px;\n    transition: background 0.1s;\n  }\n  .cell.hidden { background: #533483; }\n  .cell.hidden:hover { background: #6d4c99; }\n  .cell.revealed { background: #1a1a2e; }\n  .cell.flagged { background: #533483; }\n  .cell.exploded { background: #e94560 !important; animation: shake 0.3s; }\n  @keyframes shake {\n    0%,100%{transform:translate(0)}\n    25%{transform:translate(-2px,2px)}\n    50%{transform:translate(2px,-2px)}\n    75%{transform:translate(-2px,-2px)}\n  }\n  .overlay {\n    position: fixed;\n    top:0;left:0;right:0;bottom:0;\n    background:rgba(0,0,0,0.6);\n    display:none;\n    justify-content:center;\n    align-items:center;\n    z-index:10;\n  }\n  .overlay.show { display:flex; }\n  .overlay .box {\n    background:#16213e;\n    padding:30px 50px;\n    border-radius:10px;\n    color:#fff;\n    font-size:1.5rem;\n  }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <h1>🎮 扫雷</h1>\n  <div class=\"toolbar\">\n    <div class=\"info\" id=\"mineCount\">雷数: 0</div>\n    <button onclick=\"newGame()\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n</div>\n<div class=\"overlay\" id=\"overlay\">\n  <div class=\"box\">\n    <p id=\"resultText\">游戏结束</p>\n    <br><br>\n    <button onclick=\"newGame();hideOverlay()\">再来一局</button>\n  </div>\n</div>\n\n<script>\nconst ROWS = 9, COLS = 9, MINES = 10;\nlet board, revealed, flagged, minesLeft, gameOver, timer;\n\nfunction init() {\n  board = [];\n  for (let r = 0; r < ROWS; r++) {\n    board[r] = [];\n    for (let c = 0; c < COLS; c++) {\n      board[r][c] = { mine: false, count: 0, revealed: false, flag: false };\n    }\n  }\n  // 随机放雷\n  let placed = 0;\n  while (placed < MINES) {\n    const r = Math.floor(Math.random() * ROWS);\n    const c = Math.floor(Math.random() * COLS);\n    if (!board[r][c].mine) {\n      board[r][c].mine = true;\n      placed++;\n    }\n  }\n  // 计算邻雷数\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c < COLS; c++) {\n      let cnt = 0;\n      for (let dr = -1; dr <= 1; dr++) {\n        for (let dc = -1; dc <= 1; dc++) {\n          if (dr === 0 && dc === 0) continue;\n          const nr = r + dr, nc = c + dc;\n          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n            if (board[nr][nc].mine) cnt++;\n          }\n        }\n      }\n      board[r][c].count = cnt;\n    }\n  }\n  minesLeft = MINES;\n  gameOver = false;\n  render();\n}\n\nfunction render() {\n  const el = document.getElementById('board');\n  el.innerHTML = '';\n  el.style.gridTemplateColumns = `repeat(${COLS}, 36px)`;\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 1,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.8,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（0/1）或标准8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值，通常为 **{-1, 0, +1}**。这种技术旨在通过极低的数值表示空间来显著降低模型的存储占用和计算复杂度，同时尽可能保留原始模型的性能精度。\n\n### 技术原理与机制\n\n三元量化的核心思想是利用“稀疏性”和“对称性”。在训练过程中，模型通常采用特殊的损失函数（如 L1 范数正则化或特定的量化感知损失）引导网络学习出接近 -1、0 或 1 的权重分布。其中，“0”值的引入是关键创新：它允许网络在不增加额外参数数量的情况下，动态地屏蔽部分神经元连接，从而起到类似剪枝的效果。\n\n从数学角度看，若原始权重 $w$ 服从近似高斯分布，三元量化可视为对 $w$ 进行阈值截断后的符号取反操作。例如：\n$$ q(w) = \\begin{cases} \n-1 & \\text{if } w < -\\tau \\\\\n0 & \\text{if } |w| \\leq \\tau \\\\\n+1 & \\text{if } w > \\tau \n\\end{cases} $$\n其中 $\\tau$ 为可学习的阈值。这种映射使得矩阵乘法运算简化为加法、减法和移位操作，极大地减少了乘积累加器（MAC）的数量，尤其在边缘设备或移动端上具有显著的能效优势。\n\n### 优势与挑战\n\n**主要优势：**\n1. **极致压缩率**：相比 FP32，每个参数仅需约 1.58 bits（使用过余编码）甚至更少，存储体积缩小至原模型的几分之一"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 2,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.17,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 125
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 2,
+    "req": "count",
+    "ok": true,
+    "wall_s": 1.94,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 2,
+    "req": "code",
+    "ok": true,
+    "wall_s": 9.61,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', sans-serif;\n  }\n  .container { text-align: center; }\n  h1 { color: #fff; margin-bottom: 15px; font-size: 2rem; }\n  .toolbar {\n    display: flex;\n    gap: 10px;\n    justify-content: center;\n    margin-bottom: 15px;\n  }\n  .info {\n    background: #16213e;\n    color: #fff;\n    padding: 8px 16px;\n    border-radius: 6px;\n    font-size: 1.1rem;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    padding: 8px 18px;\n    border-radius: 6px;\n    cursor: pointer;\n    font-size: 1rem;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 6px;\n    border-radius: 8px;\n  }\n  .cell {\n    width: 36px;\n    height: 36px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    user-select: none;\n    font-size: 1.1rem;\n    font-weight: bold;\n    border-radius: 4px;\n    transition: background 0.1s;\n  }\n  .cell.hidden { background: #533483; }\n  .cell.hidden:hover { background: #6d4c99; }\n  .cell.revealed { background: #1a1a2e; }\n  .cell.flagged { background: #533483; }\n  .cell.exploded { background: #e94560 !important; animation: shake 0.3s; }\n  @keyframes shake {\n    0%,100%{transform:translate(0)}\n    25%{transform:translate(-2px,2px)}\n    50%{transform:translate(2px,-2px)}\n    75%{transform:translate(-2px,-2px)}\n  }\n  .overlay {\n    position: fixed;\n    top:0;left:0;right:0;bottom:0;\n    background:rgba(0,0,0,0.6);\n    display:none;\n    justify-content:center;\n    align-items:center;\n    z-index:10;\n  }\n  .overlay.show { display:flex; }\n  .overlay .box {\n    background:#16213e;\n    padding:30px 50px;\n    border-radius:10px;\n    color:#fff;\n    font-size:1.5rem;\n  }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <h1>🎮 扫雷</h1>\n  <div class=\"toolbar\">\n    <div class=\"info\" id=\"mineCount\">雷数: 0</div>\n    <button onclick=\"newGame()\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n</div>\n<div class=\"overlay\" id=\"overlay\">\n  <div class=\"box\">\n    <p id=\"resultText\">游戏结束</p>\n    <br><br>\n    <button onclick=\"newGame();hideOverlay()\">再来一局</button>\n  </div>\n</div>\n\n<script>\nconst ROWS = 9, COLS = 9, MINES = 10;\nlet board, revealed, flagged, minesLeft, gameOver, timer;\n\nfunction init() {\n  board = [];\n  for (let r = 0; r < ROWS; r++) {\n    board[r] = [];\n    for (let c = 0; c < COLS; c++) {\n      board[r][c] = { mine: false, count: 0, revealed: false, flag: false };\n    }\n  }\n  // 随机放雷\n  let placed = 0;\n  while (placed < MINES) {\n    const r = Math.floor(Math.random() * ROWS);\n    const c = Math.floor(Math.random() * COLS);\n    if (!board[r][c].mine) {\n      board[r][c].mine = true;\n      placed++;\n    }\n  }\n  // 计算邻雷数\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c < COLS; c++) {\n      let cnt = 0;\n      for (let dr = -1; dr <= 1; dr++) {\n        for (let dc = -1; dc <= 1; dc++) {\n          if (dr === 0 && dc === 0) continue;\n          const nr = r + dr, nc = c + dc;\n          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n            if (board[nr][nc].mine) cnt++;\n          }\n        }\n      }\n      board[r][c].count = cnt;\n    }\n  }\n  minesLeft = MINES;\n  gameOver = false;\n  render();\n}\n\nfunction render() {\n  const el = document.getElementById('board');\n  el.innerHTML = '';\n  el.style.gridTemplateColumns = `repeat(${COLS}, 36px)`;\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 2,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 5.98,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（Binary）或常规8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值：**-1、0 和 +1**。这种设计不仅保留了比二值化更丰富的表达能力，同时显著降低了存储带宽和计算复杂度，是边缘计算、移动端AI及低功耗嵌入式设备中实现高效推理的关键技术之一。\n\n### 1. 核心原理与机制\n\n三元量化的核心思想在于通过“截断”或“阈值化”操作，将原本连续分布的权重值压缩至 $\\{-1, 0, 1\\}$ 集合。具体过程通常包括以下步骤：\n\n1.  **统计与阈值确定**：首先对原始权重矩阵进行统计分析，确定两个关键阈值 $T_+$ 和 $T_-$。通常基于权重的均值、方差或百分位数（如第5%和第95分位数）动态计算。\n2.  **映射规则**：\n    -   若 $w > T_+$，则映射为 $+1$；\n    -   若 $w < T_-$，则映射为 $-1$；\n    -   若 $T_- \\le w \\le T_+$，则映射为 $0$。\n3.  **补偿机制**：由于量化引入了误差，通常在输出层引入一个缩放因子（Scale Factor）或偏置项，以恢复模型精度。部分高级方法还会采用“软量化”训练策略，在训练初期允许梯度流过量化节点，后期再逐步硬化为硬量化。\n\n### 2. 优势分析\n\n*   **极致算力效率**：在硬件层面，$+1$ 和 $-1$ 的乘法运算可简化为"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 3,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.18,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 125
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 3,
+    "req": "count",
+    "ok": true,
+    "wall_s": 1.93,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 3,
+    "req": "code",
+    "ok": true,
+    "wall_s": 9.64,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', sans-serif;\n  }\n  .container { text-align: center; }\n  h1 { color: #fff; margin-bottom: 15px; font-size: 2rem; }\n  .toolbar {\n    display: flex;\n    gap: 10px;\n    justify-content: center;\n    margin-bottom: 15px;\n  }\n  .info {\n    background: #16213e;\n    color: #fff;\n    padding: 8px 16px;\n    border-radius: 6px;\n    font-size: 1.1rem;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    padding: 8px 18px;\n    border-radius: 6px;\n    cursor: pointer;\n    font-size: 1rem;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 6px;\n    border-radius: 8px;\n  }\n  .cell {\n    width: 36px;\n    height: 36px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    user-select: none;\n    font-size: 1.1rem;\n    font-weight: bold;\n    border-radius: 4px;\n    transition: background 0.1s;\n  }\n  .cell.hidden { background: #533483; }\n  .cell.hidden:hover { background: #6d4c99; }\n  .cell.revealed { background: #1a1a2e; }\n  .cell.flagged { background: #533483; }\n  .cell.exploded { background: #e94560 !important; animation: shake 0.3s; }\n  @keyframes shake {\n    0%,100%{transform:translate(0)}\n    25%{transform:translate(-2px,2px)}\n    50%{transform:translate(2px,-2px)}\n    75%{transform:translate(-2px,-2px)}\n  }\n  .overlay {\n    position: fixed;\n    top:0;left:0;right:0;bottom:0;\n    background:rgba(0,0,0,0.6);\n    display:none;\n    justify-content:center;\n    align-items:center;\n    z-index:10;\n  }\n  .overlay.show { display:flex; }\n  .overlay .box {\n    background:#16213e;\n    padding:30px 50px;\n    border-radius:10px;\n    color:#fff;\n    font-size:1.5rem;\n  }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <h1>🎮 扫雷</h1>\n  <div class=\"toolbar\">\n    <div class=\"info\" id=\"mineCount\">雷数: 0</div>\n    <button onclick=\"newGame()\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n</div>\n<div class=\"overlay\" id=\"overlay\">\n  <div class=\"box\">\n    <p id=\"resultText\">游戏结束</p>\n    <br><br>\n    <button onclick=\"newGame();hideOverlay()\">再来一局</button>\n  </div>\n</div>\n\n<script>\nconst ROWS = 9, COLS = 9, MINES = 10;\nlet board, revealed, flagged, minesLeft, gameOver, timer;\n\nfunction init() {\n  board = [];\n  for (let r = 0; r < ROWS; r++) {\n    board[r] = [];\n    for (let c = 0; c < COLS; c++) {\n      board[r][c] = { mine: false, count: 0, revealed: false, flag: false };\n    }\n  }\n  // 随机放雷\n  let placed = 0;\n  while (placed < MINES) {\n    const r = Math.floor(Math.random() * ROWS);\n    const c = Math.floor(Math.random() * COLS);\n    if (!board[r][c].mine) {\n      board[r][c].mine = true;\n      placed++;\n    }\n  }\n  // 计算邻雷数\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c < COLS; c++) {\n      let cnt = 0;\n      for (let dr = -1; dr <= 1; dr++) {\n        for (let dc = -1; dc <= 1; dc++) {\n          if (dr === 0 && dc === 0) continue;\n          const nr = r + dr, nc = c + dc;\n          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n            if (board[nr][nc].mine) cnt++;\n          }\n        }\n      }\n      board[r][c].count = cnt;\n    }\n  }\n  minesLeft = MINES;\n  gameOver = false;\n  render();\n}\n\nfunction render() {\n  const el = document.getElementById('board');\n  el.innerHTML = '';\n  el.style.gridTemplateColumns = `repeat(${COLS}, 36px)`;\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c"
+  },
+  {
+    "arm": "dflash2-K7-32k-v2048-b",
+    "rep": 3,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 5.99,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（Binary）或常规8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值：**-1、0 和 +1**。这种设计不仅保留了比二值化更丰富的表达能力，同时显著降低了存储带宽和计算复杂度，是边缘计算、移动端AI及低功耗嵌入式设备中实现高效推理的关键技术之一。\n\n### 1. 核心原理与机制\n\n三元量化的核心思想在于通过“截断”或“阈值化”操作，将原本连续分布的权重值压缩至 $\\{-1, 0, 1\\}$ 集合。具体过程通常包括以下步骤：\n\n1.  **统计与阈值确定**：首先对原始权重矩阵进行统计分析，确定两个关键阈值 $T_+$ 和 $T_-$。通常基于权重的均值、方差或百分位数（如第5%和第95分位数）动态计算。\n2.  **映射规则**：\n    -   若 $w > T_+$，则映射为 $+1$；\n    -   若 $w < T_-$，则映射为 $-1$；\n    -   若 $T_- \\le w \\le T_+$，则映射为 $0$。\n3.  **补偿机制**：由于量化引入了误差，通常在输出层引入一个缩放因子（Scale Factor）或偏置项，以恢复模型精度。部分高级方法还会采用“软量化”训练策略，在训练初期允许梯度流过量化节点，后期再逐步硬化为硬量化。\n\n### 2. 优势分析\n\n*   **极致算力效率**：在硬件层面，$+1$ 和 $-1$ 的乘法运算可简化为"
+  },
+  {
+    "arm": "dflash2-K7-32k-v8192",
+    "rep": 1,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.25,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "dflash2-K7-32k-v8192",
+    "rep": 1,
+    "req": "count",
+    "ok": true,
+    "wall_s": 1.96,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K7-32k-v8192",
+    "rep": 1,
+    "req": "code",
+    "ok": true,
+    "wall_s": 9.75,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', sans-serif;\n  }\n  .container { text-align: center; }\n  h1 { color: #fff; margin-bottom: 15px; font-size: 2rem; }\n  .toolbar {\n    display: flex;\n    gap: 10px;\n    justify-content: center;\n    margin-bottom: 15px;\n  }\n  .info {\n    background: #16213e;\n    color: #fff;\n    padding: 8px 16px;\n    border-radius: 6px;\n    font-size: 1.1rem;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    padding: 8px 18px;\n    border-radius: 6px;\n    cursor: pointer;\n    font-size: 1rem;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 6px;\n    border-radius: 8px;\n  }\n  .cell {\n    width: 36px;\n    height: 36px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    user-select: none;\n    font-size: 1.1rem;\n    font-weight: bold;\n    border-radius: 4px;\n    transition: background 0.1s;\n  }\n  .cell.hidden { background: #533483; }\n  .cell.hidden:hover { background: #6d4c99; }\n  .cell.revealed { background: #1a1a2e; }\n  .cell.flagged { background: #533483; }\n  .cell.exploded { background: #e94560 !important; animation: shake 0.3s; }\n  @keyframes shake {\n    0%,100%{transform:translate(0)}\n    25%{transform:translate(-2px,2px)}\n    50%{transform:translate(2px,-2px)}\n    75%{transform:translate(-2px,-2px)}\n  }\n  .overlay {\n    position: fixed;\n    top:0;left:0;right:0;bottom:0;\n    background:rgba(0,0,0,0.6);\n    display:none;\n    justify-content:center;\n    align-items:center;\n    z-index:10;\n  }\n  .overlay.show { display:flex; }\n  .overlay .box {\n    background:#16213e;\n    padding:30px 50px;\n    border-radius:10px;\n    color:#fff;\n    font-size:1.5rem;\n  }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <h1>🎮 扫雷</h1>\n  <div class=\"toolbar\">\n    <div class=\"info\" id=\"mineCount\">雷数: 0</div>\n    <button onclick=\"newGame()\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n</div>\n<div class=\"overlay\" id=\"overlay\">\n  <div class=\"box\">\n    <p id=\"resultText\">游戏结束</p>\n    <br><br>\n    <button onclick=\"newGame();hideOverlay()\">再来一局</button>\n  </div>\n</div>\n\n<script>\nconst ROWS = 9, COLS = 9, MINES = 10;\nlet board, revealed, flagged, minesLeft, gameOver, timer;\n\nfunction init() {\n  board = [];\n  for (let r = 0; r < ROWS; r++) {\n    board[r] = [];\n    for (let c = 0; c < COLS; c++) {\n      board[r][c] = { mine: false, count: 0, revealed: false, flag: false };\n    }\n  }\n  // 随机放雷\n  let placed = 0;\n  while (placed < MINES) {\n    const r = Math.floor(Math.random() * ROWS);\n    const c = Math.floor(Math.random() * COLS);\n    if (!board[r][c].mine) {\n      board[r][c].mine = true;\n      placed++;\n    }\n  }\n  // 计算邻雷数\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c < COLS; c++) {\n      let cnt = 0;\n      for (let dr = -1; dr <= 1; dr++) {\n        for (let dc = -1; dc <= 1; dc++) {\n          if (dr === 0 && dc === 0) continue;\n          const nr = r + dr, nc = c + dc;\n          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n            if (board[nr][nc].mine) cnt++;\n          }\n        }\n      }\n      board[r][c].count = cnt;\n    }\n  }\n  minesLeft = MINES;\n  gameOver = false;\n  render();\n}\n\nfunction render() {\n  const el = document.getElementById('board');\n  el.innerHTML = '';\n  el.style.gridTemplateColumns = `repeat(${COLS}, 36px)`;\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c"
+  },
+  {
+    "arm": "dflash2-K7-32k-v8192",
+    "rep": 1,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.8,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（0/1）或标准8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值，通常为 **{-1, 0, +1}**。这种技术旨在通过极低的数值表示空间来显著降低模型的存储占用和计算复杂度，同时尽可能保留原始模型的性能精度。\n\n### 技术原理与机制\n\n三元量化的核心思想是利用“稀疏性”和“对称性”。在训练过程中，模型通常采用特殊的损失函数（如 L1 范数正则化或特定的量化感知损失）引导网络学习出接近 -1、0 或 1 的权重分布。其中，“0”值的引入是关键创新：它允许网络在不增加额外参数数量的情况下，动态地屏蔽部分神经元连接，从而起到类似剪枝的效果。\n\n从数学角度看，若原始权重 $w$ 服从近似高斯分布，三元量化可视为对 $w$ 进行阈值截断后的符号取反操作。例如：\n$$ q(w) = \\begin{cases} \n-1 & \\text{if } w < -\\tau \\\\\n0 & \\text{if } |w| \\leq \\tau \\\\\n+1 & \\text{if } w > \\tau \n\\end{cases} $$\n其中 $\\tau$ 为可学习的阈值。这种映射使得矩阵乘法运算简化为加法、减法和移位操作，极大地减少了乘积累加器（MAC）的数量，尤其在边缘设备或移动端上具有显著的能效优势。\n\n### 优势与挑战\n\n**主要优势：**\n1. **极致压缩率**：相比 FP32，每个参数仅需约 1.58 bits（使用过余编码）甚至更少，存储体积缩小至原模型的几分之一"
+  },
+  {
+    "arm": "dflash2-K7-32k-v8192",
+    "rep": 2,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.17,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 125
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "dflash2-K7-32k-v8192",
+    "rep": 2,
+    "req": "count",
+    "ok": true,
+    "wall_s": 1.93,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "dflash2-K7-32k-v8192",
+    "rep": 2,
+    "req": "code",
+    "ok": true,
+    "wall_s": 9.61,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', sans-serif;\n  }\n  .container { text-align: center; }\n  h1 { color: #fff; margin-bottom: 15px; font-size: 2rem; }\n  .toolbar {\n    display: flex;\n    gap: 10px;\n    justify-content: center;\n    margin-bottom: 15px;\n  }\n  .info {\n    background: #16213e;\n    color: #fff;\n    padding: 8px 16px;\n    border-radius: 6px;\n    font-size: 1.1rem;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    padding: 8px 18px;\n    border-radius: 6px;\n    cursor: pointer;\n    font-size: 1rem;\n    transition: background 0.2s;\n  }\n  button:hover { background: #ff6b6b; }\n  .board {\n    display: grid;\n    gap: 2px;\n    background: #0f3460;\n    padding: 6px;\n    border-radius: 8px;\n  }\n  .cell {\n    width: 36px;\n    height: 36px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    user-select: none;\n    font-size: 1.1rem;\n    font-weight: bold;\n    border-radius: 4px;\n    transition: background 0.1s;\n  }\n  .cell.hidden { background: #533483; }\n  .cell.hidden:hover { background: #6d4c99; }\n  .cell.revealed { background: #1a1a2e; }\n  .cell.flagged { background: #533483; }\n  .cell.exploded { background: #e94560 !important; animation: shake 0.3s; }\n  @keyframes shake {\n    0%,100%{transform:translate(0)}\n    25%{transform:translate(-2px,2px)}\n    50%{transform:translate(2px,-2px)}\n    75%{transform:translate(-2px,-2px)}\n  }\n  .overlay {\n    position: fixed;\n    top:0;left:0;right:0;bottom:0;\n    background:rgba(0,0,0,0.6);\n    display:none;\n    justify-content:center;\n    align-items:center;\n    z-index:10;\n  }\n  .overlay.show { display:flex; }\n  .overlay .box {\n    background:#16213e;\n    padding:30px 50px;\n    border-radius:10px;\n    color:#fff;\n    font-size:1.5rem;\n  }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <h1>🎮 扫雷</h1>\n  <div class=\"toolbar\">\n    <div class=\"info\" id=\"mineCount\">雷数: 0</div>\n    <button onclick=\"newGame()\">重开</button>\n  </div>\n  <div class=\"board\" id=\"board\"></div>\n</div>\n<div class=\"overlay\" id=\"overlay\">\n  <div class=\"box\">\n    <p id=\"resultText\">游戏结束</p>\n    <br><br>\n    <button onclick=\"newGame();hideOverlay()\">再来一局</button>\n  </div>\n</div>\n\n<script>\nconst ROWS = 9, COLS = 9, MINES = 10;\nlet board, revealed, flagged, minesLeft, gameOver, timer;\n\nfunction init() {\n  board = [];\n  for (let r = 0; r < ROWS; r++) {\n    board[r] = [];\n    for (let c = 0; c < COLS; c++) {\n      board[r][c] = { mine: false, count: 0, revealed: false, flag: false };\n    }\n  }\n  // 随机放雷\n  let placed = 0;\n  while (placed < MINES) {\n    const r = Math.floor(Math.random() * ROWS);\n    const c = Math.floor(Math.random() * COLS);\n    if (!board[r][c].mine) {\n      board[r][c].mine = true;\n      placed++;\n    }\n  }\n  // 计算邻雷数\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c < COLS; c++) {\n      let cnt = 0;\n      for (let dr = -1; dr <= 1; dr++) {\n        for (let dc = -1; dc <= 1; dc++) {\n          if (dr === 0 && dc === 0) continue;\n          const nr = r + dr, nc = c + dc;\n          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {\n            if (board[nr][nc].mine) cnt++;\n          }\n        }\n      }\n      board[r][c].count = cnt;\n    }\n  }\n  minesLeft = MINES;\n  gameOver = false;\n  render();\n}\n\nfunction render() {\n  const el = document.getElementById('board');\n  el.innerHTML = '';\n  el.style.gridTemplateColumns = `repeat(${COLS}, 36px)`;\n  for (let r = 0; r < ROWS; r++) {\n    for (let c = 0; c"
+  },
+  {
+    "arm": "dflash2-K7-32k-v8192",
+    "rep": 2,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 5.99,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（Binary）或常规8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值：**-1、0 和 +1**。这种设计不仅保留了比二值化更丰富的表达能力，同时显著降低了存储带宽和计算复杂度，是边缘计算、移动端AI及低功耗嵌入式设备中实现高效推理的关键技术之一。\n\n### 1. 核心原理与机制\n\n三元量化的核心思想在于通过“截断”或“阈值化”操作，将原本连续分布的权重值压缩至 $\\{-1, 0, 1\\}$ 集合。具体过程通常包括以下步骤：\n\n1.  **统计与阈值确定**：首先对原始权重矩阵进行统计分析，确定两个关键阈值 $T_+$ 和 $T_-$。通常基于权重的均值、方差或百分位数（如第5%和第95分位数）动态计算。\n2.  **映射规则**：\n    -   若 $w > T_+$，则映射为 $+1$；\n    -   若 $w < T_-$，则映射为 $-1$；\n    -   若 $T_- \\le w \\le T_+$，则映射为 $0$。\n3.  **补偿机制**：由于量化引入了误差，通常在输出层引入一个缩放因子（Scale Factor）或偏置项，以恢复模型精度。部分高级方法还会采用“软量化”训练策略，在训练初期允许梯度流过量化节点，后期再逐步硬化为硬量化。\n\n### 2. 优势分析\n\n*   **极致算力效率**：在硬件层面，$+1$ 和 $-1$ 的乘法运算可简化为"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 1,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.29,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 1,
+    "req": "count",
+    "ok": true,
+    "wall_s": 3.19,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 1,
+    "req": "code",
+    "ok": true,
+    "wall_s": 14.51,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.25rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background .2s, transform .1s;\n  }\n  button:hover { background: #ff6b6b; }\n  button:active { transform: scale(.96); }\n  .board-wrap {\n    position: relative;\n    background: #16213e;\n    border-radius: 12px;\n    padding: 12px;\n    box-shadow: 0 8px 32px rgba(0,0,0,.4);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px; height: 38px;\n    display: flex; align-items: center; justify-content: center;\n    font-size: 1.1rem;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    transition: background .15s, transform .1s;\n    border: 1px solid #0f3460;\n    background: #0f3460;\n  }\n  .cell:hover:not(.opened) { background: #1a4a7a; }\n  .cell.opened {\n    background: #1a1a2e;\n    border-color: #333;\n    cursor: default;\n  }\n  .cell.flagged {\n    background: #16213e;\n    border-color: #e94560;\n  }\n  .cell.mine {\n    background: #e94560;\n    color: #fff;\n    animation: pop .25s ease;\n  }\n  @keyframes pop {\n    0% { transform: scale(.5); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }\n  }\n  .status {\n    margin-top: 12px;\n    font-size: 1.1rem;\n    min-height: 1.4em;\n    color: #aaa;\n  }\n  .status.win { color: #4ecdc4; }\n  .status.lose { color: #e94560; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCount\">💣 0</div>\n  <button id=\"newBtn\">重新开局</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16, ROWS = 10, MINES = 20;\n  const boardEl = document.getElementById('board');\n  const mineCountEl = document.getElementById('mineCount');\n  const statusEl = document.getElementById('status');\n  const newBtn = document.getElementById('newBtn');\n\n  let grid, revealed, flagged, minesLeft, gameOver, firstClick;\n\n  function init() {\n    grid = [];\n    revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    minesLeft = MINES;\n    gameOver = false;\n    firstClick = true;\n\n    // 生成雷（避开首点）\n    let placed = 0;\n    while (placed < MINES) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      if (!grid[r][c]) {\n        grid[r][c] = true;\n        placed++;\n      }\n    }\n\n    render();\n    updateCounter();\n    statusEl.textContent = '';\n    statusEl.className = 'status';\n  }\n\n  function neighbors(r, c) {\n    const dirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];\n    return dirs.map(([dr,dc]) => [r+dr, c+dc]).filter(([nr,nc]) =>\n      nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS\n    );\n  }\n\n  function countMines(r, c) {\n    return neighbors(r, c).filter(([nr,nc]) => grid[nr][nc]).length;\n  }\n\n  function reveal(r, c) {\n    if (gameOver || revealed[r][c] || flagged[r][c]) return;\n    revealed[r][c] = true;\n\n    if (grid[r][c]) {\n      gameOver = true;\n      revealAll();\n      statusEl.textContent = '💥 踩到雷"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 1,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 7.0,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（0/1）或标准8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值，通常为 **{-1, 0, +1}**。这种技术旨在通过极低的数值表示空间来显著降低模型的存储占用和计算复杂度，同时尽可能保留原始模型的性能精度。\n\n### 技术原理与机制\n\n三元量化的核心思想是利用“稀疏性”和“对称性”。在训练过程中，模型通常采用特殊的损失函数（如 L1 范数正则化）或特定的初始化策略，引导网络学习出大量接近于零的权重。随后，在量化阶段，这些权重被截断：\n*   大于阈值的权重映射为 **+1**；\n*   小于阈值的权重映射为 **-1**；\n*   绝对值小于阈值的权重映射为 **0**。\n\n这种映射方式使得模型参数矩阵具有极高的稀疏度。例如，在一个全连接层中，如果大部分权重被量化为 0，那么在前向传播时，对应的矩阵乘法操作实际上可以跳过大量的无效计算。此外，由于权重仅包含 -1、0、+1 三种状态，乘法和加法运算可以被简化为逻辑门电路级别的移位和累加操作，极大地提升了硬件执行效率。\n\n### 优势与应用场景\n\n1.  **极致压缩比**：相比 FP32 或 INT8 量化，Ternary 权重的信息密度极低。理论上，每个参数仅需 $\\log_2(3) \\approx 1.58$ bits 存储，相较于 FP32 的 32 bits，压缩率超过 20 倍。这使得大规模模型能够轻松加载到内存受限的边缘设备（如手机、嵌入式系统）中"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 2,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.21,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 125
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 2,
+    "req": "count",
+    "ok": true,
+    "wall_s": 3.15,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 24
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 2,
+    "req": "code",
+    "ok": true,
+    "wall_s": 14.39,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.25rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background .2s, transform .1s;\n  }\n  button:hover { background: #ff6b6b; }\n  button:active { transform: scale(.96); }\n  .board-wrap {\n    position: relative;\n    background: #16213e;\n    border-radius: 12px;\n    padding: 12px;\n    box-shadow: 0 8px 32px rgba(0,0,0,.4);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px; height: 38px;\n    display: flex; align-items: center; justify-content: center;\n    font-size: 1.1rem;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    transition: background .15s, transform .1s;\n    border: 1px solid #0f3460;\n    background: #0f3460;\n  }\n  .cell:hover:not(.opened) { background: #1a4a7a; }\n  .cell.opened {\n    background: #1a1a2e;\n    border-color: #333;\n    cursor: default;\n  }\n  .cell.flagged {\n    background: #16213e;\n    border-color: #e94560;\n  }\n  .cell.mine {\n    background: #e94560;\n    color: #fff;\n    animation: pop .25s ease;\n  }\n  @keyframes pop {\n    0% { transform: scale(.5); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }\n  }\n  .status {\n    margin-top: 12px;\n    font-size: 1.1rem;\n    min-height: 1.4em;\n    color: #aaa;\n  }\n  .status.win { color: #4ecdc4; }\n  .status.lose { color: #e94560; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCount\">💣 0</div>\n  <button id=\"newBtn\">重新开局</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16, ROWS = 10, MINES = 20;\n  const boardEl = document.getElementById('board');\n  const mineCountEl = document.getElementById('mineCount');\n  const statusEl = document.getElementById('status');\n  const newBtn = document.getElementById('newBtn');\n\n  let grid, revealed, flagged, minesLeft, gameOver, firstClick;\n\n  function init() {\n    grid = [];\n    revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    minesLeft = MINES;\n    gameOver = false;\n    firstClick = true;\n\n    // 生成雷（避开首点）\n    let placed = 0;\n    while (placed < MINES) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      if (!grid[r][c]) {\n        grid[r][c] = true;\n        placed++;\n      }\n    }\n\n    render();\n    updateCounter();\n    statusEl.textContent = '';\n    statusEl.className = 'status';\n  }\n\n  function neighbors(r, c) {\n    const dirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];\n    return dirs.map(([dr,dc]) => [r+dr, c+dc]).filter(([nr,nc]) =>\n      nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS\n    );\n  }\n\n  function countMines(r, c) {\n    return neighbors(r, c).filter(([nr,nc]) => grid[nr][nc]).length;\n  }\n\n  function reveal(r, c) {\n    if (gameOver || revealed[r][c] || flagged[r][c]) return;\n    revealed[r][c] = true;\n\n    if (grid[r][c]) {\n      gameOver = true;\n      revealAll();\n      statusEl.textContent = '💥 踩到雷"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 2,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.68,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。其核心思想是将原本以浮点数（如 FP32）或标准二进制整数（INT8/INT16）表示的神经网络权重，映射为仅包含三个离散值：**-1、0 和 +1**。这种极致的稀疏化与低精度结合策略，旨在通过大幅降低模型的存储占用和计算复杂度，从而提升在边缘设备上的推理效率。\n\n### 技术原理与机制\n\n传统量化通常将权重映射到 $[-K, K]$ 范围内的整数，而三元量化则进一步简化了数值域。对于原始权重矩阵 $W$，每个元素 $w_{ij}$ 根据其与阈值的相对位置被映射为：\n$$ q(w_{ij}) = \\begin{cases} -1 & \\text{if } w_{ij} < -\\theta \\\\ 0 & \\text{if } |w_{ij}| \\leq \\theta \\\\ +1 & \\text{if } w_{ij} > \\theta \\end{cases} $$\n其中 $\\theta$ 是一个可学习的阈值参数。这种映射不仅减少了位宽需求（从 32-bit 降至 1-bit 加一个共享符号/零指示），还引入了结构稀疏性——权重为零意味着该连接在正向传播中不贡献梯度或激活值，从而可以跳过相应的乘法-累加（MAC）运算。\n\n### 优势与应用场景\n\n1. **极致压缩比**：相比 INT8 量化，三元权重的存储体积仅为原模型的约 1/32（若忽略偏置项）。这使得大语言模型（LLM）或视觉Transformer（ViT）能够在内存受限的嵌入式设备上运行。\n2. **计算加速**：由于大量权重为零，矩阵乘法中的无效操作被显著减少。"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 3,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.21,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 125
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 3,
+    "req": "count",
+    "ok": true,
+    "wall_s": 3.14,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 24
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 3,
+    "req": "code",
+    "ok": true,
+    "wall_s": 14.42,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.25rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background .2s, transform .1s;\n  }\n  button:hover { background: #ff6b6b; }\n  button:active { transform: scale(.96); }\n  .board-wrap {\n    position: relative;\n    background: #16213e;\n    border-radius: 12px;\n    padding: 12px;\n    box-shadow: 0 8px 32px rgba(0,0,0,.4);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px; height: 38px;\n    display: flex; align-items: center; justify-content: center;\n    font-size: 1.1rem;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    transition: background .15s, transform .1s;\n    border: 1px solid #0f3460;\n    background: #0f3460;\n  }\n  .cell:hover:not(.opened) { background: #1a4a7a; }\n  .cell.opened {\n    background: #1a1a2e;\n    border-color: #333;\n    cursor: default;\n  }\n  .cell.flagged {\n    background: #16213e;\n    border-color: #e94560;\n  }\n  .cell.mine {\n    background: #e94560;\n    color: #fff;\n    animation: pop .25s ease;\n  }\n  @keyframes pop {\n    0% { transform: scale(.5); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }\n  }\n  .status {\n    margin-top: 12px;\n    font-size: 1.1rem;\n    min-height: 1.4em;\n    color: #aaa;\n  }\n  .status.win { color: #4ecdc4; }\n  .status.lose { color: #e94560; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCount\">💣 0</div>\n  <button id=\"newBtn\">重新开局</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16, ROWS = 10, MINES = 20;\n  const boardEl = document.getElementById('board');\n  const mineCountEl = document.getElementById('mineCount');\n  const statusEl = document.getElementById('status');\n  const newBtn = document.getElementById('newBtn');\n\n  let grid, revealed, flagged, minesLeft, gameOver, firstClick;\n\n  function init() {\n    grid = [];\n    revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    minesLeft = MINES;\n    gameOver = false;\n    firstClick = true;\n\n    // 生成雷（避开首点）\n    let placed = 0;\n    while (placed < MINES) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      if (!grid[r][c]) {\n        grid[r][c] = true;\n        placed++;\n      }\n    }\n\n    render();\n    updateCounter();\n    statusEl.textContent = '';\n    statusEl.className = 'status';\n  }\n\n  function neighbors(r, c) {\n    const dirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];\n    return dirs.map(([dr,dc]) => [r+dr, c+dc]).filter(([nr,nc]) =>\n      nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS\n    );\n  }\n\n  function countMines(r, c) {\n    return neighbors(r, c).filter(([nr,nc]) => grid[nr][nc]).length;\n  }\n\n  function reveal(r, c) {\n    if (gameOver || revealed[r][c] || flagged[r][c]) return;\n    revealed[r][c] = true;\n\n    if (grid[r][c]) {\n      gameOver = true;\n      revealAll();\n      statusEl.textContent = '💥 踩到雷"
+  },
+  {
+    "arm": "mtp-d4-163840-v2048",
+    "rep": 3,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 6.67,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。其核心思想是将原本以浮点数（如 FP32）或标准二进制整数（INT8/INT16）表示的神经网络权重，映射为仅包含三个离散值：**-1、0 和 +1**。这种极致的稀疏化与低精度结合策略，旨在通过大幅降低模型的存储占用和计算复杂度，从而提升在边缘设备上的推理效率。\n\n### 技术原理与机制\n\n传统量化通常将权重映射到 $[-K, K]$ 范围内的整数，而三元量化则进一步简化了数值域。对于原始权重矩阵 $W$，每个元素 $w_{ij}$ 根据其与阈值的相对位置被映射为：\n$$ q(w_{ij}) = \\begin{cases} -1 & \\text{if } w_{ij} < -\\theta \\\\ 0 & \\text{if } |w_{ij}| \\leq \\theta \\\\ +1 & \\text{if } w_{ij} > \\theta \\end{cases} $$\n其中 $\\theta$ 是一个可学习的阈值参数。这种映射不仅减少了位宽需求（从 32-bit 降至 1-bit 加一个共享符号/零指示），还引入了结构稀疏性——权重为零意味着该连接在正向传播中不贡献梯度或激活值，从而可以跳过相应的乘法-累加（MAC）运算。\n\n### 优势与应用场景\n\n1. **极致压缩比**：相比 INT8 量化，三元权重的存储体积仅为原模型的约 1/32（若忽略偏置项）。这使得大语言模型（LLM）或视觉Transformer（ViT）能够在内存受限的嵌入式设备上运行。\n2. **计算加速**：由于大量权重为零，矩阵乘法中的无效操作被显著减少。"
+  },
+  {
+    "arm": "mtp-d4-163840-v8192",
+    "rep": 1,
+    "req": "vision",
+    "ok": true,
+    "wall_s": 0.3,
+    "err": "",
+    "usage": {
+      "completion_tokens": 4,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 134,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 138
+    },
+    "content": "847"
+  },
+  {
+    "arm": "mtp-d4-163840-v8192",
+    "rep": 1,
+    "req": "count",
+    "ok": true,
+    "wall_s": 3.2,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 33,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 433
+    },
+    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n"
+  },
+  {
+    "arm": "mtp-d4-163840-v8192",
+    "rep": 1,
+    "req": "code",
+    "ok": true,
+    "wall_s": 14.51,
+    "err": "",
+    "usage": {
+      "completion_tokens": 1500,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 53,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1553
+    },
+    "content": "```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    background: #1a1a2e;\n    color: #eee;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n  }\n  h1 { margin-bottom: 16px; font-size: 2rem; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 12px;\n    margin-bottom: 16px;\n    align-items: center;\n  }\n  .counter {\n    background: #16213e;\n    border: 1px solid #0f3460;\n    border-radius: 8px;\n    padding: 8px 16px;\n    font-size: 1.25rem;\n    font-weight: bold;\n    min-width: 70px;\n    text-align: center;\n  }\n  button {\n    background: #e94560;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    padding: 8px 20px;\n    font-size: 1rem;\n    cursor: pointer;\n    transition: background .2s, transform .1s;\n  }\n  button:hover { background: #ff6b6b; }\n  button:active { transform: scale(.96); }\n  .board-wrap {\n    position: relative;\n    background: #16213e;\n    border-radius: 12px;\n    padding: 12px;\n    box-shadow: 0 8px 32px rgba(0,0,0,.4);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px; height: 38px;\n    display: flex; align-items: center; justify-content: center;\n    font-size: 1.1rem;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    transition: background .15s, transform .1s;\n    border: 1px solid #0f3460;\n    background: #0f3460;\n  }\n  .cell:hover:not(.opened) { background: #1a4a7a; }\n  .cell.opened {\n    background: #1a1a2e;\n    border-color: #333;\n    cursor: default;\n  }\n  .cell.flagged {\n    background: #16213e;\n    border-color: #e94560;\n  }\n  .cell.mine {\n    background: #e94560;\n    color: #fff;\n    animation: pop .25s ease;\n  }\n  @keyframes pop {\n    0% { transform: scale(.5); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }\n  }\n  .status {\n    margin-top: 12px;\n    font-size: 1.1rem;\n    min-height: 1.4em;\n    color: #aaa;\n  }\n  .status.win { color: #4ecdc4; }\n  .status.lose { color: #e94560; }\n</style>\n</head>\n<body>\n\n<h1>🎮 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"counter\" id=\"mineCount\">💣 0</div>\n  <button id=\"newBtn\">重新开局</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n</div>\n\n<div class=\"status\" id=\"status\"></div>\n\n<script>\n(() => {\n  const COLS = 16, ROWS = 10, MINES = 20;\n  const boardEl = document.getElementById('board');\n  const mineCountEl = document.getElementById('mineCount');\n  const statusEl = document.getElementById('status');\n  const newBtn = document.getElementById('newBtn');\n\n  let grid, revealed, flagged, minesLeft, gameOver, firstClick;\n\n  function init() {\n    grid = [];\n    revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));\n    minesLeft = MINES;\n    gameOver = false;\n    firstClick = true;\n\n    // 生成雷（避开首点）\n    let placed = 0;\n    while (placed < MINES) {\n      const r = Math.floor(Math.random() * ROWS);\n      const c = Math.floor(Math.random() * COLS);\n      if (!grid[r][c]) {\n        grid[r][c] = true;\n        placed++;\n      }\n    }\n\n    render();\n    updateCounter();\n    statusEl.textContent = '';\n    statusEl.className = 'status';\n  }\n\n  function neighbors(r, c) {\n    const dirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];\n    return dirs.map(([dr,dc]) => [r+dr, c+dc]).filter(([nr,nc]) =>\n      nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS\n    );\n  }\n\n  function countMines(r, c) {\n    return neighbors(r, c).filter(([nr,nc]) => grid[nr][nc]).length;\n  }\n\n  function reveal(r, c) {\n    if (gameOver || revealed[r][c] || flagged[r][c]) return;\n    revealed[r][c] = true;\n\n    if (grid[r][c]) {\n      gameOver = true;\n      revealAll();\n      statusEl.textContent = '💥 踩到雷"
+  },
+  {
+    "arm": "mtp-d4-163840-v8192",
+    "rep": 1,
+    "req": "prose",
+    "ok": true,
+    "wall_s": 7.01,
+    "err": "",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 26,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 426
+    },
+    "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（0/1）或标准8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值，通常为 **{-1, 0, +1}**。这种技术旨在通过极低的数值表示空间来显著降低模型的存储占用和计算复杂度，同时尽可能保留原始模型的性能精度。\n\n### 技术原理与机制\n\n三元量化的核心思想是利用“稀疏性”和“对称性”。在训练过程中，模型通常采用特殊的损失函数（如 L1 范数正则化）或特定的初始化策略，引导网络学习出大量接近于零的权重。随后，在量化阶段，这些权重被截断：\n*   大于阈值的权重映射为 **+1**；\n*   小于阈值的权重映射为 **-1**；\n*   绝对值小于阈值的权重映射为 **0**。\n\n这种映射方式使得模型参数矩阵具有极高的稀疏度。例如，在一个全连接层中，如果大部分权重被量化为 0，那么在前向传播时，对应的矩阵乘法操作实际上可以跳过大量的无效计算。此外，由于权重仅包含 -1、0、+1 三种状态，乘法和加法运算可以被简化为逻辑门电路级别的移位和累加操作，极大地提升了硬件执行效率。\n\n### 优势与应用场景\n\n1.  **极致压缩比**：相比 FP32 或 INT8 量化，Ternary 权重的信息密度极低。理论上，每个参数仅需 $\\log_2(3) \\approx 1.58$ bits 存储，相较于 FP32 的 32 bits，压缩率超过 20 倍。这使得大规模模型能够轻松加载到内存受限的边缘设备（如手机、嵌入式系统）中"
+  },
+  {
+    "arm": "qual-dflash2-K7-32k",
+    "rep": 1,
+    "req": "q1-calc",
+    "ok": true,
+    "wall_s": 0.46,
+    "err": "",
+    "usage": {
+      "completion_tokens": 32,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 34,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 66
+    },
+    "content": "为了计算 847 乘以 293，我们可以将其分解为：\n\n$$847 \\times 293 = 8"
+  },
+  {
+    "arm": "qual-dflash2-K7-32k",
+    "rep": 1,
+    "req": "q2-prob",
+    "ok": true,
+    "wall_s": 0.6,
+    "err": "",
+    "usage": {
+      "completion_tokens": 32,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 50,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 82
+    },
+    "content": "要计算取到红球的概率，我们需要知道红球的数量和总球数。\n\n1.  **确定红球数量**：题目给出有"
+  },
+  {
+    "arm": "qual-dflash2-K7-32k",
+    "rep": 1,
+    "req": "q3-pct",
+    "ok": true,
+    "wall_s": 0.52,
+    "err": "",
+    "usage": {
+      "completion_tokens": 32,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 28,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 60
+    },
+    "content": "35 人的 60% 是 21 人。\n\n计算过程：\n$35 \\times 0.6 = "
+  },
+  {
+    "arm": "qual-dflash2-K7-32k",
+    "rep": 1,
+    "req": "q4-json",
+    "ok": true,
+    "wall_s": 0.27,
+    "err": "",
+    "usage": {
+      "completion_tokens": 18,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 44,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 62
+    },
+    "content": "```json\n{\"a\": 1, \"b\": \"two\"}\n```"
+  },
+  {
+    "arm": "qual-dflash2-K7-32k",
+    "rep": 1,
+    "req": "q5-neg",
+    "ok": true,
+    "wall_s": 0.66,
+    "err": "",
+    "usage": {
+      "completion_tokens": 58,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 74,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 132
+    },
+    "content": "根据您提供的文字：“今天的会议讨论了三条路线：第一条优先推进，第二条延后评估，第三条直接取消。会议没有留下任何编号。”\n\n经过检查，该文字中**没有**形如 `KX-####-??` 的关键编号。\n\n无"
+  },
+  {
+    "arm": "qual-mtp-d4-32k",
+    "rep": 1,
+    "req": "q1-calc",
+    "ok": true,
+    "wall_s": 0.55,
+    "err": "",
+    "usage": {
+      "completion_tokens": 32,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 34,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 66
+    },
+    "content": "为了计算 847 乘以 293，我们可以将其分解为：\n\n$$847 \\times 293 = 8"
+  },
+  {
+    "arm": "qual-mtp-d4-32k",
+    "rep": 1,
+    "req": "q2-prob",
+    "ok": true,
+    "wall_s": 0.56,
+    "err": "",
+    "usage": {
+      "completion_tokens": 32,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 50,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 82
+    },
+    "content": "要计算取到红球的概率，我们需要知道红球的数量和总球数。\n\n1.  **确定红球数量**：题目给出有"
+  },
+  {
+    "arm": "qual-mtp-d4-32k",
+    "rep": 1,
+    "req": "q3-pct",
+    "ok": true,
+    "wall_s": 0.38,
+    "err": "",
+    "usage": {
+      "completion_tokens": 17,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 28,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 45
+    },
+    "content": "35 人的 60% 是 21 人。"
+  },
+  {
+    "arm": "qual-mtp-d4-32k",
+    "rep": 1,
+    "req": "q4-json",
+    "ok": true,
+    "wall_s": 0.34,
+    "err": "",
+    "usage": {
+      "completion_tokens": 18,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 44,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 62
+    },
+    "content": "```json\n{\"a\": 1, \"b\": \"two\"}\n```"
+  },
+  {
+    "arm": "qual-mtp-d4-32k",
+    "rep": 1,
+    "req": "q5-neg",
+    "ok": true,
+    "wall_s": 0.84,
+    "err": "",
+    "usage": {
+      "completion_tokens": 58,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 74,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 132
+    },
+    "content": "根据您提供的文字：“今天的会议讨论了三条路线：第一条优先推进，第二条延后评估，第三条直接取消。会议没有留下任何编号。”\n\n经过检查，该文字中**没有**形如 `KX-####-??` 的关键编号。\n\n无"
+  },
+  {
+    "arm": "qual-mtp-d4-163840",
+    "rep": 1,
+    "req": "q1-calc",
+    "ok": true,
+    "wall_s": 0.54,
+    "err": "",
+    "usage": {
+      "completion_tokens": 32,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 34,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 66
+    },
+    "content": "为了计算 847 乘以 293，我们可以将其分解为：\n\n$$847 \\times 293 = 8"
+  },
+  {
+    "arm": "qual-mtp-d4-163840",
+    "rep": 1,
+    "req": "q2-prob",
+    "ok": true,
+    "wall_s": 0.58,
+    "err": "",
+    "usage": {
+      "completion_tokens": 32,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 50,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 82
+    },
+    "content": "要计算取到红球的概率，我们需要知道红球的数量和总球数。\n\n1.  **确定红球数量**：题目给出有"
+  },
+  {
+    "arm": "qual-mtp-d4-163840",
+    "rep": 1,
+    "req": "q3-pct",
+    "ok": true,
+    "wall_s": 0.37,
+    "err": "",
+    "usage": {
+      "completion_tokens": 17,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 28,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 45
+    },
+    "content": "35 人的 60% 是 21 人。"
+  },
+  {
+    "arm": "qual-mtp-d4-163840",
+    "rep": 1,
+    "req": "q4-json",
+    "ok": true,
+    "wall_s": 0.35,
+    "err": "",
+    "usage": {
+      "completion_tokens": 18,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 44,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 62
+    },
+    "content": "```json\n{\"a\": 1, \"b\": \"two\"}\n```"
+  },
+  {
+    "arm": "qual-mtp-d4-163840",
+    "rep": 1,
+    "req": "q5-neg",
+    "ok": true,
+    "wall_s": 0.84,
+    "err": "",
+    "usage": {
+      "completion_tokens": 58,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 74,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 132
+    },
+    "content": "根据您提供的文字：“今天的会议讨论了三条路线：第一条优先推进，第二条延后评估，第三条直接取消。会议没有留下任何编号。”\n\n经过检查，该文字中**没有**形如 `KX-####-??` 的关键编号。\n\n无"
+  }
+]

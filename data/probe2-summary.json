@@ -1,0 +1,32 @@
+[
+  {
+    "ctx": 46080,
+    "state": "ready",
+    "capacity": "capacity | KV 46,080 tokens, nvfp4, explicit | pages 720/720 | runtime 1.89 GiB | free 0 B",
+    "fatal": ""
+  },
+  {
+    "ctx": 47104,
+    "state": "ready",
+    "capacity": "capacity | KV 47,104 tokens, nvfp4, explicit | pages 736/736 | runtime 1.91 GiB | free 0 B",
+    "fatal": ""
+  },
+  {
+    "ctx": 48128,
+    "state": "ready",
+    "capacity": "capacity | KV 48,128 tokens, nvfp4, explicit | pages 752/752 | runtime 1.92 GiB | free 0 B",
+    "fatal": ""
+  },
+  {
+    "ctx": 48640,
+    "state": "ready",
+    "capacity": "capacity | KV 48,640 tokens, nvfp4, explicit | pages 760/760 | runtime 1.93 GiB | free 0 B",
+    "fatal": ""
+  },
+  {
+    "ctx": 49152,
+    "state": "ready",
+    "capacity": "capacity | KV 49,152 tokens, nvfp4, explicit | pages 768/768 | runtime 1.94 GiB | free 0 B",
+    "fatal": ""
+  }
+]

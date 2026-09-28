@@ -1,0 +1,37 @@
+[
+  {
+    "ctx": 51200,
+    "vmt": 2048,
+    "state": "ready",
+    "capacity": "capacity | KV 51,200 tokens, nvfp4, explicit | pages 800/800 | runtime 1.98 GiB | free 0 B",
+    "fatal": ""
+  },
+  {
+    "ctx": 53248,
+    "vmt": 2048,
+    "state": "ready",
+    "capacity": "capacity | KV 53,248 tokens, nvfp4, explicit | pages 832/832 | runtime 2.01 GiB | free 0 B",
+    "fatal": ""
+  },
+  {
+    "ctx": 55296,
+    "vmt": 2048,
+    "state": "fatal",
+    "capacity": "",
+    "fatal": "FATAL server failed during startup | requested Engine runtime reservation requires 2197835520 bytes, but only 2185726976 bytes are available for runtime capacity"
+  },
+  {
+    "ctx": 57344,
+    "vmt": 2048,
+    "state": "fatal",
+    "capacity": "",
+    "fatal": "FATAL server failed during startup | requested Engine runtime reservation requires 2235584256 bytes, but only 2185726976 bytes are available for runtime capacity"
+  },
+  {
+    "ctx": 65536,
+    "vmt": 2048,
+    "state": "fatal",
+    "capacity": "",
+    "fatal": "FATAL server failed during startup | requested Engine runtime reservation requires 2386579712 bytes, but only 2185726976 bytes are available for runtime capacity"
+  }
+]

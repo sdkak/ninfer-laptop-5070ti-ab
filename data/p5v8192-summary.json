@@ -1,0 +1,16 @@
+[
+  {
+    "ctx": 41472,
+    "vmt": 8192,
+    "state": "ready",
+    "capacity": "capacity | KV 41,472 tokens, nvfp4, explicit | pages 648/648 | runtime 2.03 GiB | free 0 B",
+    "fatal": ""
+  },
+  {
+    "ctx": 41984,
+    "vmt": 8192,
+    "state": "ready",
+    "capacity": "capacity | KV 41,984 tokens, nvfp4, explicit | pages 656/656 | runtime 2.04 GiB | free 0 B",
+    "fatal": ""
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "ctx": 54272,
+    "vmt": 2048,
+    "state": "ready",
+    "capacity": "capacity | KV 54,272 tokens, nvfp4, explicit | pages 848/848 | runtime 2.03 GiB | free 0 B",
+    "fatal": ""
+  },
+  {
+    "ctx": 54784,
+    "vmt": 2048,
+    "state": "fatal",
+    "capacity": "",
+    "fatal": "FATAL server failed during startup | requested Engine runtime reservation requires 2188398336 bytes, but only 2185726976 bytes are available for runtime capacity"
+  }
+]
