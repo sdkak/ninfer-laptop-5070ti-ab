@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 ninfer-rtx5070ti-ab contributors
+Copyright (c) 2026 ninfer-laptop-5070ti-ab contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,3 +27,4 @@ SOFTWARE.
 - `reports/` 与 `data/` 下的报告与实测数据采用 CC BY 4.0：
   https://creativecommons.org/licenses/by/4.0/
 - 第三方内容（模型、引擎二进制等）不在本仓库内，其许可见 NOTICE.md。
+
