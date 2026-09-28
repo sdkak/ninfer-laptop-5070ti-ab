@@ -1,4 +1,4 @@
-# 笔记本 RTX 5070 Ti（Laptop 12G）· Bonsai-2-27B 三元量化 · MTP vs DFlash2 同上下文 A/B
+﻿# 笔记本 RTX 5070 Ti（Laptop 12G）· Bonsai-2-27B 三元量化 · MTP vs DFlash2 同上下文 A/B
 
 > ⚠ **先说清机器口径**：本仓库全部读数来自 **笔记本版 RTX 5070 Ti Laptop**
 > （**12,227 MiB 显存 / cc 12.0 / SM 46 / 功耗上限 140 W**）。
@@ -51,22 +51,33 @@ Fully reproducible: every arm's **exact command line** is in `data/logs/*.cmd.tx
 
 | 路径 | 内容 |
 |---|---|
-| `reports/dflash2-vs-MTP-实测.md` | ★ **主报告**（14 节：速度矩阵 / 墙钟修正 / 上下文天花板 / K 与 KV 调优 / 质量与取针 / 勘误 / 复现 / 跨架构互证）|
-| `scripts/ab.ps1` | 主矩阵测试台（15 臂）：启动引擎 → 跑固定请求电池 → 停服 |
-| `scripts/ab-hard.ps1` | 加固版（`Connection: close` + 失败重试 3 次），可指定引擎/臂名后缀 |
-| `scripts/probe.ps1` | 只做启动探测，把 **ctx 天花板钉到页（512 token）粒度** |
-| `scripts/needle.ps1` | 长文取针（`-Raw` 用原封夹具；被拒自动缩容重试）|
-| `scripts/analyze.ps1` | 解析引擎日志 → 可对齐矩阵（含每请求 decode / 接受率 / TTFT / cache）|
-| `scripts/matrix.ps1` | 合并多次运行 → `matrix.csv` |
-| `data/logs/*.err` | ★ **54 份引擎原始日志**（权威读数在 `req#N done` 行里）|
-| `data/logs/*.cmd.txt` | ★ **每臂的完整命令行**（可复现的关键 —— 本项目的前身就是因为没存它而无法对齐读数）|
-| `data/matrix.csv` | 合并矩阵：臂 × 内容类型的 decode 中位 / 接受率 / 输出长度 / TTFT |
-| `data/meta-*.json`、`data/parsed-*.json` | 机器可读的元数据与解析结果 |
-| `data/res/*.json` | 每个请求的完整响应（含生成内容）、耗时、错误信息 |
-| `data/req/*.json` | 全部请求夹具（提示词、max_tokens、temperature）|
+| **[reports/dflash2-vs-MTP-实测.md](reports/dflash2-vs-MTP-实测.md)** | ★ **主报告**（14 节：速度矩阵 / 墙钟修正 / 上下文天花板 / K 与 KV 调优 / 质量与取针 / 勘误 / 复现 / 跨架构互证）|
+| **[reports/回执-给包作者-5070Ti-Laptop.md](reports/回执-给包作者-5070Ti-Laptop.md)** | 交回推理包作者的**回执**：5 条矛盾点 + 实测证据 + 结论 |
+| [scripts/ab.ps1](scripts/ab.ps1) | 主矩阵测试台（15 臂）：启动引擎 → 跑固定请求电池 → 停服 |
+| [scripts/ab-hard.ps1](scripts/ab-hard.ps1) | 加固版（`Connection: close` + 失败重试 3 次），可指定引擎/臂名后缀 |
+| [scripts/probe.ps1](scripts/probe.ps1) | 只做启动探测，把 **ctx 天花板钉到页（512 token）粒度** |
+| [scripts/needle.ps1](scripts/needle.ps1) | 长文取针（`-Raw` 用原封夹具；被拒自动缩容重试）|
+| [scripts/analyze.ps1](scripts/analyze.ps1) | 解析引擎日志 → 可对齐矩阵（含每请求 decode / 接受率 / TTFT / cache）|
+| [scripts/matrix.ps1](scripts/matrix.ps1) | 合并多次运行 → `matrix.csv` |
+| [data/logs/](data/logs) | ★ **62 份引擎原始日志**（`*.err`，权威读数在 `req#N done` 行里）+ **62 份每臂完整命令行**（`*.cmd.txt`）|
+| [data/matrix.csv](data/matrix.csv) | 合并矩阵：臂 × 内容类型的 decode 中位 / 接受率 / 输出长度 / TTFT |
+| [data/](data) | `meta-*.json` / `parsed-*.json`（机读元数据与解析结果）、[data/res/](data/res)（每个请求的完整响应与耗时）、[data/req/](data/req)（全部请求夹具）|
 
 ---
 
+## 你需要先准备什么（本仓库**不含**引擎与权重）
+
+本仓库只装**实测产出**。要复现，你需要自己拿到下面两样，并用 sha256 核对确实是同一制品：
+
+| 需要 | 从哪来 | 本仓库记录的 sha256 |
+|---|---|---|
+| **ninfer 引擎** `ninfer-serve-sm120.exe`（本机用的是随包分发的 dev fork 构建）| 上游 ninfer：https://github.com/Neroued/ninfer ｜ 或向推理包提供方索取 | `FE170EB23FFDBFF5EB9F9D70A390EC639910BEAB420F30DCB937AF2CD0269C42` |
+| **Bonsai-2-27B 三元量化权重**（基座 + dflash2 两件）| https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf （Apache-2.0）| 基座 `05BBBF01090C6F61113B54556DAA22AD0B45036A078AF6CD6F02A3FDE47AD76C`<br>dflash2 `F66C8300EFF996A58893E7D567A3E000D7B6347F3A72B2124EAC11791720E148` |
+| 引擎旁的 FFmpeg / UCRT 运行库 | 随推理包提供（自己编译引擎时必撞：缺了会**秒退且 stderr 0 字节**）| — |
+
+署名要求（上游要求）：**"Created using Bonsai by Prism ML."** —— 详见 [NOTICE.md](NOTICE.md)
+
+---
 ## 复现
 
 **硬件/制品**（读数只在同口径下可比）：

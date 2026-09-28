@@ -1,4 +1,4 @@
-MIT License
+﻿MIT License
 
 Copyright (c) 2026 ninfer-laptop-5070ti-ab contributors
 
@@ -19,12 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-范围说明 / Scope:
-- 本 LICENSE（MIT）适用于 `scripts/` 下的脚本。
-- `reports/` 与 `data/` 下的报告与实测数据采用 CC BY 4.0：
-  https://creativecommons.org/licenses/by/4.0/
-- 第三方内容（模型、引擎二进制等）不在本仓库内，其许可见 NOTICE.md。
-
