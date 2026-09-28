@@ -7,6 +7,27 @@
 
 ---
 
+## TL;DR (English)
+
+Same-context A/B of two speculative-decoding backends (`--spec mtp` vs `--spec dflash2`) for the **Bonsai-2-27B ternary-quantized** inference pack, on a single **12 GB laptop GPU** (RTX 5070 Ti Laptop, cc 12.0, SM 46).
+
+| | MTP d4 | DFlash2 K=7 |
+|---|---|---|
+| code (1500 tok, greedy) | 105.6 tok/s | **158.5 tok/s (+50%)** |
+| counting (400 tok) | 134.6 | **229.4 (+70%)** |
+| prose (400 tok) | 66.6 | 63.8 (a wash) |
+| **context ceiling** | **163,840** | **54,272** (vision budget 2048) / **41,984** (8192) |
+| natural-stop wall clock (same code prompt) | 20.7 s / 2065 tok | **18.3 s / 2841 tok** (only +11%) |
+
+- **DFlash2 wins on structured content** (code +50%, counting +70%) but is **not** the daily driver: `--lm-head-draft` inflates code output by 38%, so the wall-clock gain collapses to ~+11%, and its context is 1/3 of MTP's.
+- **K ≤ 7 is a hard ceiling** (K=11 collapses to 113.5 / 38.9 tok/s).
+- **The context ceiling is shared with the vision budget** (54,272↔2048 vs 41,984↔8192), not a fixed 32K/16K as some docs claim.
+- Quality: four configs pass identical checks (`248171`, `3/5`, `21`, JSON, negative control); needle-in-haystack retrieved verbatim at 57,750 (MTP) and 51,535 tokens (DFlash2).
+- **Verdict: keep `MTP d4 + ctx 163840`.**
+
+Fully reproducible: every arm's **exact command line** is in `data/logs/*.cmd.txt`, raw engine logs in `data/logs/*.err`, merged matrix in `data/matrix.csv`. The engine/model artifacts are **not redistributed** — they are matched by sha256 in `NOTICE.md`.
+
+---
 ## 结论速览
 
 | 问题 | 实测答案 |
@@ -113,4 +134,5 @@ pwsh -File scripts\ab.ps1
 
 > 本实测**不构成对性能的普适承诺**：所有数字都是在上述硬件 + 上述 sha 的制品 + 上述口径下取得，
 > **跨卡不可比**（同一推理由不同卡得出不同结论是正常的，详见主报告 §十四 的跨架构互证）。
+
 
