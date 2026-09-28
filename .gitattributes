@@ -1,0 +1,10 @@
+# 默认按文本处理，仓库内统一 LF
+* text=auto eol=lf
+
+# 原始证据（引擎日志 / 请求夹具 / 响应）按字节保留，不做行尾规范化
+data/** -text
+
+# 脚本与文档统一 LF（PowerShell 两种行尾都能跑）
+*.ps1 text eol=lf
+*.md  text eol=lf
+*.json text eol=lf

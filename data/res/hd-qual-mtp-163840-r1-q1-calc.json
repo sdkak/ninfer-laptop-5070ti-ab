@@ -1,0 +1,21 @@
+{
+  "arm": "hd-qual-mtp-163840",
+  "rep": 1,
+  "req": "q1-calc",
+  "ok": true,
+  "tries": 1,
+  "wall_s": 2.29,
+  "err": "",
+  "usage": {
+    "completion_tokens": 233,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 34,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 267
+  },
+  "content": "为了计算 847 乘以 293，我们可以将其分解为：\n\n$$847 \\times 293 = 847 \\times (300 - 7)$$\n$$= 847 \\times 300 - 847 \\times 7$$\n\n首先计算 $847 \\times 300$：\n$$847 \\times 3 = 2541$$\n$$2541 \\times 100 = 254100$$\n\n然后计算 $847 \\times 7$：\n$$800 \\times 7 = 5600$$\n$$40 \\times 7 = 280$$\n$$7 \\times 7 = 49$$\n$$5600 + 280 + 49 = 5929$$\n\n最后相减：\n$$254100 - 5929 = 248171$$\n\n248171"
+}

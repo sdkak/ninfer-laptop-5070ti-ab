@@ -1,0 +1,20 @@
+{
+  "arm": "qual-mtp-d4-32k",
+  "rep": 1,
+  "req": "q4-json",
+  "ok": true,
+  "wall_s": 0.34,
+  "err": "",
+  "usage": {
+    "completion_tokens": 18,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 44,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 62
+  },
+  "content": "```json\n{\"a\": 1, \"b\": \"two\"}\n```"
+}

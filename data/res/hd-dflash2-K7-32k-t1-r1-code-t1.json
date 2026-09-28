@@ -1,0 +1,21 @@
+{
+  "arm": "hd-dflash2-K7-32k-t1",
+  "rep": 1,
+  "req": "code-t1",
+  "ok": true,
+  "tries": 1,
+  "wall_s": 14.49,
+  "err": "",
+  "usage": {
+    "completion_tokens": 1500,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 53,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1553
+  },
+  "content": "好的，这是一个完整可用的单文件扫雷游戏。包含你要求的全部功能：左键翻开、右键插旗（含长按）、剩余雷数与计时器、点空白自动展开、一键重开。\n\n```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷 Mine Sweeper</title>\n<style>\n  :root{\n    --bg:#14171d;--panel:#1e232c;--card:rgba(255,255,255,.04);\n    --card-hi:rgba(255,255,255,.10);--line:#2a3140;\n    --text:#e8edf4;--muted:#9aa5b6;--gold:#f0c05a;\n    --blue:#5aa9ff;--red:#ff5a5f;\n  }\n  *{box-sizing:border-box;margin:0;padding:0}\n  body{\n    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;\n    background:radial-gradient(circle at 50% 0%,#202631 0%,var(--bg) 60%);\n    color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;\n  }\n  h1{margin-bottom:12px;font-size:clamp(22px,4vw,30px);letter-spacing:.1em;font-weight:700}\n  .board-wrap{\n    display:flex;gap:12px;flex-direction:row;\n    align-items:flex-start;background:var(--panel);border:1px solid var(--line);\n    border-radius:14px;padding:12px 16px;box-shadow:0 18px 50px rgba(0,0,0,.45);\n  }\n  .toolbar{display:flex;flex-direction:column;gap:12px;width:150px}\n  .stat{\n    display:flex;align-items:center;justify-content:center;gap:8px;\n    background:var(--card);border:1px solid var(--line);border-radius:10px;\n    padding:10px 12px;color:var(--text);min-width:120px;\n  }\n  .stat b{font-variant-numeric:tabular-nums;font-size:18px;min-width:44px;text-align:center}\n  .icon-label{color:var(--muted);font-size:12px}\n  .btn{\n    width:100%;padding:10px;border:none;border-radius:10px;cursor:pointer;\n    background:linear-gradient(135deg,#5aa9ff,#3f7fe0);color:#fff;font-size:15px;font-weight:600;\n    box-shadow:0 6px 16px rgba(63,127,224,.35);transition:transform .12s,box-shadow .12s;\n  }\n  .btn:hover{transform:translateY(-2px)}\n  .btn:active{transform:translateY(0)}\n  #grid{display:grid;place-items:center;background:#0d1016;border:1px solid var(--line);border-radius:10px;padding:8px;user-select:none;-webkit-tap-highlight-color:transparent}\n  .cell{\n    width:44px;height:44px;margin:2px;border-radius:8px;cursor:pointer;position:relative;\n    display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;\n    background:linear-gradient(135deg,#3a4659,#2d3747);border:1px solid #3e4a60;\n    transition:background .08s,border-color .08s,transform .08s;\n  }\n  .cell:hover:not(.opened){background:linear-gradient(135deg,#4a5872,#364258);border-color:#56698a}\n  .cell.opened{cursor:default;background:var(--card);border-color:var(--line);}\n  .cell.flagged{cursor:default;background:linear-gradient(135deg,#45536a,#333e50);border-color:#6a5c8a;}\n  .num{color:var(--blue)}\n  .n1{color:#5bd97a}.n2{color:#7ec8ff}.n3{color:#ffb86b}.n4{color:#ff9ab0}.n5{color:#ff8fa0}.n6{color:#ff8f6b}.n7{color:#f06a8f}.n8{color:#f05a8f}.n9{color:#e84f6f}\n  .boom{animation:pop .35s ease-out}\n  @keyframes pop{0%{transform:scale(.4)}60%{transform:scale(1.3)}100%{transform:scale(1)}}\n  .mine-rev{color:#ff5a5f;filter:drop-shadow(0 0 6px rgba(255,90,95,.7))}\n  .hint{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.6}\n  .hint kbd{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12px}\n</style>\n</head>\n<body>\n<h1>扫 雷</h1>\n<div class=\"board-wrap\">\n  <div class=\"toolbar\">\n    <div class=\"stat\"><span id=\"flag-count\"></span><span class=\"icon-label\">🚩 已插</span></div>\n    <div class=\"stat\"><span id=\"bomb-count\">⚠️</span><span class=\"icon-label\">💣 余雷</span></div>\n    <div class=\"stat\"><span id=\"time\">0</span><span class=\"icon-label\">⏱ 秒</span></div>\n    <button class=\"btn\" id=\"new-btn\">🔄 重新开始</button>"
+}

@@ -1,0 +1,177 @@
+2026-09-28 14:18:48.642  INFO  starting engine
+2026-09-28 14:18:48.758  INFO  loading weights | 9.38 GiB
+2026-09-28 14:18:51.530  INFO  weights ready | 9.38 GiB | 2.8s | 3.38 GiB/s
+[kv-capacity-trace] mode=0 explicit=54272 curve_min=848 curve_max=848 resolved_pages=848 resolved_tokens=54272
+2026-09-28 14:18:52.269  INFO  pinning host state | 1.46 GiB
+2026-09-28 14:18:52.448  INFO  host state pinned | 1.46 GiB | 179 ms
+2026-09-28 14:18:52.449  INFO  pinning host KV | 2.00 GiB
+2026-09-28 14:18:52.697  INFO  host KV pinned | 2.00 GiB | 248 ms
+[kvmem-map] publish ok
+2026-09-28 14:18:54.080  INFO  CUDA graphs ready | 1.3s
+2026-09-28 14:18:54.083  INFO  engine ready | qwen3.8-27b/groupwise-int | total 5.4s | weights 9.38 GiB
+2026-09-28 14:18:54.083  INFO  capacity | KV 54,272 tokens, nvfp4, explicit | pages 848/848 | runtime 2.03 GiB | free 0 B
+2026-09-28 14:18:54.084  INFO  context cache | 1 active + 1 cached device states | host 8 states, 2.00 GiB KV | private 2 | shared 4 | anchors 2
+2026-09-28 14:18:54.084  INFO  media | 16 preprocess workers | cache 1.00 GiB | live 2.00 GiB
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=13 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=9 dropped=0 releasable=0 staged=0 free_after=847
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=13 dropped=0 releasable=0 staged=0 free_after=847
+[kvmem-cont] trim: main_tokens=13 committed=13 page_count=1
+[kvmem-cont] trim: main_tokens=16 committed=16 page_count=1
+2026-09-28 14:18:54.200  INFO  listening on http://127.0.0.1:8086 | model qwen3.8-27b | auth disabled
+2026-09-28 14:18:54.550  INFO  req#1 rejected during prepare | openai-chat non-stream | HTTP 400 | context length exceeded | messages 1
+2026-09-28 14:18:55.034  INFO  req#2 started | openai-chat non-stream | 1 message | max output 64 | thinking off
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=47235 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=1024 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=2048 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=3072 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=4096 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=5120 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=6144 dropped=0 releasable=0 staged=0 free_after=109
+2026-09-28 14:18:59.211  INFO  throughput | 5.0s | prefill 1.23k tok/s (6,144 tok) | running 1 (prefill 1) | host 41.2% (2.1s)
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=7168 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=8192 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=9216 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=10240 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=11264 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=12288 dropped=0 releasable=0 staged=0 free_after=109
+2026-09-28 14:19:04.211  INFO  throughput | 5.0s | prefill 1.23k tok/s (6,144 tok) | running 1 (prefill 1) | host 43.8% (2.2s)
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=13312 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=14336 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=15360 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=16384 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=17408 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=18432 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=19456 dropped=0 releasable=0 staged=0 free_after=109
+2026-09-28 14:19:09.202  INFO  throughput | 5.0s | prefill 1.44k tok/s (7,168 tok) | running 1 (prefill 1) | host 54.8% (2.7s)
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=20480 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=21504 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=22528 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=23552 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=24576 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=25600 dropped=0 releasable=0 staged=0 free_after=109
+2026-09-28 14:19:14.206  INFO  throughput | 5.0s | prefill 1.23k tok/s (6,144 tok) | running 1 (prefill 1) | host 50.0% (2.5s)
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=26624 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=27648 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=28672 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=29696 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=30720 dropped=0 releasable=0 staged=0 free_after=109
+2026-09-28 14:19:19.218  INFO  throughput | 5.0s | prefill 1.02k tok/s (5,120 tok) | running 1 (prefill 1) | host 44.4% (2.2s)
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=31744 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=32768 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=33792 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=34816 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=35840 dropped=0 releasable=0 staged=0 free_after=109
+2026-09-28 14:19:24.203  INFO  throughput | 5.0s | prefill 1.03k tok/s (5,120 tok) | running 1 (prefill 1) | host 46.5% (2.3s)
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=36864 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=37888 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=38912 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=39936 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=40960 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=41984 dropped=0 releasable=0 staged=0 free_after=109
+2026-09-28 14:19:29.204  INFO  throughput | 5.0s | prefill 1.23k tok/s (6,144 tok) | running 1 (prefill 1) | host 58.2% (2.9s)
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=43008 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=44032 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=45056 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=46080 dropped=0 releasable=0 staged=0 free_after=109
+2026-09-28 14:19:34.214  INFO  throughput | 5.0s | prefill 817.5 tok/s (4,096 tok) | running 1 (prefill 1) | host 40.9% (2.0s)
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=47104 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=47226 dropped=0 releasable=0 staged=0 free_after=109
+[kvmem-cont] trim: main_tokens=47226 committed=47226 page_count=739
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=47228 dropped=0 releasable=0 staged=0 free_after=108
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=47231 dropped=0 releasable=0 staged=0 free_after=108
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=47235 dropped=0 releasable=0 staged=0 free_after=108
+[kvmem-cont] trim: main_tokens=47235 committed=47235 page_count=739
+[kvmem-cont] trim: main_tokens=47236 committed=47236 page_count=739
+[kvmem-cont] trim: main_tokens=47238 committed=47238 page_count=739
+[kvmem-cont] trim: main_tokens=47240 committed=47240 page_count=739
+[kvmem-cont] trim: main_tokens=47242 committed=47242 page_count=739
+[kvmem-cont] trim: main_tokens=47244 committed=47244 page_count=739
+[kvmem-cont] trim: main_tokens=47245 committed=47245 page_count=739
+[kvmem-cont] trim: main_tokens=47246 committed=47246 page_count=739
+[kvmem-cont] trim: main_tokens=47248 committed=47248 page_count=739
+[kvmem-cont] trim: main_tokens=47249 committed=47249 page_count=739
+[kvmem-cont] trim: main_tokens=47251 committed=47251 page_count=739
+[kvmem-cont] trim: main_tokens=47252 committed=47252 page_count=739
+[kvmem-cont] trim: main_tokens=47253 committed=47253 page_count=739
+[kvmem-cont] trim: main_tokens=47257 committed=47257 page_count=739
+[kvmem-cont] trim: main_tokens=47258 committed=47258 page_count=739
+[kvmem-cont] trim: main_tokens=47260 committed=47260 page_count=739
+[kvmem-cont] trim: main_tokens=47261 committed=47261 page_count=739
+[kvmem-cont] trim: main_tokens=47262 committed=47262 page_count=739
+[kvmem-cont] trim: main_tokens=47263 committed=47263 page_count=739
+[kvmem-cont] trim: main_tokens=47266 committed=47266 page_count=739
+[kvmem-cont] trim: main_tokens=47268 committed=47268 page_count=739
+[kvmem-cont] trim: main_tokens=47270 committed=47270 page_count=739
+[kvmem-cont] trim: main_tokens=47274 committed=47274 page_count=739
+[kvmem-cont] trim: main_tokens=47278 committed=47278 page_count=739
+[kvmem-cont] trim: main_tokens=47279 committed=47279 page_count=739
+[kvmem-cont] trim: main_tokens=47282 committed=47282 page_count=739
+[kvmem-cont] trim: main_tokens=47284 committed=47284 page_count=739
+[kvmem-cont] trim: main_tokens=47285 committed=47285 page_count=739
+[kvmem-cont] trim: main_tokens=47287 committed=47287 page_count=739
+[kvmem-cont] trim: main_tokens=47290 committed=47290 page_count=739
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=47292 committed=47292 page_count=740
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=47294 committed=47294 page_count=740
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=47297 committed=47297 page_count=740
+[kvmem-cont] trim: main_tokens=47298 committed=47298 page_count=740
+2026-09-28 14:19:35.891  INFO  req#2 done | openai-chat | output limit | prompt 47,235 | output 64 | cache 0 (0.0%) | TTFT 39.6s | total 40.9s | prefill 1.20k tok/s | decode 48.7 tok/s | dflash2 accepted 30/218 (13.8%)

@@ -1,0 +1,1 @@
+{"messages":[{"role":"user","content":"只输出一个 JSON 对象，仅含两个键：a 等于数字 1，b 等于字符串 \"two\"。不要输出任何其他文字。"}],"max_tokens":64,"model":"qwen3.8-27b","temperature":0}

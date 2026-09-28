@@ -1,0 +1,11 @@
+{
+  "tag": "needle2",
+  "spec": "mtp",
+  "k": 4,
+  "ctx": 163840,
+  "chars": 80848,
+  "prompt_tokens": 47261,
+  "answer": "好的，根据您提供的长文本内容，我仔细搜索了全文。\n\n在整篇文档中，**没有**发现任何形如 `KX-7742-QN` 或类似格式的关键编号（Key ID / Ticket ID）。\n\n文档主要包含：\n1.  **引擎/模型/参数对照表**\n2.  **行动原则与硬规则**（证否优先、实测裁决等）\n3.  **显卡识别与探针使用指南** (`gpu-probe.exe`)\n4.  **具体命令示例** (PowerShell)\n5.  **性能读数对比方法**\n6.  **调优项清单** (A/B/C/D/E/F 类)\n7.  **编译与调试细节** (CMake, SM Count, etc.)\n8.  **已知问题与排错手册引用**\n\n文中出现的数字主要是：\n*   GPU Compute Capability (e.g., 8.9, 12.0)\n*   SM Counts (e.g., 170, 128, 80)\n*   Performance metrics (t/s, e.g., 353.8, 212)\n*   Date stamps (e.g., 2026-09-27)\n*   File line numbers (e.g., `device.h:35`)\n*   Section numbers (e.g., §4.5, §6.2)\n\n**结论：**\n该长文内**未嵌入**任何唯一关键编号。如果您期望找到某个特定的工单号或版本标识符，它可能不在这段截取的文本中，或者该文档本身不包含此类元数据字段。",
+  "wall_s": 45.18,
+  "hit": true
+}

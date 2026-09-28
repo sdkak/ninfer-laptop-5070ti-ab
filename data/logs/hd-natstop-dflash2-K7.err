@@ -1,0 +1,2112 @@
+2026-09-28 14:07:59.147  INFO  starting engine
+2026-09-28 14:07:59.224  INFO  loading weights | 9.38 GiB
+2026-09-28 14:08:01.989  INFO  weights ready | 9.38 GiB | 2.8s | 3.39 GiB/s
+[kv-capacity-trace] mode=0 explicit=32768 curve_min=512 curve_max=512 resolved_pages=512 resolved_tokens=32768
+2026-09-28 14:08:02.539  INFO  pinning host state | 1.46 GiB
+2026-09-28 14:08:02.704  INFO  host state pinned | 1.46 GiB | 165 ms
+2026-09-28 14:08:02.707  INFO  pinning host KV | 2.00 GiB
+2026-09-28 14:08:02.943  INFO  host KV pinned | 2.00 GiB | 236 ms
+[kvmem-map] publish ok
+2026-09-28 14:08:04.218  INFO  CUDA graphs ready | 1.2s
+2026-09-28 14:08:04.223  INFO  engine ready | qwen3.8-27b/groupwise-int | total 5.1s | weights 9.38 GiB
+2026-09-28 14:08:04.224  INFO  capacity | KV 32,768 tokens, nvfp4, explicit | pages 512/512 | runtime 1.57 GiB | free 0 B
+2026-09-28 14:08:04.224  INFO  context cache | 1 active + 1 cached device states | host 8 states, 2.00 GiB KV | private 2 | shared 4 | anchors 2
+2026-09-28 14:08:04.224  INFO  media | 16 preprocess workers | cache 1.00 GiB | live 2.00 GiB
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=13 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=9 dropped=0 releasable=0 staged=0 free_after=511
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=13 dropped=0 releasable=0 staged=0 free_after=511
+[kvmem-cont] trim: main_tokens=13 committed=13 page_count=1
+[kvmem-cont] trim: main_tokens=16 committed=16 page_count=1
+2026-09-28 14:08:04.340  INFO  listening on http://127.0.0.1:8086 | model qwen3.8-27b | auth disabled
+2026-09-28 14:08:04.344  INFO  req#1 started | openai-chat non-stream | 1 message | max output 3,000 | thinking off
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=26 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=17 dropped=0 releasable=0 staged=0 free_after=511
+[kvmem-cont] trim: main_tokens=17 committed=17 page_count=1
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=19 dropped=0 releasable=0 staged=0 free_after=510
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=22 dropped=0 releasable=0 staged=0 free_after=510
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=26 dropped=0 releasable=0 staged=0 free_after=510
+[kvmem-cont] trim: main_tokens=26 committed=26 page_count=1
+[kvmem-cont] trim: main_tokens=27 committed=27 page_count=1
+[kvmem-cont] trim: main_tokens=28 committed=28 page_count=1
+[kvmem-cont] trim: main_tokens=29 committed=29 page_count=1
+[kvmem-cont] trim: main_tokens=30 committed=30 page_count=1
+[kvmem-cont] trim: main_tokens=31 committed=31 page_count=1
+[kvmem-cont] trim: main_tokens=32 committed=32 page_count=1
+[kvmem-cont] trim: main_tokens=33 committed=33 page_count=1
+[kvmem-cont] trim: main_tokens=36 committed=36 page_count=1
+[kvmem-cont] trim: main_tokens=39 committed=39 page_count=1
+[kvmem-cont] trim: main_tokens=43 committed=43 page_count=1
+[kvmem-cont] trim: main_tokens=44 committed=44 page_count=1
+[kvmem-cont] trim: main_tokens=46 committed=46 page_count=1
+[kvmem-cont] trim: main_tokens=48 committed=48 page_count=1
+[kvmem-cont] trim: main_tokens=49 committed=49 page_count=1
+[kvmem-cont] trim: main_tokens=51 committed=51 page_count=1
+[kvmem-cont] trim: main_tokens=53 committed=53 page_count=1
+[kvmem-cont] trim: main_tokens=54 committed=54 page_count=1
+[kvmem-cont] trim: main_tokens=55 committed=55 page_count=1
+[kvmem-cont] trim: main_tokens=56 committed=56 page_count=1
+[kvmem-cont] trim: main_tokens=57 committed=57 page_count=1
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=58 committed=58 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=61 committed=61 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=65 committed=65 page_count=2
+[kvmem-cont] trim: main_tokens=67 committed=67 page_count=2
+[kvmem-cont] trim: main_tokens=68 committed=68 page_count=2
+[kvmem-cont] trim: main_tokens=72 committed=72 page_count=2
+[kvmem-cont] trim: main_tokens=76 committed=76 page_count=2
+[kvmem-cont] trim: main_tokens=77 committed=77 page_count=2
+[kvmem-cont] trim: main_tokens=81 committed=81 page_count=2
+[kvmem-cont] trim: main_tokens=83 committed=83 page_count=2
+[kvmem-cont] trim: main_tokens=86 committed=86 page_count=2
+[kvmem-cont] trim: main_tokens=94 committed=94 page_count=2
+[kvmem-cont] trim: main_tokens=97 committed=97 page_count=2
+[kvmem-cont] trim: main_tokens=98 committed=98 page_count=2
+[kvmem-cont] trim: main_tokens=101 committed=101 page_count=2
+[kvmem-cont] trim: main_tokens=102 committed=102 page_count=2
+[kvmem-cont] trim: main_tokens=103 committed=103 page_count=2
+[kvmem-cont] trim: main_tokens=104 committed=104 page_count=2
+[kvmem-cont] trim: main_tokens=106 committed=106 page_count=2
+[kvmem-cont] trim: main_tokens=107 committed=107 page_count=2
+[kvmem-cont] trim: main_tokens=108 committed=108 page_count=2
+[kvmem-cont] trim: main_tokens=109 committed=109 page_count=2
+[kvmem-cont] trim: main_tokens=111 committed=111 page_count=2
+[kvmem-cont] trim: main_tokens=112 committed=112 page_count=2
+[kvmem-cont] trim: main_tokens=114 committed=114 page_count=2
+[kvmem-cont] trim: main_tokens=116 committed=116 page_count=2
+[kvmem-cont] trim: main_tokens=117 committed=117 page_count=2
+[kvmem-cont] trim: main_tokens=120 committed=120 page_count=2
+[kvmem-cont] trim: main_tokens=122 committed=122 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=123 committed=123 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=125 committed=125 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=126 committed=126 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=129 committed=129 page_count=3
+[kvmem-cont] trim: main_tokens=132 committed=132 page_count=3
+[kvmem-cont] trim: main_tokens=133 committed=133 page_count=3
+[kvmem-cont] trim: main_tokens=134 committed=134 page_count=3
+[kvmem-cont] trim: main_tokens=135 committed=135 page_count=3
+[kvmem-cont] trim: main_tokens=137 committed=137 page_count=3
+[kvmem-cont] trim: main_tokens=138 committed=138 page_count=3
+[kvmem-cont] trim: main_tokens=140 committed=140 page_count=3
+[kvmem-cont] trim: main_tokens=142 committed=142 page_count=3
+[kvmem-cont] trim: main_tokens=143 committed=143 page_count=3
+[kvmem-cont] trim: main_tokens=145 committed=145 page_count=3
+[kvmem-cont] trim: main_tokens=146 committed=146 page_count=3
+[kvmem-cont] trim: main_tokens=147 committed=147 page_count=3
+[kvmem-cont] trim: main_tokens=148 committed=148 page_count=3
+[kvmem-cont] trim: main_tokens=153 committed=153 page_count=3
+[kvmem-cont] trim: main_tokens=158 committed=158 page_count=3
+[kvmem-cont] trim: main_tokens=162 committed=162 page_count=3
+[kvmem-cont] trim: main_tokens=164 committed=164 page_count=3
+[kvmem-cont] trim: main_tokens=166 committed=166 page_count=3
+[kvmem-cont] trim: main_tokens=168 committed=168 page_count=3
+[kvmem-cont] trim: main_tokens=169 committed=169 page_count=3
+[kvmem-cont] trim: main_tokens=173 committed=173 page_count=3
+[kvmem-cont] trim: main_tokens=177 committed=177 page_count=3
+[kvmem-cont] trim: main_tokens=178 committed=178 page_count=3
+[kvmem-cont] trim: main_tokens=179 committed=179 page_count=3
+[kvmem-cont] trim: main_tokens=182 committed=182 page_count=3
+[kvmem-cont] trim: main_tokens=184 committed=184 page_count=3
+[kvmem-cont] trim: main_tokens=185 committed=185 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=186 committed=186 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=191 committed=191 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=192 committed=192 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=193 committed=193 page_count=4
+[kvmem-cont] trim: main_tokens=194 committed=194 page_count=4
+[kvmem-cont] trim: main_tokens=195 committed=195 page_count=4
+[kvmem-cont] trim: main_tokens=197 committed=197 page_count=4
+[kvmem-cont] trim: main_tokens=200 committed=200 page_count=4
+[kvmem-cont] trim: main_tokens=208 committed=208 page_count=4
+[kvmem-cont] trim: main_tokens=216 committed=216 page_count=4
+[kvmem-cont] trim: main_tokens=220 committed=220 page_count=4
+[kvmem-cont] trim: main_tokens=224 committed=224 page_count=4
+[kvmem-cont] trim: main_tokens=232 committed=232 page_count=4
+[kvmem-cont] trim: main_tokens=235 committed=235 page_count=4
+[kvmem-cont] trim: main_tokens=243 committed=243 page_count=4
+[kvmem-cont] trim: main_tokens=251 committed=251 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=254 committed=254 page_count=5
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=262 committed=262 page_count=5
+[kvmem-cont] trim: main_tokens=269 committed=269 page_count=5
+[kvmem-cont] trim: main_tokens=270 committed=270 page_count=5
+[kvmem-cont] trim: main_tokens=273 committed=273 page_count=5
+[kvmem-cont] trim: main_tokens=275 committed=275 page_count=5
+[kvmem-cont] trim: main_tokens=276 committed=276 page_count=5
+[kvmem-cont] trim: main_tokens=277 committed=277 page_count=5
+[kvmem-cont] trim: main_tokens=279 committed=279 page_count=5
+[kvmem-cont] trim: main_tokens=283 committed=283 page_count=5
+[kvmem-cont] trim: main_tokens=284 committed=284 page_count=5
+[kvmem-cont] trim: main_tokens=286 committed=286 page_count=5
+[kvmem-cont] trim: main_tokens=288 committed=288 page_count=5
+[kvmem-cont] trim: main_tokens=291 committed=291 page_count=5
+[kvmem-cont] trim: main_tokens=292 committed=292 page_count=5
+[kvmem-cont] trim: main_tokens=293 committed=293 page_count=5
+[kvmem-cont] trim: main_tokens=295 committed=295 page_count=5
+[kvmem-cont] trim: main_tokens=296 committed=296 page_count=5
+[kvmem-cont] trim: main_tokens=298 committed=298 page_count=5
+[kvmem-cont] trim: main_tokens=299 committed=299 page_count=5
+[kvmem-cont] trim: main_tokens=300 committed=300 page_count=5
+[kvmem-cont] trim: main_tokens=304 committed=304 page_count=5
+[kvmem-cont] trim: main_tokens=305 committed=305 page_count=5
+[kvmem-cont] trim: main_tokens=306 committed=306 page_count=5
+[kvmem-cont] trim: main_tokens=307 committed=307 page_count=5
+[kvmem-cont] trim: main_tokens=308 committed=308 page_count=5
+[kvmem-cont] trim: main_tokens=309 committed=309 page_count=5
+[kvmem-cont] trim: main_tokens=310 committed=310 page_count=5
+[kvmem-cont] trim: main_tokens=311 committed=311 page_count=5
+[kvmem-cont] trim: main_tokens=312 committed=312 page_count=5
+[kvmem-cont] trim: main_tokens=315 committed=315 page_count=5
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=317 committed=317 page_count=6
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=321 committed=321 page_count=6
+[kvmem-cont] trim: main_tokens=323 committed=323 page_count=6
+[kvmem-cont] trim: main_tokens=324 committed=324 page_count=6
+[kvmem-cont] trim: main_tokens=325 committed=325 page_count=6
+[kvmem-cont] trim: main_tokens=327 committed=327 page_count=6
+[kvmem-cont] trim: main_tokens=328 committed=328 page_count=6
+[kvmem-cont] trim: main_tokens=330 committed=330 page_count=6
+[kvmem-cont] trim: main_tokens=331 committed=331 page_count=6
+[kvmem-cont] trim: main_tokens=332 committed=332 page_count=6
+[kvmem-cont] trim: main_tokens=333 committed=333 page_count=6
+[kvmem-cont] trim: main_tokens=334 committed=334 page_count=6
+[kvmem-cont] trim: main_tokens=336 committed=336 page_count=6
+[kvmem-cont] trim: main_tokens=337 committed=337 page_count=6
+[kvmem-cont] trim: main_tokens=338 committed=338 page_count=6
+[kvmem-cont] trim: main_tokens=339 committed=339 page_count=6
+2026-09-28 14:08:09.354  INFO  throughput | 5.0s | prefill 5.2 tok/s (26 tok) | decode 62.4 tok/s (313 tok) | running 1 (decode-ready 1) | batch 1.00 | host 2.1% (106 ms)
+[kvmem-cont] trim: main_tokens=346 committed=346 page_count=6
+[kvmem-cont] trim: main_tokens=348 committed=348 page_count=6
+[kvmem-cont] trim: main_tokens=352 committed=352 page_count=6
+[kvmem-cont] trim: main_tokens=353 committed=353 page_count=6
+[kvmem-cont] trim: main_tokens=354 committed=354 page_count=6
+[kvmem-cont] trim: main_tokens=357 committed=357 page_count=6
+[kvmem-cont] trim: main_tokens=358 committed=358 page_count=6
+[kvmem-cont] trim: main_tokens=362 committed=362 page_count=6
+[kvmem-cont] trim: main_tokens=363 committed=363 page_count=6
+[kvmem-cont] trim: main_tokens=365 committed=365 page_count=6
+[kvmem-cont] trim: main_tokens=368 committed=368 page_count=6
+[kvmem-cont] trim: main_tokens=369 committed=369 page_count=6
+[kvmem-cont] trim: main_tokens=370 committed=370 page_count=6
+[kvmem-cont] trim: main_tokens=371 committed=371 page_count=6
+[kvmem-cont] trim: main_tokens=376 committed=376 page_count=6
+[kvmem-cont] trim: main_tokens=377 committed=377 page_count=6
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=380 committed=380 page_count=7
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=383 committed=383 page_count=7
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=385 committed=385 page_count=7
+[kvmem-cont] trim: main_tokens=386 committed=386 page_count=7
+[kvmem-cont] trim: main_tokens=387 committed=387 page_count=7
+[kvmem-cont] trim: main_tokens=388 committed=388 page_count=7
+[kvmem-cont] trim: main_tokens=390 committed=390 page_count=7
+[kvmem-cont] trim: main_tokens=395 committed=395 page_count=7
+[kvmem-cont] trim: main_tokens=396 committed=396 page_count=7
+[kvmem-cont] trim: main_tokens=397 committed=397 page_count=7
+[kvmem-cont] trim: main_tokens=398 committed=398 page_count=7
+[kvmem-cont] trim: main_tokens=399 committed=399 page_count=7
+[kvmem-cont] trim: main_tokens=400 committed=400 page_count=7
+[kvmem-cont] trim: main_tokens=408 committed=408 page_count=7
+[kvmem-cont] trim: main_tokens=409 committed=409 page_count=7
+[kvmem-cont] trim: main_tokens=410 committed=410 page_count=7
+[kvmem-cont] trim: main_tokens=413 committed=413 page_count=7
+[kvmem-cont] trim: main_tokens=414 committed=414 page_count=7
+[kvmem-cont] trim: main_tokens=415 committed=415 page_count=7
+[kvmem-cont] trim: main_tokens=419 committed=419 page_count=7
+[kvmem-cont] trim: main_tokens=421 committed=421 page_count=7
+[kvmem-cont] trim: main_tokens=422 committed=422 page_count=7
+[kvmem-cont] trim: main_tokens=423 committed=423 page_count=7
+[kvmem-cont] trim: main_tokens=424 committed=424 page_count=7
+[kvmem-cont] trim: main_tokens=428 committed=428 page_count=7
+[kvmem-cont] trim: main_tokens=430 committed=430 page_count=7
+[kvmem-cont] trim: main_tokens=431 committed=431 page_count=7
+[kvmem-cont] trim: main_tokens=432 committed=432 page_count=7
+[kvmem-cont] trim: main_tokens=433 committed=433 page_count=7
+[kvmem-cont] trim: main_tokens=434 committed=434 page_count=7
+[kvmem-cont] trim: main_tokens=437 committed=437 page_count=7
+[kvmem-cont] trim: main_tokens=439 committed=439 page_count=7
+[kvmem-cont] trim: main_tokens=441 committed=441 page_count=7
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=445 committed=445 page_count=8
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=446 committed=446 page_count=8
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=447 committed=447 page_count=8
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=449 committed=449 page_count=8
+[kvmem-cont] trim: main_tokens=452 committed=452 page_count=8
+[kvmem-cont] trim: main_tokens=459 committed=459 page_count=8
+[kvmem-cont] trim: main_tokens=460 committed=460 page_count=8
+[kvmem-cont] trim: main_tokens=463 committed=463 page_count=8
+[kvmem-cont] trim: main_tokens=464 committed=464 page_count=8
+[kvmem-cont] trim: main_tokens=465 committed=465 page_count=8
+[kvmem-cont] trim: main_tokens=466 committed=466 page_count=8
+[kvmem-cont] trim: main_tokens=471 committed=471 page_count=8
+[kvmem-cont] trim: main_tokens=473 committed=473 page_count=8
+[kvmem-cont] trim: main_tokens=474 committed=474 page_count=8
+[kvmem-cont] trim: main_tokens=478 committed=478 page_count=8
+[kvmem-cont] trim: main_tokens=480 committed=480 page_count=8
+[kvmem-cont] trim: main_tokens=482 committed=482 page_count=8
+[kvmem-cont] trim: main_tokens=483 committed=483 page_count=8
+[kvmem-cont] trim: main_tokens=484 committed=484 page_count=8
+[kvmem-cont] trim: main_tokens=486 committed=486 page_count=8
+[kvmem-cont] trim: main_tokens=487 committed=487 page_count=8
+[kvmem-cont] trim: main_tokens=489 committed=489 page_count=8
+[kvmem-cont] trim: main_tokens=491 committed=491 page_count=8
+[kvmem-cont] trim: main_tokens=493 committed=493 page_count=8
+[kvmem-cont] trim: main_tokens=495 committed=495 page_count=8
+[kvmem-cont] trim: main_tokens=496 committed=496 page_count=8
+[kvmem-cont] trim: main_tokens=498 committed=498 page_count=8
+[kvmem-cont] trim: main_tokens=500 committed=500 page_count=8
+[kvmem-cont] trim: main_tokens=501 committed=501 page_count=8
+[kvmem-cont] trim: main_tokens=503 committed=503 page_count=8
+[kvmem-cont] trim: main_tokens=505 committed=505 page_count=8
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=506 committed=506 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=507 committed=507 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=508 committed=508 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=509 committed=509 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=510 committed=510 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=511 committed=511 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=512 committed=512 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=519 committed=519 page_count=9
+[kvmem-cont] trim: main_tokens=521 committed=521 page_count=9
+[kvmem-cont] trim: main_tokens=525 committed=525 page_count=9
+[kvmem-cont] trim: main_tokens=530 committed=530 page_count=9
+[kvmem-cont] trim: main_tokens=531 committed=531 page_count=9
+[kvmem-cont] trim: main_tokens=533 committed=533 page_count=9
+[kvmem-cont] trim: main_tokens=536 committed=536 page_count=9
+[kvmem-cont] trim: main_tokens=537 committed=537 page_count=9
+[kvmem-cont] trim: main_tokens=539 committed=539 page_count=9
+[kvmem-cont] trim: main_tokens=540 committed=540 page_count=9
+[kvmem-cont] trim: main_tokens=542 committed=542 page_count=9
+[kvmem-cont] trim: main_tokens=544 committed=544 page_count=9
+[kvmem-cont] trim: main_tokens=545 committed=545 page_count=9
+[kvmem-cont] trim: main_tokens=546 committed=546 page_count=9
+[kvmem-cont] trim: main_tokens=548 committed=548 page_count=9
+[kvmem-cont] trim: main_tokens=550 committed=550 page_count=9
+[kvmem-cont] trim: main_tokens=551 committed=551 page_count=9
+[kvmem-cont] trim: main_tokens=554 committed=554 page_count=9
+[kvmem-cont] trim: main_tokens=555 committed=555 page_count=9
+[kvmem-cont] trim: main_tokens=556 committed=556 page_count=9
+[kvmem-cont] trim: main_tokens=557 committed=557 page_count=9
+[kvmem-cont] trim: main_tokens=558 committed=558 page_count=9
+[kvmem-cont] trim: main_tokens=559 committed=559 page_count=9
+[kvmem-cont] trim: main_tokens=561 committed=561 page_count=9
+[kvmem-cont] trim: main_tokens=564 committed=564 page_count=9
+[kvmem-cont] trim: main_tokens=566 committed=566 page_count=9
+[kvmem-cont] trim: main_tokens=569 committed=569 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=572 committed=572 page_count=10
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=574 committed=574 page_count=10
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=575 committed=575 page_count=10
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=580 committed=580 page_count=10
+[kvmem-cont] trim: main_tokens=581 committed=581 page_count=10
+[kvmem-cont] trim: main_tokens=584 committed=584 page_count=10
+[kvmem-cont] trim: main_tokens=586 committed=586 page_count=10
+[kvmem-cont] trim: main_tokens=588 committed=588 page_count=10
+[kvmem-cont] trim: main_tokens=591 committed=591 page_count=10
+[kvmem-cont] trim: main_tokens=592 committed=592 page_count=10
+[kvmem-cont] trim: main_tokens=594 committed=594 page_count=10
+[kvmem-cont] trim: main_tokens=596 committed=596 page_count=10
+[kvmem-cont] trim: main_tokens=597 committed=597 page_count=10
+[kvmem-cont] trim: main_tokens=598 committed=598 page_count=10
+[kvmem-cont] trim: main_tokens=600 committed=600 page_count=10
+[kvmem-cont] trim: main_tokens=603 committed=603 page_count=10
+[kvmem-cont] trim: main_tokens=605 committed=605 page_count=10
+[kvmem-cont] trim: main_tokens=607 committed=607 page_count=10
+[kvmem-cont] trim: main_tokens=611 committed=611 page_count=10
+[kvmem-cont] trim: main_tokens=613 committed=613 page_count=10
+[kvmem-cont] trim: main_tokens=617 committed=617 page_count=10
+[kvmem-cont] trim: main_tokens=624 committed=624 page_count=10
+[kvmem-cont] trim: main_tokens=625 committed=625 page_count=10
+[kvmem-cont] trim: main_tokens=626 committed=626 page_count=10
+[kvmem-cont] trim: main_tokens=628 committed=628 page_count=10
+[kvmem-cont] trim: main_tokens=631 committed=631 page_count=10
+[kvmem-cont] trim: main_tokens=634 committed=634 page_count=10
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=635 committed=635 page_count=11
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=638 committed=638 page_count=11
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=641 committed=641 page_count=11
+[kvmem-cont] trim: main_tokens=644 committed=644 page_count=11
+[kvmem-cont] trim: main_tokens=645 committed=645 page_count=11
+[kvmem-cont] trim: main_tokens=648 committed=648 page_count=11
+[kvmem-cont] trim: main_tokens=651 committed=651 page_count=11
+[kvmem-cont] trim: main_tokens=654 committed=654 page_count=11
+2026-09-28 14:08:14.347  INFO  throughput | 5.0s | decode 63.1 tok/s (315 tok) | running 1 (decode-ready 1) | batch 1.00 | host 1.1% (57.0 ms)
+[kvmem-cont] trim: main_tokens=656 committed=656 page_count=11
+[kvmem-cont] trim: main_tokens=657 committed=657 page_count=11
+[kvmem-cont] trim: main_tokens=658 committed=658 page_count=11
+[kvmem-cont] trim: main_tokens=662 committed=662 page_count=11
+[kvmem-cont] trim: main_tokens=664 committed=664 page_count=11
+[kvmem-cont] trim: main_tokens=666 committed=666 page_count=11
+[kvmem-cont] trim: main_tokens=669 committed=669 page_count=11
+[kvmem-cont] trim: main_tokens=672 committed=672 page_count=11
+[kvmem-cont] trim: main_tokens=673 committed=673 page_count=11
+[kvmem-cont] trim: main_tokens=674 committed=674 page_count=11
+[kvmem-cont] trim: main_tokens=675 committed=675 page_count=11
+[kvmem-cont] trim: main_tokens=682 committed=682 page_count=11
+[kvmem-cont] trim: main_tokens=683 committed=683 page_count=11
+[kvmem-cont] trim: main_tokens=684 committed=684 page_count=11
+[kvmem-cont] trim: main_tokens=687 committed=687 page_count=11
+[kvmem-cont] trim: main_tokens=691 committed=691 page_count=11
+[kvmem-cont] trim: main_tokens=695 committed=695 page_count=11
+[kvmem-cont] trim: main_tokens=696 committed=696 page_count=11
+[kvmem-cont] trim: main_tokens=697 committed=697 page_count=11
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=698 committed=698 page_count=12
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=699 committed=699 page_count=12
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=701 committed=701 page_count=12
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=702 committed=702 page_count=12
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=703 committed=703 page_count=12
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=705 committed=705 page_count=12
+[kvmem-cont] trim: main_tokens=706 committed=706 page_count=12
+[kvmem-cont] trim: main_tokens=707 committed=707 page_count=12
+[kvmem-cont] trim: main_tokens=708 committed=708 page_count=12
+[kvmem-cont] trim: main_tokens=709 committed=709 page_count=12
+[kvmem-cont] trim: main_tokens=711 committed=711 page_count=12
+[kvmem-cont] trim: main_tokens=713 committed=713 page_count=12
+[kvmem-cont] trim: main_tokens=720 committed=720 page_count=12
+[kvmem-cont] trim: main_tokens=724 committed=724 page_count=12
+[kvmem-cont] trim: main_tokens=726 committed=726 page_count=12
+[kvmem-cont] trim: main_tokens=727 committed=727 page_count=12
+[kvmem-cont] trim: main_tokens=731 committed=731 page_count=12
+[kvmem-cont] trim: main_tokens=732 committed=732 page_count=12
+[kvmem-cont] trim: main_tokens=733 committed=733 page_count=12
+[kvmem-cont] trim: main_tokens=734 committed=734 page_count=12
+[kvmem-cont] trim: main_tokens=736 committed=736 page_count=12
+[kvmem-cont] trim: main_tokens=738 committed=738 page_count=12
+[kvmem-cont] trim: main_tokens=739 committed=739 page_count=12
+[kvmem-cont] trim: main_tokens=742 committed=742 page_count=12
+[kvmem-cont] trim: main_tokens=743 committed=743 page_count=12
+[kvmem-cont] trim: main_tokens=744 committed=744 page_count=12
+[kvmem-cont] trim: main_tokens=748 committed=748 page_count=12
+[kvmem-cont] trim: main_tokens=749 committed=749 page_count=12
+[kvmem-cont] trim: main_tokens=750 committed=750 page_count=12
+[kvmem-cont] trim: main_tokens=751 committed=751 page_count=12
+[kvmem-cont] trim: main_tokens=754 committed=754 page_count=12
+[kvmem-cont] trim: main_tokens=755 committed=755 page_count=12
+[kvmem-cont] trim: main_tokens=757 committed=757 page_count=12
+[kvmem-cont] trim: main_tokens=758 committed=758 page_count=12
+[kvmem-cont] trim: main_tokens=760 committed=760 page_count=12
+[kvmem-cont] trim: main_tokens=761 committed=761 page_count=12
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=763 committed=763 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=764 committed=764 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=767 committed=767 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=769 committed=769 page_count=13
+[kvmem-cont] trim: main_tokens=771 committed=771 page_count=13
+[kvmem-cont] trim: main_tokens=774 committed=774 page_count=13
+[kvmem-cont] trim: main_tokens=775 committed=775 page_count=13
+[kvmem-cont] trim: main_tokens=779 committed=779 page_count=13
+[kvmem-cont] trim: main_tokens=780 committed=780 page_count=13
+[kvmem-cont] trim: main_tokens=783 committed=783 page_count=13
+[kvmem-cont] trim: main_tokens=786 committed=786 page_count=13
+[kvmem-cont] trim: main_tokens=787 committed=787 page_count=13
+[kvmem-cont] trim: main_tokens=788 committed=788 page_count=13
+[kvmem-cont] trim: main_tokens=790 committed=790 page_count=13
+[kvmem-cont] trim: main_tokens=792 committed=792 page_count=13
+[kvmem-cont] trim: main_tokens=793 committed=793 page_count=13
+[kvmem-cont] trim: main_tokens=799 committed=799 page_count=13
+[kvmem-cont] trim: main_tokens=801 committed=801 page_count=13
+[kvmem-cont] trim: main_tokens=804 committed=804 page_count=13
+[kvmem-cont] trim: main_tokens=805 committed=805 page_count=13
+[kvmem-cont] trim: main_tokens=806 committed=806 page_count=13
+[kvmem-cont] trim: main_tokens=808 committed=808 page_count=13
+[kvmem-cont] trim: main_tokens=810 committed=810 page_count=13
+[kvmem-cont] trim: main_tokens=811 committed=811 page_count=13
+[kvmem-cont] trim: main_tokens=812 committed=812 page_count=13
+[kvmem-cont] trim: main_tokens=815 committed=815 page_count=13
+[kvmem-cont] trim: main_tokens=817 committed=817 page_count=13
+[kvmem-cont] trim: main_tokens=818 committed=818 page_count=13
+[kvmem-cont] trim: main_tokens=819 committed=819 page_count=13
+[kvmem-cont] trim: main_tokens=822 committed=822 page_count=13
+[kvmem-cont] trim: main_tokens=823 committed=823 page_count=13
+[kvmem-cont] trim: main_tokens=825 committed=825 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=827 committed=827 page_count=14
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=829 committed=829 page_count=14
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=830 committed=830 page_count=14
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=831 committed=831 page_count=14
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=832 committed=832 page_count=14
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=833 committed=833 page_count=14
+[kvmem-cont] trim: main_tokens=834 committed=834 page_count=14
+[kvmem-cont] trim: main_tokens=836 committed=836 page_count=14
+2026-09-28 14:08:17.575  INFO  req#1 done | openai-chat | stop token | prompt 26 | output 811 | cache 0 (0.0%) | TTFT 179 ms | total 13.2s | prefill 167.5 tok/s | decode 62.6 tok/s | dflash2 accepted 424/2,709 (15.7%)
+2026-09-28 14:08:17.579  INFO  req#2 started | openai-chat non-stream | 1 message | max output 3,000 | thinking off
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=53 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=44 dropped=0 releasable=0 staged=0 free_after=496
+[kvmem-cont] trim: main_tokens=44 committed=44 page_count=1
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=46 dropped=0 releasable=0 staged=0 free_after=495
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=49 dropped=0 releasable=0 staged=0 free_after=495
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=53 dropped=0 releasable=0 staged=0 free_after=495
+[kvmem-cont] trim: main_tokens=53 committed=53 page_count=1
+[kvmem-cont] trim: main_tokens=61 committed=61 page_count=1
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=69 committed=69 page_count=2
+[kvmem-cont] trim: main_tokens=77 committed=77 page_count=2
+[kvmem-cont] trim: main_tokens=79 committed=79 page_count=2
+[kvmem-cont] trim: main_tokens=87 committed=87 page_count=2
+[kvmem-cont] trim: main_tokens=95 committed=95 page_count=2
+[kvmem-cont] trim: main_tokens=100 committed=100 page_count=2
+[kvmem-cont] trim: main_tokens=106 committed=106 page_count=2
+[kvmem-cont] trim: main_tokens=110 committed=110 page_count=2
+[kvmem-cont] trim: main_tokens=114 committed=114 page_count=2
+[kvmem-cont] trim: main_tokens=122 committed=122 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=130 committed=130 page_count=3
+[kvmem-cont] trim: main_tokens=138 committed=138 page_count=3
+[kvmem-cont] trim: main_tokens=139 committed=139 page_count=3
+[kvmem-cont] trim: main_tokens=147 committed=147 page_count=3
+[kvmem-cont] trim: main_tokens=152 committed=152 page_count=3
+[kvmem-cont] trim: main_tokens=156 committed=156 page_count=3
+[kvmem-cont] trim: main_tokens=160 committed=160 page_count=3
+[kvmem-cont] trim: main_tokens=162 committed=162 page_count=3
+[kvmem-cont] trim: main_tokens=165 committed=165 page_count=3
+[kvmem-cont] trim: main_tokens=169 committed=169 page_count=3
+[kvmem-cont] trim: main_tokens=173 committed=173 page_count=3
+[kvmem-cont] trim: main_tokens=181 committed=181 page_count=3
+[kvmem-cont] trim: main_tokens=189 committed=189 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=197 committed=197 page_count=4
+[kvmem-cont] trim: main_tokens=204 committed=204 page_count=4
+[kvmem-cont] trim: main_tokens=212 committed=212 page_count=4
+[kvmem-cont] trim: main_tokens=215 committed=215 page_count=4
+[kvmem-cont] trim: main_tokens=220 committed=220 page_count=4
+[kvmem-cont] trim: main_tokens=227 committed=227 page_count=4
+[kvmem-cont] trim: main_tokens=228 committed=228 page_count=4
+[kvmem-cont] trim: main_tokens=234 committed=234 page_count=4
+[kvmem-cont] trim: main_tokens=241 committed=241 page_count=4
+[kvmem-cont] trim: main_tokens=249 committed=249 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=257 committed=257 page_count=5
+[kvmem-cont] trim: main_tokens=263 committed=263 page_count=5
+[kvmem-cont] trim: main_tokens=271 committed=271 page_count=5
+[kvmem-cont] trim: main_tokens=279 committed=279 page_count=5
+[kvmem-cont] trim: main_tokens=281 committed=281 page_count=5
+[kvmem-cont] trim: main_tokens=285 committed=285 page_count=5
+[kvmem-cont] trim: main_tokens=289 committed=289 page_count=5
+[kvmem-cont] trim: main_tokens=297 committed=297 page_count=5
+[kvmem-cont] trim: main_tokens=304 committed=304 page_count=5
+[kvmem-cont] trim: main_tokens=312 committed=312 page_count=5
+[kvmem-cont] trim: main_tokens=317 committed=317 page_count=5
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=325 committed=325 page_count=6
+[kvmem-cont] trim: main_tokens=329 committed=329 page_count=6
+2026-09-28 14:08:19.350  INFO  throughput | 5.0s | prefill 10.6 tok/s (53 tok) | decode 91.5 tok/s (458 tok) | running 1 (decode-ready 1) | batch 1.00 | host 2.6% (130 ms)
+[kvmem-cont] trim: main_tokens=337 committed=337 page_count=6
+[kvmem-cont] trim: main_tokens=340 committed=340 page_count=6
+[kvmem-cont] trim: main_tokens=348 committed=348 page_count=6
+[kvmem-cont] trim: main_tokens=356 committed=356 page_count=6
+[kvmem-cont] trim: main_tokens=364 committed=364 page_count=6
+[kvmem-cont] trim: main_tokens=368 committed=368 page_count=6
+[kvmem-cont] trim: main_tokens=372 committed=372 page_count=6
+[kvmem-cont] trim: main_tokens=376 committed=376 page_count=6
+[kvmem-cont] trim: main_tokens=379 committed=379 page_count=6
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=387 committed=387 page_count=7
+[kvmem-cont] trim: main_tokens=390 committed=390 page_count=7
+[kvmem-cont] trim: main_tokens=398 committed=398 page_count=7
+[kvmem-cont] trim: main_tokens=406 committed=406 page_count=7
+[kvmem-cont] trim: main_tokens=412 committed=412 page_count=7
+[kvmem-cont] trim: main_tokens=416 committed=416 page_count=7
+[kvmem-cont] trim: main_tokens=424 committed=424 page_count=7
+[kvmem-cont] trim: main_tokens=430 committed=430 page_count=7
+[kvmem-cont] trim: main_tokens=438 committed=438 page_count=7
+[kvmem-cont] trim: main_tokens=439 committed=439 page_count=7
+[kvmem-cont] trim: main_tokens=447 committed=447 page_count=7
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=455 committed=455 page_count=8
+[kvmem-cont] trim: main_tokens=457 committed=457 page_count=8
+[kvmem-cont] trim: main_tokens=459 committed=459 page_count=8
+[kvmem-cont] trim: main_tokens=465 committed=465 page_count=8
+[kvmem-cont] trim: main_tokens=470 committed=470 page_count=8
+[kvmem-cont] trim: main_tokens=476 committed=476 page_count=8
+[kvmem-cont] trim: main_tokens=479 committed=479 page_count=8
+[kvmem-cont] trim: main_tokens=484 committed=484 page_count=8
+[kvmem-cont] trim: main_tokens=487 committed=487 page_count=8
+[kvmem-cont] trim: main_tokens=492 committed=492 page_count=8
+[kvmem-cont] trim: main_tokens=496 committed=496 page_count=8
+[kvmem-cont] trim: main_tokens=499 committed=499 page_count=8
+[kvmem-cont] trim: main_tokens=507 committed=507 page_count=8
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=514 committed=514 page_count=9
+[kvmem-cont] trim: main_tokens=522 committed=522 page_count=9
+[kvmem-cont] trim: main_tokens=530 committed=530 page_count=9
+[kvmem-cont] trim: main_tokens=533 committed=533 page_count=9
+[kvmem-cont] trim: main_tokens=536 committed=536 page_count=9
+[kvmem-cont] trim: main_tokens=544 committed=544 page_count=9
+[kvmem-cont] trim: main_tokens=547 committed=547 page_count=9
+[kvmem-cont] trim: main_tokens=555 committed=555 page_count=9
+[kvmem-cont] trim: main_tokens=563 committed=563 page_count=9
+[kvmem-cont] trim: main_tokens=571 committed=571 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=579 committed=579 page_count=10
+[kvmem-cont] trim: main_tokens=587 committed=587 page_count=10
+[kvmem-cont] trim: main_tokens=595 committed=595 page_count=10
+[kvmem-cont] trim: main_tokens=602 committed=602 page_count=10
+[kvmem-cont] trim: main_tokens=607 committed=607 page_count=10
+[kvmem-cont] trim: main_tokens=611 committed=611 page_count=10
+[kvmem-cont] trim: main_tokens=617 committed=617 page_count=10
+[kvmem-cont] trim: main_tokens=623 committed=623 page_count=10
+[kvmem-cont] trim: main_tokens=629 committed=629 page_count=10
+[kvmem-cont] trim: main_tokens=637 committed=637 page_count=10
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=645 committed=645 page_count=11
+[kvmem-cont] trim: main_tokens=647 committed=647 page_count=11
+[kvmem-cont] trim: main_tokens=651 committed=651 page_count=11
+[kvmem-cont] trim: main_tokens=659 committed=659 page_count=11
+[kvmem-cont] trim: main_tokens=667 committed=667 page_count=11
+[kvmem-cont] trim: main_tokens=672 committed=672 page_count=11
+[kvmem-cont] trim: main_tokens=680 committed=680 page_count=11
+[kvmem-cont] trim: main_tokens=681 committed=681 page_count=11
+[kvmem-cont] trim: main_tokens=682 committed=682 page_count=11
+[kvmem-cont] trim: main_tokens=688 committed=688 page_count=11
+[kvmem-cont] trim: main_tokens=694 committed=694 page_count=11
+[kvmem-cont] trim: main_tokens=695 committed=695 page_count=11
+[kvmem-cont] trim: main_tokens=699 committed=699 page_count=11
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=705 committed=705 page_count=12
+[kvmem-cont] trim: main_tokens=712 committed=712 page_count=12
+[kvmem-cont] trim: main_tokens=714 committed=714 page_count=12
+[kvmem-cont] trim: main_tokens=721 committed=721 page_count=12
+[kvmem-cont] trim: main_tokens=722 committed=722 page_count=12
+[kvmem-cont] trim: main_tokens=729 committed=729 page_count=12
+[kvmem-cont] trim: main_tokens=730 committed=730 page_count=12
+[kvmem-cont] trim: main_tokens=731 committed=731 page_count=12
+[kvmem-cont] trim: main_tokens=736 committed=736 page_count=12
+[kvmem-cont] trim: main_tokens=743 committed=743 page_count=12
+[kvmem-cont] trim: main_tokens=746 committed=746 page_count=12
+[kvmem-cont] trim: main_tokens=749 committed=749 page_count=12
+[kvmem-cont] trim: main_tokens=757 committed=757 page_count=12
+[kvmem-cont] trim: main_tokens=761 committed=761 page_count=12
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=763 committed=763 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=764 committed=764 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=772 committed=772 page_count=13
+[kvmem-cont] trim: main_tokens=778 committed=778 page_count=13
+[kvmem-cont] trim: main_tokens=786 committed=786 page_count=13
+[kvmem-cont] trim: main_tokens=790 committed=790 page_count=13
+[kvmem-cont] trim: main_tokens=795 committed=795 page_count=13
+[kvmem-cont] trim: main_tokens=796 committed=796 page_count=13
+[kvmem-cont] trim: main_tokens=799 committed=799 page_count=13
+[kvmem-cont] trim: main_tokens=806 committed=806 page_count=13
+[kvmem-cont] trim: main_tokens=812 committed=812 page_count=13
+[kvmem-cont] trim: main_tokens=816 committed=816 page_count=13
+[kvmem-cont] trim: main_tokens=817 committed=817 page_count=13
+[kvmem-cont] trim: main_tokens=825 committed=825 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=829 committed=829 page_count=14
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=834 committed=834 page_count=14
+[kvmem-cont] trim: main_tokens=841 committed=841 page_count=14
+[kvmem-cont] trim: main_tokens=842 committed=842 page_count=14
+[kvmem-cont] trim: main_tokens=844 committed=844 page_count=14
+[kvmem-cont] trim: main_tokens=847 committed=847 page_count=14
+[kvmem-cont] trim: main_tokens=855 committed=855 page_count=14
+[kvmem-cont] trim: main_tokens=858 committed=858 page_count=14
+[kvmem-cont] trim: main_tokens=861 committed=861 page_count=14
+[kvmem-cont] trim: main_tokens=867 committed=867 page_count=14
+[kvmem-cont] trim: main_tokens=875 committed=875 page_count=14
+[kvmem-cont] trim: main_tokens=879 committed=879 page_count=14
+[kvmem-cont] trim: main_tokens=887 committed=887 page_count=14
+[kvmem-cont] trim: main_tokens=891 committed=891 page_count=14
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=894 committed=894 page_count=15
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=898 committed=898 page_count=15
+[kvmem-cont] trim: main_tokens=904 committed=904 page_count=15
+[kvmem-cont] trim: main_tokens=908 committed=908 page_count=15
+[kvmem-cont] trim: main_tokens=909 committed=909 page_count=15
+[kvmem-cont] trim: main_tokens=910 committed=910 page_count=15
+[kvmem-cont] trim: main_tokens=916 committed=916 page_count=15
+[kvmem-cont] trim: main_tokens=919 committed=919 page_count=15
+[kvmem-cont] trim: main_tokens=922 committed=922 page_count=15
+[kvmem-cont] trim: main_tokens=927 committed=927 page_count=15
+[kvmem-cont] trim: main_tokens=929 committed=929 page_count=15
+[kvmem-cont] trim: main_tokens=930 committed=930 page_count=15
+[kvmem-cont] trim: main_tokens=932 committed=932 page_count=15
+[kvmem-cont] trim: main_tokens=935 committed=935 page_count=15
+[kvmem-cont] trim: main_tokens=937 committed=937 page_count=15
+[kvmem-cont] trim: main_tokens=939 committed=939 page_count=15
+[kvmem-cont] trim: main_tokens=940 committed=940 page_count=15
+[kvmem-cont] trim: main_tokens=942 committed=942 page_count=15
+[kvmem-cont] trim: main_tokens=944 committed=944 page_count=15
+[kvmem-cont] trim: main_tokens=945 committed=945 page_count=15
+[kvmem-cont] trim: main_tokens=947 committed=947 page_count=15
+[kvmem-cont] trim: main_tokens=953 committed=953 page_count=15
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=955 committed=955 page_count=16
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=957 committed=957 page_count=16
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=959 committed=959 page_count=16
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=960 committed=960 page_count=16
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=961 committed=961 page_count=16
+[kvmem-cont] trim: main_tokens=969 committed=969 page_count=16
+[kvmem-cont] trim: main_tokens=973 committed=973 page_count=16
+[kvmem-cont] trim: main_tokens=981 committed=981 page_count=16
+[kvmem-cont] trim: main_tokens=988 committed=988 page_count=16
+[kvmem-cont] trim: main_tokens=992 committed=992 page_count=16
+[kvmem-cont] trim: main_tokens=1000 committed=1000 page_count=16
+[kvmem-cont] trim: main_tokens=1008 committed=1008 page_count=16
+[kvmem-cont] trim: main_tokens=1016 committed=1016 page_count=16
+[kvmem-cont] trim: main_tokens=1020 committed=1020 page_count=16
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1024 committed=1024 page_count=17
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1028 committed=1028 page_count=17
+[kvmem-cont] trim: main_tokens=1036 committed=1036 page_count=17
+2026-09-28 14:08:24.342  INFO  throughput | 5.0s | decode 141.6 tok/s (707 tok) | running 1 (decode-ready 1) | batch 1.00 | host 1.1% (55.2 ms)
+[kvmem-cont] trim: main_tokens=1039 committed=1039 page_count=17
+[kvmem-cont] trim: main_tokens=1040 committed=1040 page_count=17
+[kvmem-cont] trim: main_tokens=1042 committed=1042 page_count=17
+[kvmem-cont] trim: main_tokens=1044 committed=1044 page_count=17
+[kvmem-cont] trim: main_tokens=1052 committed=1052 page_count=17
+[kvmem-cont] trim: main_tokens=1053 committed=1053 page_count=17
+[kvmem-cont] trim: main_tokens=1061 committed=1061 page_count=17
+[kvmem-cont] trim: main_tokens=1069 committed=1069 page_count=17
+[kvmem-cont] trim: main_tokens=1073 committed=1073 page_count=17
+[kvmem-cont] trim: main_tokens=1081 committed=1081 page_count=17
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1089 committed=1089 page_count=18
+[kvmem-cont] trim: main_tokens=1097 committed=1097 page_count=18
+[kvmem-cont] trim: main_tokens=1099 committed=1099 page_count=18
+[kvmem-cont] trim: main_tokens=1107 committed=1107 page_count=18
+[kvmem-cont] trim: main_tokens=1115 committed=1115 page_count=18
+[kvmem-cont] trim: main_tokens=1123 committed=1123 page_count=18
+[kvmem-cont] trim: main_tokens=1131 committed=1131 page_count=18
+[kvmem-cont] trim: main_tokens=1139 committed=1139 page_count=18
+[kvmem-cont] trim: main_tokens=1144 committed=1144 page_count=18
+[kvmem-cont] trim: main_tokens=1152 committed=1152 page_count=18
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1160 committed=1160 page_count=19
+[kvmem-cont] trim: main_tokens=1168 committed=1168 page_count=19
+[kvmem-cont] trim: main_tokens=1176 committed=1176 page_count=19
+[kvmem-cont] trim: main_tokens=1184 committed=1184 page_count=19
+[kvmem-cont] trim: main_tokens=1185 committed=1185 page_count=19
+[kvmem-cont] trim: main_tokens=1193 committed=1193 page_count=19
+[kvmem-cont] trim: main_tokens=1198 committed=1198 page_count=19
+[kvmem-cont] trim: main_tokens=1203 committed=1203 page_count=19
+[kvmem-cont] trim: main_tokens=1211 committed=1211 page_count=19
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1219 committed=1219 page_count=20
+[kvmem-cont] trim: main_tokens=1227 committed=1227 page_count=20
+[kvmem-cont] trim: main_tokens=1235 committed=1235 page_count=20
+[kvmem-cont] trim: main_tokens=1243 committed=1243 page_count=20
+[kvmem-cont] trim: main_tokens=1251 committed=1251 page_count=20
+[kvmem-cont] trim: main_tokens=1259 committed=1259 page_count=20
+[kvmem-cont] trim: main_tokens=1267 committed=1267 page_count=20
+[kvmem-cont] trim: main_tokens=1275 committed=1275 page_count=20
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1280 committed=1280 page_count=21
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1288 committed=1288 page_count=21
+[kvmem-cont] trim: main_tokens=1296 committed=1296 page_count=21
+[kvmem-cont] trim: main_tokens=1304 committed=1304 page_count=21
+[kvmem-cont] trim: main_tokens=1312 committed=1312 page_count=21
+[kvmem-cont] trim: main_tokens=1320 committed=1320 page_count=21
+[kvmem-cont] trim: main_tokens=1324 committed=1324 page_count=21
+[kvmem-cont] trim: main_tokens=1331 committed=1331 page_count=21
+[kvmem-cont] trim: main_tokens=1335 committed=1335 page_count=21
+[kvmem-cont] trim: main_tokens=1339 committed=1339 page_count=21
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1347 committed=1347 page_count=22
+[kvmem-cont] trim: main_tokens=1355 committed=1355 page_count=22
+[kvmem-cont] trim: main_tokens=1363 committed=1363 page_count=22
+[kvmem-cont] trim: main_tokens=1371 committed=1371 page_count=22
+[kvmem-cont] trim: main_tokens=1378 committed=1378 page_count=22
+[kvmem-cont] trim: main_tokens=1384 committed=1384 page_count=22
+[kvmem-cont] trim: main_tokens=1391 committed=1391 page_count=22
+[kvmem-cont] trim: main_tokens=1395 committed=1395 page_count=22
+[kvmem-cont] trim: main_tokens=1397 committed=1397 page_count=22
+[kvmem-cont] trim: main_tokens=1404 committed=1404 page_count=22
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1412 committed=1412 page_count=23
+[kvmem-cont] trim: main_tokens=1415 committed=1415 page_count=23
+[kvmem-cont] trim: main_tokens=1423 committed=1423 page_count=23
+[kvmem-cont] trim: main_tokens=1431 committed=1431 page_count=23
+[kvmem-cont] trim: main_tokens=1439 committed=1439 page_count=23
+[kvmem-cont] trim: main_tokens=1446 committed=1446 page_count=23
+[kvmem-cont] trim: main_tokens=1454 committed=1454 page_count=23
+[kvmem-cont] trim: main_tokens=1456 committed=1456 page_count=23
+[kvmem-cont] trim: main_tokens=1458 committed=1458 page_count=23
+[kvmem-cont] trim: main_tokens=1463 committed=1463 page_count=23
+[kvmem-cont] trim: main_tokens=1465 committed=1465 page_count=23
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1467 committed=1467 page_count=24
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1473 committed=1473 page_count=24
+[kvmem-cont] trim: main_tokens=1480 committed=1480 page_count=24
+[kvmem-cont] trim: main_tokens=1481 committed=1481 page_count=24
+[kvmem-cont] trim: main_tokens=1489 committed=1489 page_count=24
+[kvmem-cont] trim: main_tokens=1494 committed=1494 page_count=24
+[kvmem-cont] trim: main_tokens=1497 committed=1497 page_count=24
+[kvmem-cont] trim: main_tokens=1500 committed=1500 page_count=24
+[kvmem-cont] trim: main_tokens=1503 committed=1503 page_count=24
+[kvmem-cont] trim: main_tokens=1509 committed=1509 page_count=24
+[kvmem-cont] trim: main_tokens=1511 committed=1511 page_count=24
+[kvmem-cont] trim: main_tokens=1513 committed=1513 page_count=24
+[kvmem-cont] trim: main_tokens=1519 committed=1519 page_count=24
+[kvmem-cont] trim: main_tokens=1527 committed=1527 page_count=24
+[kvmem-cont] trim: main_tokens=1535 committed=1535 page_count=24
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1543 committed=1543 page_count=25
+[kvmem-cont] trim: main_tokens=1549 committed=1549 page_count=25
+[kvmem-cont] trim: main_tokens=1550 committed=1550 page_count=25
+[kvmem-cont] trim: main_tokens=1558 committed=1558 page_count=25
+[kvmem-cont] trim: main_tokens=1562 committed=1562 page_count=25
+[kvmem-cont] trim: main_tokens=1570 committed=1570 page_count=25
+[kvmem-cont] trim: main_tokens=1578 committed=1578 page_count=25
+[kvmem-cont] trim: main_tokens=1579 committed=1579 page_count=25
+[kvmem-cont] trim: main_tokens=1587 committed=1587 page_count=25
+[kvmem-cont] trim: main_tokens=1591 committed=1591 page_count=25
+[kvmem-cont] trim: main_tokens=1599 committed=1599 page_count=25
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1604 committed=1604 page_count=26
+[kvmem-cont] trim: main_tokens=1611 committed=1611 page_count=26
+[kvmem-cont] trim: main_tokens=1618 committed=1618 page_count=26
+[kvmem-cont] trim: main_tokens=1622 committed=1622 page_count=26
+[kvmem-cont] trim: main_tokens=1626 committed=1626 page_count=26
+[kvmem-cont] trim: main_tokens=1630 committed=1630 page_count=26
+[kvmem-cont] trim: main_tokens=1638 committed=1638 page_count=26
+[kvmem-cont] trim: main_tokens=1646 committed=1646 page_count=26
+[kvmem-cont] trim: main_tokens=1647 committed=1647 page_count=26
+[kvmem-cont] trim: main_tokens=1655 committed=1655 page_count=26
+[kvmem-cont] trim: main_tokens=1656 committed=1656 page_count=26
+[kvmem-cont] trim: main_tokens=1660 committed=1660 page_count=26
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1667 committed=1667 page_count=27
+[kvmem-cont] trim: main_tokens=1675 committed=1675 page_count=27
+[kvmem-cont] trim: main_tokens=1683 committed=1683 page_count=27
+[kvmem-cont] trim: main_tokens=1684 committed=1684 page_count=27
+[kvmem-cont] trim: main_tokens=1692 committed=1692 page_count=27
+[kvmem-cont] trim: main_tokens=1700 committed=1700 page_count=27
+[kvmem-cont] trim: main_tokens=1708 committed=1708 page_count=27
+[kvmem-cont] trim: main_tokens=1716 committed=1716 page_count=27
+[kvmem-cont] trim: main_tokens=1720 committed=1720 page_count=27
+[kvmem-cont] trim: main_tokens=1725 committed=1725 page_count=27
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1733 committed=1733 page_count=28
+[kvmem-cont] trim: main_tokens=1739 committed=1739 page_count=28
+[kvmem-cont] trim: main_tokens=1745 committed=1745 page_count=28
+[kvmem-cont] trim: main_tokens=1753 committed=1753 page_count=28
+[kvmem-cont] trim: main_tokens=1759 committed=1759 page_count=28
+[kvmem-cont] trim: main_tokens=1766 committed=1766 page_count=28
+[kvmem-cont] trim: main_tokens=1774 committed=1774 page_count=28
+[kvmem-cont] trim: main_tokens=1782 committed=1782 page_count=28
+[kvmem-cont] trim: main_tokens=1790 committed=1790 page_count=28
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1798 committed=1798 page_count=29
+[kvmem-cont] trim: main_tokens=1806 committed=1806 page_count=29
+[kvmem-cont] trim: main_tokens=1814 committed=1814 page_count=29
+[kvmem-cont] trim: main_tokens=1820 committed=1820 page_count=29
+[kvmem-cont] trim: main_tokens=1822 committed=1822 page_count=29
+[kvmem-cont] trim: main_tokens=1828 committed=1828 page_count=29
+[kvmem-cont] trim: main_tokens=1832 committed=1832 page_count=29
+[kvmem-cont] trim: main_tokens=1835 committed=1835 page_count=29
+[kvmem-cont] trim: main_tokens=1842 committed=1842 page_count=29
+[kvmem-cont] trim: main_tokens=1844 committed=1844 page_count=29
+[kvmem-cont] trim: main_tokens=1852 committed=1852 page_count=29
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1860 committed=1860 page_count=30
+[kvmem-cont] trim: main_tokens=1864 committed=1864 page_count=30
+[kvmem-cont] trim: main_tokens=1870 committed=1870 page_count=30
+[kvmem-cont] trim: main_tokens=1871 committed=1871 page_count=30
+[kvmem-cont] trim: main_tokens=1872 committed=1872 page_count=30
+[kvmem-cont] trim: main_tokens=1878 committed=1878 page_count=30
+[kvmem-cont] trim: main_tokens=1880 committed=1880 page_count=30
+[kvmem-cont] trim: main_tokens=1882 committed=1882 page_count=30
+[kvmem-cont] trim: main_tokens=1885 committed=1885 page_count=30
+2026-09-28 14:08:29.341  INFO  throughput | 5.0s | decode 169.8 tok/s (849 tok) | running 1 (decode-ready 1) | batch 1.00 | host 1.1% (57.1 ms)
+[kvmem-cont] trim: main_tokens=1891 committed=1891 page_count=30
+[kvmem-cont] trim: main_tokens=1892 committed=1892 page_count=30
+[kvmem-cont] trim: main_tokens=1895 committed=1895 page_count=30
+[kvmem-cont] trim: main_tokens=1897 committed=1897 page_count=30
+[kvmem-cont] trim: main_tokens=1900 committed=1900 page_count=30
+[kvmem-cont] trim: main_tokens=1908 committed=1908 page_count=30
+[kvmem-cont] trim: main_tokens=1916 committed=1916 page_count=30
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1923 committed=1923 page_count=31
+[kvmem-cont] trim: main_tokens=1931 committed=1931 page_count=31
+[kvmem-cont] trim: main_tokens=1937 committed=1937 page_count=31
+[kvmem-cont] trim: main_tokens=1939 committed=1939 page_count=31
+[kvmem-cont] trim: main_tokens=1940 committed=1940 page_count=31
+[kvmem-cont] trim: main_tokens=1942 committed=1942 page_count=31
+[kvmem-cont] trim: main_tokens=1944 committed=1944 page_count=31
+[kvmem-cont] trim: main_tokens=1949 committed=1949 page_count=31
+[kvmem-cont] trim: main_tokens=1955 committed=1955 page_count=31
+[kvmem-cont] trim: main_tokens=1956 committed=1956 page_count=31
+[kvmem-cont] trim: main_tokens=1964 committed=1964 page_count=31
+[kvmem-cont] trim: main_tokens=1972 committed=1972 page_count=31
+[kvmem-cont] trim: main_tokens=1980 committed=1980 page_count=31
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1988 committed=1988 page_count=32
+[kvmem-cont] trim: main_tokens=1996 committed=1996 page_count=32
+[kvmem-cont] trim: main_tokens=2003 committed=2003 page_count=32
+[kvmem-cont] trim: main_tokens=2008 committed=2008 page_count=32
+[kvmem-cont] trim: main_tokens=2016 committed=2016 page_count=32
+[kvmem-cont] trim: main_tokens=2024 committed=2024 page_count=32
+[kvmem-cont] trim: main_tokens=2032 committed=2032 page_count=32
+[kvmem-cont] trim: main_tokens=2040 committed=2040 page_count=32
+[kvmem-cont] trim: main_tokens=2048 committed=2048 page_count=32
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2052 committed=2052 page_count=33
+[kvmem-cont] trim: main_tokens=2054 committed=2054 page_count=33
+[kvmem-cont] trim: main_tokens=2056 committed=2056 page_count=33
+[kvmem-cont] trim: main_tokens=2057 committed=2057 page_count=33
+[kvmem-cont] trim: main_tokens=2065 committed=2065 page_count=33
+[kvmem-cont] trim: main_tokens=2073 committed=2073 page_count=33
+[kvmem-cont] trim: main_tokens=2081 committed=2081 page_count=33
+[kvmem-cont] trim: main_tokens=2089 committed=2089 page_count=33
+[kvmem-cont] trim: main_tokens=2096 committed=2096 page_count=33
+[kvmem-cont] trim: main_tokens=2104 committed=2104 page_count=33
+[kvmem-cont] trim: main_tokens=2112 committed=2112 page_count=33
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2120 committed=2120 page_count=34
+[kvmem-cont] trim: main_tokens=2124 committed=2124 page_count=34
+[kvmem-cont] trim: main_tokens=2128 committed=2128 page_count=34
+[kvmem-cont] trim: main_tokens=2130 committed=2130 page_count=34
+[kvmem-cont] trim: main_tokens=2131 committed=2131 page_count=34
+[kvmem-cont] trim: main_tokens=2136 committed=2136 page_count=34
+[kvmem-cont] trim: main_tokens=2143 committed=2143 page_count=34
+[kvmem-cont] trim: main_tokens=2148 committed=2148 page_count=34
+[kvmem-cont] trim: main_tokens=2155 committed=2155 page_count=34
+[kvmem-cont] trim: main_tokens=2157 committed=2157 page_count=34
+[kvmem-cont] trim: main_tokens=2160 committed=2160 page_count=34
+[kvmem-cont] trim: main_tokens=2166 committed=2166 page_count=34
+[kvmem-cont] trim: main_tokens=2171 committed=2171 page_count=34
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2172 committed=2172 page_count=35
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2178 committed=2178 page_count=35
+[kvmem-cont] trim: main_tokens=2179 committed=2179 page_count=35
+[kvmem-cont] trim: main_tokens=2185 committed=2185 page_count=35
+[kvmem-cont] trim: main_tokens=2191 committed=2191 page_count=35
+[kvmem-cont] trim: main_tokens=2199 committed=2199 page_count=35
+[kvmem-cont] trim: main_tokens=2207 committed=2207 page_count=35
+[kvmem-cont] trim: main_tokens=2213 committed=2213 page_count=35
+[kvmem-cont] trim: main_tokens=2221 committed=2221 page_count=35
+[kvmem-cont] trim: main_tokens=2224 committed=2224 page_count=35
+[kvmem-cont] trim: main_tokens=2232 committed=2232 page_count=35
+[kvmem-cont] trim: main_tokens=2238 committed=2238 page_count=35
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2246 committed=2246 page_count=36
+[kvmem-cont] trim: main_tokens=2254 committed=2254 page_count=36
+[kvmem-cont] trim: main_tokens=2257 committed=2257 page_count=36
+[kvmem-cont] trim: main_tokens=2261 committed=2261 page_count=36
+[kvmem-cont] trim: main_tokens=2263 committed=2263 page_count=36
+[kvmem-cont] trim: main_tokens=2266 committed=2266 page_count=36
+[kvmem-cont] trim: main_tokens=2274 committed=2274 page_count=36
+[kvmem-cont] trim: main_tokens=2278 committed=2278 page_count=36
+[kvmem-cont] trim: main_tokens=2286 committed=2286 page_count=36
+[kvmem-cont] trim: main_tokens=2294 committed=2294 page_count=36
+[kvmem-cont] trim: main_tokens=2302 committed=2302 page_count=36
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2310 committed=2310 page_count=37
+[kvmem-cont] trim: main_tokens=2318 committed=2318 page_count=37
+[kvmem-cont] trim: main_tokens=2326 committed=2326 page_count=37
+[kvmem-cont] trim: main_tokens=2332 committed=2332 page_count=37
+[kvmem-cont] trim: main_tokens=2340 committed=2340 page_count=37
+[kvmem-cont] trim: main_tokens=2346 committed=2346 page_count=37
+[kvmem-cont] trim: main_tokens=2350 committed=2350 page_count=37
+[kvmem-cont] trim: main_tokens=2351 committed=2351 page_count=37
+[kvmem-cont] trim: main_tokens=2355 committed=2355 page_count=37
+[kvmem-cont] trim: main_tokens=2363 committed=2363 page_count=37
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2365 committed=2365 page_count=38
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2367 committed=2367 page_count=38
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2375 committed=2375 page_count=38
+[kvmem-cont] trim: main_tokens=2380 committed=2380 page_count=38
+[kvmem-cont] trim: main_tokens=2388 committed=2388 page_count=38
+[kvmem-cont] trim: main_tokens=2393 committed=2393 page_count=38
+[kvmem-cont] trim: main_tokens=2401 committed=2401 page_count=38
+[kvmem-cont] trim: main_tokens=2402 committed=2402 page_count=38
+[kvmem-cont] trim: main_tokens=2410 committed=2410 page_count=38
+[kvmem-cont] trim: main_tokens=2415 committed=2415 page_count=38
+[kvmem-cont] trim: main_tokens=2423 committed=2423 page_count=38
+[kvmem-cont] trim: main_tokens=2431 committed=2431 page_count=38
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2439 committed=2439 page_count=39
+[kvmem-cont] trim: main_tokens=2447 committed=2447 page_count=39
+[kvmem-cont] trim: main_tokens=2454 committed=2454 page_count=39
+[kvmem-cont] trim: main_tokens=2462 committed=2462 page_count=39
+[kvmem-cont] trim: main_tokens=2470 committed=2470 page_count=39
+[kvmem-cont] trim: main_tokens=2477 committed=2477 page_count=39
+[kvmem-cont] trim: main_tokens=2485 committed=2485 page_count=39
+[kvmem-cont] trim: main_tokens=2493 committed=2493 page_count=39
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2500 committed=2500 page_count=40
+[kvmem-cont] trim: main_tokens=2502 committed=2502 page_count=40
+[kvmem-cont] trim: main_tokens=2504 committed=2504 page_count=40
+[kvmem-cont] trim: main_tokens=2505 committed=2505 page_count=40
+[kvmem-cont] trim: main_tokens=2513 committed=2513 page_count=40
+[kvmem-cont] trim: main_tokens=2516 committed=2516 page_count=40
+[kvmem-cont] trim: main_tokens=2519 committed=2519 page_count=40
+[kvmem-cont] trim: main_tokens=2527 committed=2527 page_count=40
+[kvmem-cont] trim: main_tokens=2535 committed=2535 page_count=40
+[kvmem-cont] trim: main_tokens=2541 committed=2541 page_count=40
+[kvmem-cont] trim: main_tokens=2549 committed=2549 page_count=40
+[kvmem-cont] trim: main_tokens=2553 committed=2553 page_count=40
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2561 committed=2561 page_count=41
+[kvmem-cont] trim: main_tokens=2569 committed=2569 page_count=41
+[kvmem-cont] trim: main_tokens=2572 committed=2572 page_count=41
+[kvmem-cont] trim: main_tokens=2580 committed=2580 page_count=41
+[kvmem-cont] trim: main_tokens=2584 committed=2584 page_count=41
+[kvmem-cont] trim: main_tokens=2592 committed=2592 page_count=41
+[kvmem-cont] trim: main_tokens=2600 committed=2600 page_count=41
+[kvmem-cont] trim: main_tokens=2608 committed=2608 page_count=41
+[kvmem-cont] trim: main_tokens=2609 committed=2609 page_count=41
+[kvmem-cont] trim: main_tokens=2610 committed=2610 page_count=41
+[kvmem-cont] trim: main_tokens=2614 committed=2614 page_count=41
+[kvmem-cont] trim: main_tokens=2618 committed=2618 page_count=41
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2626 committed=2626 page_count=42
+[kvmem-cont] trim: main_tokens=2630 committed=2630 page_count=42
+[kvmem-cont] trim: main_tokens=2637 committed=2637 page_count=42
+[kvmem-cont] trim: main_tokens=2643 committed=2643 page_count=42
+[kvmem-cont] trim: main_tokens=2651 committed=2651 page_count=42
+[kvmem-cont] trim: main_tokens=2659 committed=2659 page_count=42
+[kvmem-cont] trim: main_tokens=2667 committed=2667 page_count=42
+[kvmem-cont] trim: main_tokens=2669 committed=2669 page_count=42
+[kvmem-cont] trim: main_tokens=2674 committed=2674 page_count=42
+[kvmem-cont] trim: main_tokens=2682 committed=2682 page_count=42
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2690 committed=2690 page_count=43
+[kvmem-cont] trim: main_tokens=2698 committed=2698 page_count=43
+[kvmem-cont] trim: main_tokens=2702 committed=2702 page_count=43
+[kvmem-cont] trim: main_tokens=2705 committed=2705 page_count=43
+[kvmem-cont] trim: main_tokens=2713 committed=2713 page_count=43
+2026-09-28 14:08:34.349  INFO  throughput | 5.0s | decode 165.3 tok/s (828 tok) | running 1 (decode-ready 1) | batch 1.00 | host 1.3% (63.7 ms)
+[kvmem-cont] trim: main_tokens=2720 committed=2720 page_count=43
+[kvmem-cont] trim: main_tokens=2728 committed=2728 page_count=43
+[kvmem-cont] trim: main_tokens=2736 committed=2736 page_count=43
+[kvmem-cont] trim: main_tokens=2744 committed=2744 page_count=43
+[kvmem-cont] trim: main_tokens=2747 committed=2747 page_count=43
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2751 committed=2751 page_count=44
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2754 committed=2754 page_count=44
+[kvmem-cont] trim: main_tokens=2755 committed=2755 page_count=44
+[kvmem-cont] trim: main_tokens=2756 committed=2756 page_count=44
+[kvmem-cont] trim: main_tokens=2759 committed=2759 page_count=44
+[kvmem-cont] trim: main_tokens=2761 committed=2761 page_count=44
+[kvmem-cont] trim: main_tokens=2762 committed=2762 page_count=44
+[kvmem-cont] trim: main_tokens=2763 committed=2763 page_count=44
+[kvmem-cont] trim: main_tokens=2764 committed=2764 page_count=44
+[kvmem-cont] trim: main_tokens=2765 committed=2765 page_count=44
+[kvmem-cont] trim: main_tokens=2766 committed=2766 page_count=44
+[kvmem-cont] trim: main_tokens=2772 committed=2772 page_count=44
+[kvmem-cont] trim: main_tokens=2780 committed=2780 page_count=44
+[kvmem-cont] trim: main_tokens=2782 committed=2782 page_count=44
+[kvmem-cont] trim: main_tokens=2785 committed=2785 page_count=44
+[kvmem-cont] trim: main_tokens=2793 committed=2793 page_count=44
+[kvmem-cont] trim: main_tokens=2797 committed=2797 page_count=44
+[kvmem-cont] trim: main_tokens=2800 committed=2800 page_count=44
+[kvmem-cont] trim: main_tokens=2801 committed=2801 page_count=44
+[kvmem-cont] trim: main_tokens=2802 committed=2802 page_count=44
+[kvmem-cont] trim: main_tokens=2803 committed=2803 page_count=44
+[kvmem-cont] trim: main_tokens=2804 committed=2804 page_count=44
+[kvmem-cont] trim: main_tokens=2805 committed=2805 page_count=44
+[kvmem-cont] trim: main_tokens=2806 committed=2806 page_count=44
+[kvmem-cont] trim: main_tokens=2807 committed=2807 page_count=44
+[kvmem-cont] trim: main_tokens=2813 committed=2813 page_count=44
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2817 committed=2817 page_count=45
+[kvmem-cont] trim: main_tokens=2820 committed=2820 page_count=45
+[kvmem-cont] trim: main_tokens=2824 committed=2824 page_count=45
+[kvmem-cont] trim: main_tokens=2827 committed=2827 page_count=45
+[kvmem-cont] trim: main_tokens=2835 committed=2835 page_count=45
+[kvmem-cont] trim: main_tokens=2843 committed=2843 page_count=45
+[kvmem-cont] trim: main_tokens=2851 committed=2851 page_count=45
+[kvmem-cont] trim: main_tokens=2853 committed=2853 page_count=45
+[kvmem-cont] trim: main_tokens=2861 committed=2861 page_count=45
+[kvmem-cont] trim: main_tokens=2869 committed=2869 page_count=45
+[kvmem-cont] trim: main_tokens=2877 committed=2877 page_count=45
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2881 committed=2881 page_count=46
+[kvmem-cont] trim: main_tokens=2885 committed=2885 page_count=46
+[kvmem-cont] trim: main_tokens=2889 committed=2889 page_count=46
+[kvmem-cont] trim: main_tokens=2892 committed=2892 page_count=46
+[kvmem-cont] trim: main_tokens=2893 committed=2893 page_count=46
+2026-09-28 14:08:35.936  INFO  req#2 done | openai-chat | stop token | prompt 53 | output 2,841 | cache 0 (0.0%) | TTFT 184 ms | total 18.4s | queue 16.9 ms | prefill 380.1 tok/s | decode 157.3 tok/s | dflash2 accepted 2,309/3,717 (62.1%)
+2026-09-28 14:08:35.939  INFO  req#3 started | openai-chat non-stream | 1 message | max output 3,000 | thinking off
+[kvmem-cont] admission: compacting=0 base=19 prompt_tokens=26 ledger=837 exec_frontier=836 asm_frontier=0 text_kv_valid=19 asm_exec=0 ident=837
+[kvmem-cont] trim: main_tokens=19 committed=19 page_count=1
+[kvmem-cont] trim: main_tokens=19 committed=19 page_count=1
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=22 dropped=0 releasable=0 staged=0 free_after=463
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=26 dropped=0 releasable=0 staged=0 free_after=463
+[kvmem-cont] trim: main_tokens=26 committed=26 page_count=1
+[kvmem-cont] trim: main_tokens=27 committed=27 page_count=1
+[kvmem-cont] trim: main_tokens=28 committed=28 page_count=1
+[kvmem-cont] trim: main_tokens=29 committed=29 page_count=1
+[kvmem-cont] trim: main_tokens=30 committed=30 page_count=1
+[kvmem-cont] trim: main_tokens=31 committed=31 page_count=1
+[kvmem-cont] trim: main_tokens=32 committed=32 page_count=1
+[kvmem-cont] trim: main_tokens=33 committed=33 page_count=1
+[kvmem-cont] trim: main_tokens=40 committed=40 page_count=1
+[kvmem-cont] trim: main_tokens=42 committed=42 page_count=1
+[kvmem-cont] trim: main_tokens=46 committed=46 page_count=1
+[kvmem-cont] trim: main_tokens=48 committed=48 page_count=1
+[kvmem-cont] trim: main_tokens=49 committed=49 page_count=1
+[kvmem-cont] trim: main_tokens=52 committed=52 page_count=1
+[kvmem-cont] trim: main_tokens=53 committed=53 page_count=1
+[kvmem-cont] trim: main_tokens=54 committed=54 page_count=1
+[kvmem-cont] trim: main_tokens=55 committed=55 page_count=1
+[kvmem-cont] trim: main_tokens=56 committed=56 page_count=1
+[kvmem-cont] trim: main_tokens=57 committed=57 page_count=1
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=58 committed=58 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=60 committed=60 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=63 committed=63 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=65 committed=65 page_count=2
+[kvmem-cont] trim: main_tokens=66 committed=66 page_count=2
+[kvmem-cont] trim: main_tokens=68 committed=68 page_count=2
+[kvmem-cont] trim: main_tokens=72 committed=72 page_count=2
+[kvmem-cont] trim: main_tokens=74 committed=74 page_count=2
+[kvmem-cont] trim: main_tokens=75 committed=75 page_count=2
+[kvmem-cont] trim: main_tokens=79 committed=79 page_count=2
+[kvmem-cont] trim: main_tokens=81 committed=81 page_count=2
+[kvmem-cont] trim: main_tokens=83 committed=83 page_count=2
+[kvmem-cont] trim: main_tokens=84 committed=84 page_count=2
+[kvmem-cont] trim: main_tokens=87 committed=87 page_count=2
+[kvmem-cont] trim: main_tokens=94 committed=94 page_count=2
+[kvmem-cont] trim: main_tokens=99 committed=99 page_count=2
+[kvmem-cont] trim: main_tokens=102 committed=102 page_count=2
+[kvmem-cont] trim: main_tokens=103 committed=103 page_count=2
+[kvmem-cont] trim: main_tokens=104 committed=104 page_count=2
+[kvmem-cont] trim: main_tokens=105 committed=105 page_count=2
+[kvmem-cont] trim: main_tokens=107 committed=107 page_count=2
+[kvmem-cont] trim: main_tokens=110 committed=110 page_count=2
+[kvmem-cont] trim: main_tokens=111 committed=111 page_count=2
+[kvmem-cont] trim: main_tokens=113 committed=113 page_count=2
+[kvmem-cont] trim: main_tokens=115 committed=115 page_count=2
+[kvmem-cont] trim: main_tokens=116 committed=116 page_count=2
+[kvmem-cont] trim: main_tokens=119 committed=119 page_count=2
+[kvmem-cont] trim: main_tokens=120 committed=120 page_count=2
+[kvmem-cont] trim: main_tokens=121 committed=121 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=122 committed=122 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=123 committed=123 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=124 committed=124 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=125 committed=125 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=133 committed=133 page_count=3
+[kvmem-cont] trim: main_tokens=136 committed=136 page_count=3
+[kvmem-cont] trim: main_tokens=139 committed=139 page_count=3
+[kvmem-cont] trim: main_tokens=141 committed=141 page_count=3
+[kvmem-cont] trim: main_tokens=143 committed=143 page_count=3
+[kvmem-cont] trim: main_tokens=144 committed=144 page_count=3
+[kvmem-cont] trim: main_tokens=145 committed=145 page_count=3
+[kvmem-cont] trim: main_tokens=148 committed=148 page_count=3
+[kvmem-cont] trim: main_tokens=150 committed=150 page_count=3
+[kvmem-cont] trim: main_tokens=151 committed=151 page_count=3
+[kvmem-cont] trim: main_tokens=154 committed=154 page_count=3
+[kvmem-cont] trim: main_tokens=155 committed=155 page_count=3
+[kvmem-cont] trim: main_tokens=156 committed=156 page_count=3
+[kvmem-cont] trim: main_tokens=159 committed=159 page_count=3
+[kvmem-cont] trim: main_tokens=160 committed=160 page_count=3
+[kvmem-cont] trim: main_tokens=162 committed=162 page_count=3
+[kvmem-cont] trim: main_tokens=163 committed=163 page_count=3
+[kvmem-cont] trim: main_tokens=164 committed=164 page_count=3
+[kvmem-cont] trim: main_tokens=165 committed=165 page_count=3
+[kvmem-cont] trim: main_tokens=166 committed=166 page_count=3
+[kvmem-cont] trim: main_tokens=167 committed=167 page_count=3
+[kvmem-cont] trim: main_tokens=168 committed=168 page_count=3
+[kvmem-cont] trim: main_tokens=169 committed=169 page_count=3
+[kvmem-cont] trim: main_tokens=170 committed=170 page_count=3
+[kvmem-cont] trim: main_tokens=172 committed=172 page_count=3
+[kvmem-cont] trim: main_tokens=173 committed=173 page_count=3
+[kvmem-cont] trim: main_tokens=176 committed=176 page_count=3
+[kvmem-cont] trim: main_tokens=177 committed=177 page_count=3
+[kvmem-cont] trim: main_tokens=178 committed=178 page_count=3
+[kvmem-cont] trim: main_tokens=179 committed=179 page_count=3
+[kvmem-cont] trim: main_tokens=183 committed=183 page_count=3
+[kvmem-cont] trim: main_tokens=185 committed=185 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=186 committed=186 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=187 committed=187 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=188 committed=188 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=190 committed=190 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=193 committed=193 page_count=4
+[kvmem-cont] trim: main_tokens=196 committed=196 page_count=4
+[kvmem-cont] trim: main_tokens=199 committed=199 page_count=4
+[kvmem-cont] trim: main_tokens=200 committed=200 page_count=4
+[kvmem-cont] trim: main_tokens=203 committed=203 page_count=4
+[kvmem-cont] trim: main_tokens=204 committed=204 page_count=4
+[kvmem-cont] trim: main_tokens=206 committed=206 page_count=4
+[kvmem-cont] trim: main_tokens=207 committed=207 page_count=4
+[kvmem-cont] trim: main_tokens=208 committed=208 page_count=4
+[kvmem-cont] trim: main_tokens=211 committed=211 page_count=4
+[kvmem-cont] trim: main_tokens=212 committed=212 page_count=4
+2026-09-28 14:08:39.342  INFO  throughput | 5.0s | prefill 1.4 tok/s (7 tok) | decode 73.3 tok/s (366 tok) | running 1 (decode-ready 1) | batch 1.00 | host 1.9% (95.3 ms)
+[kvmem-cont] trim: main_tokens=215 committed=215 page_count=4
+[kvmem-cont] trim: main_tokens=222 committed=222 page_count=4
+[kvmem-cont] trim: main_tokens=228 committed=228 page_count=4
+[kvmem-cont] trim: main_tokens=236 committed=236 page_count=4
+[kvmem-cont] trim: main_tokens=244 committed=244 page_count=4
+[kvmem-cont] trim: main_tokens=252 committed=252 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=260 committed=260 page_count=5
+[kvmem-cont] trim: main_tokens=261 committed=261 page_count=5
+[kvmem-cont] trim: main_tokens=262 committed=262 page_count=5
+[kvmem-cont] trim: main_tokens=263 committed=263 page_count=5
+[kvmem-cont] trim: main_tokens=264 committed=264 page_count=5
+[kvmem-cont] trim: main_tokens=268 committed=268 page_count=5
+[kvmem-cont] trim: main_tokens=276 committed=276 page_count=5
+[kvmem-cont] trim: main_tokens=281 committed=281 page_count=5
+[kvmem-cont] trim: main_tokens=288 committed=288 page_count=5
+[kvmem-cont] trim: main_tokens=289 committed=289 page_count=5
+[kvmem-cont] trim: main_tokens=290 committed=290 page_count=5
+[kvmem-cont] trim: main_tokens=294 committed=294 page_count=5
+[kvmem-cont] trim: main_tokens=297 committed=297 page_count=5
+[kvmem-cont] trim: main_tokens=298 committed=298 page_count=5
+[kvmem-cont] trim: main_tokens=299 committed=299 page_count=5
+[kvmem-cont] trim: main_tokens=300 committed=300 page_count=5
+[kvmem-cont] trim: main_tokens=302 committed=302 page_count=5
+[kvmem-cont] trim: main_tokens=303 committed=303 page_count=5
+[kvmem-cont] trim: main_tokens=305 committed=305 page_count=5
+[kvmem-cont] trim: main_tokens=307 committed=307 page_count=5
+[kvmem-cont] trim: main_tokens=308 committed=308 page_count=5
+[kvmem-cont] trim: main_tokens=311 committed=311 page_count=5
+[kvmem-cont] trim: main_tokens=312 committed=312 page_count=5
+[kvmem-cont] trim: main_tokens=314 committed=314 page_count=5
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=315 committed=315 page_count=6
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=317 committed=317 page_count=6
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=319 committed=319 page_count=6
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=321 committed=321 page_count=6
+[kvmem-cont] trim: main_tokens=322 committed=322 page_count=6
+[kvmem-cont] trim: main_tokens=324 committed=324 page_count=6
+[kvmem-cont] trim: main_tokens=327 committed=327 page_count=6
+[kvmem-cont] trim: main_tokens=328 committed=328 page_count=6
+[kvmem-cont] trim: main_tokens=332 committed=332 page_count=6
+[kvmem-cont] trim: main_tokens=334 committed=334 page_count=6
+[kvmem-cont] trim: main_tokens=338 committed=338 page_count=6
+[kvmem-cont] trim: main_tokens=340 committed=340 page_count=6
+[kvmem-cont] trim: main_tokens=341 committed=341 page_count=6
+[kvmem-cont] trim: main_tokens=342 committed=342 page_count=6
+[kvmem-cont] trim: main_tokens=346 committed=346 page_count=6
+[kvmem-cont] trim: main_tokens=347 committed=347 page_count=6
+[kvmem-cont] trim: main_tokens=348 committed=348 page_count=6
+[kvmem-cont] trim: main_tokens=355 committed=355 page_count=6
+[kvmem-cont] trim: main_tokens=357 committed=357 page_count=6
+[kvmem-cont] trim: main_tokens=361 committed=361 page_count=6
+[kvmem-cont] trim: main_tokens=362 committed=362 page_count=6
+[kvmem-cont] trim: main_tokens=363 committed=363 page_count=6
+[kvmem-cont] trim: main_tokens=366 committed=366 page_count=6
+[kvmem-cont] trim: main_tokens=367 committed=367 page_count=6
+[kvmem-cont] trim: main_tokens=369 committed=369 page_count=6
+[kvmem-cont] trim: main_tokens=371 committed=371 page_count=6
+[kvmem-cont] trim: main_tokens=374 committed=374 page_count=6
+[kvmem-cont] trim: main_tokens=379 committed=379 page_count=6
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=380 committed=380 page_count=7
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=382 committed=382 page_count=7
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=383 committed=383 page_count=7
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=384 committed=384 page_count=7
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=385 committed=385 page_count=7
+[kvmem-cont] trim: main_tokens=386 committed=386 page_count=7
+[kvmem-cont] trim: main_tokens=387 committed=387 page_count=7
+[kvmem-cont] trim: main_tokens=388 committed=388 page_count=7
+[kvmem-cont] trim: main_tokens=389 committed=389 page_count=7
+[kvmem-cont] trim: main_tokens=391 committed=391 page_count=7
+[kvmem-cont] trim: main_tokens=393 committed=393 page_count=7
+[kvmem-cont] trim: main_tokens=394 committed=394 page_count=7
+[kvmem-cont] trim: main_tokens=395 committed=395 page_count=7
+[kvmem-cont] trim: main_tokens=396 committed=396 page_count=7
+[kvmem-cont] trim: main_tokens=397 committed=397 page_count=7
+[kvmem-cont] trim: main_tokens=398 committed=398 page_count=7
+[kvmem-cont] trim: main_tokens=399 committed=399 page_count=7
+[kvmem-cont] trim: main_tokens=400 committed=400 page_count=7
+[kvmem-cont] trim: main_tokens=401 committed=401 page_count=7
+[kvmem-cont] trim: main_tokens=402 committed=402 page_count=7
+[kvmem-cont] trim: main_tokens=403 committed=403 page_count=7
+[kvmem-cont] trim: main_tokens=405 committed=405 page_count=7
+[kvmem-cont] trim: main_tokens=406 committed=406 page_count=7
+[kvmem-cont] trim: main_tokens=408 committed=408 page_count=7
+[kvmem-cont] trim: main_tokens=414 committed=414 page_count=7
+[kvmem-cont] trim: main_tokens=415 committed=415 page_count=7
+[kvmem-cont] trim: main_tokens=420 committed=420 page_count=7
+[kvmem-cont] trim: main_tokens=421 committed=421 page_count=7
+[kvmem-cont] trim: main_tokens=422 committed=422 page_count=7
+[kvmem-cont] trim: main_tokens=424 committed=424 page_count=7
+[kvmem-cont] trim: main_tokens=426 committed=426 page_count=7
+[kvmem-cont] trim: main_tokens=428 committed=428 page_count=7
+[kvmem-cont] trim: main_tokens=429 committed=429 page_count=7
+[kvmem-cont] trim: main_tokens=430 committed=430 page_count=7
+[kvmem-cont] trim: main_tokens=431 committed=431 page_count=7
+[kvmem-cont] trim: main_tokens=432 committed=432 page_count=7
+[kvmem-cont] trim: main_tokens=433 committed=433 page_count=7
+[kvmem-cont] trim: main_tokens=436 committed=436 page_count=7
+[kvmem-cont] trim: main_tokens=438 committed=438 page_count=7
+[kvmem-cont] trim: main_tokens=439 committed=439 page_count=7
+[kvmem-cont] trim: main_tokens=441 committed=441 page_count=7
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=444 committed=444 page_count=8
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=447 committed=447 page_count=8
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=448 committed=448 page_count=8
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=450 committed=450 page_count=8
+[kvmem-cont] trim: main_tokens=453 committed=453 page_count=8
+[kvmem-cont] trim: main_tokens=454 committed=454 page_count=8
+[kvmem-cont] trim: main_tokens=455 committed=455 page_count=8
+[kvmem-cont] trim: main_tokens=456 committed=456 page_count=8
+[kvmem-cont] trim: main_tokens=457 committed=457 page_count=8
+[kvmem-cont] trim: main_tokens=458 committed=458 page_count=8
+[kvmem-cont] trim: main_tokens=459 committed=459 page_count=8
+[kvmem-cont] trim: main_tokens=460 committed=460 page_count=8
+[kvmem-cont] trim: main_tokens=461 committed=461 page_count=8
+[kvmem-cont] trim: main_tokens=464 committed=464 page_count=8
+[kvmem-cont] trim: main_tokens=470 committed=470 page_count=8
+[kvmem-cont] trim: main_tokens=472 committed=472 page_count=8
+[kvmem-cont] trim: main_tokens=476 committed=476 page_count=8
+[kvmem-cont] trim: main_tokens=477 committed=477 page_count=8
+[kvmem-cont] trim: main_tokens=478 committed=478 page_count=8
+[kvmem-cont] trim: main_tokens=479 committed=479 page_count=8
+[kvmem-cont] trim: main_tokens=481 committed=481 page_count=8
+[kvmem-cont] trim: main_tokens=482 committed=482 page_count=8
+[kvmem-cont] trim: main_tokens=483 committed=483 page_count=8
+[kvmem-cont] trim: main_tokens=484 committed=484 page_count=8
+[kvmem-cont] trim: main_tokens=486 committed=486 page_count=8
+[kvmem-cont] trim: main_tokens=488 committed=488 page_count=8
+[kvmem-cont] trim: main_tokens=489 committed=489 page_count=8
+[kvmem-cont] trim: main_tokens=490 committed=490 page_count=8
+[kvmem-cont] trim: main_tokens=491 committed=491 page_count=8
+[kvmem-cont] trim: main_tokens=492 committed=492 page_count=8
+[kvmem-cont] trim: main_tokens=494 committed=494 page_count=8
+[kvmem-cont] trim: main_tokens=496 committed=496 page_count=8
+[kvmem-cont] trim: main_tokens=499 committed=499 page_count=8
+[kvmem-cont] trim: main_tokens=507 committed=507 page_count=8
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=509 committed=509 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=513 committed=513 page_count=9
+[kvmem-cont] trim: main_tokens=514 committed=514 page_count=9
+[kvmem-cont] trim: main_tokens=518 committed=518 page_count=9
+[kvmem-cont] trim: main_tokens=519 committed=519 page_count=9
+[kvmem-cont] trim: main_tokens=521 committed=521 page_count=9
+[kvmem-cont] trim: main_tokens=525 committed=525 page_count=9
+[kvmem-cont] trim: main_tokens=526 committed=526 page_count=9
+[kvmem-cont] trim: main_tokens=527 committed=527 page_count=9
+[kvmem-cont] trim: main_tokens=528 committed=528 page_count=9
+[kvmem-cont] trim: main_tokens=530 committed=530 page_count=9
+[kvmem-cont] trim: main_tokens=531 committed=531 page_count=9
+[kvmem-cont] trim: main_tokens=532 committed=532 page_count=9
+[kvmem-cont] trim: main_tokens=533 committed=533 page_count=9
+[kvmem-cont] trim: main_tokens=536 committed=536 page_count=9
+2026-09-28 14:08:44.352  INFO  throughput | 5.0s | decode 64.7 tok/s (324 tok) | running 1 (decode-ready 1) | batch 1.00 | host 1.0% (49.8 ms)
+[kvmem-cont] trim: main_tokens=538 committed=538 page_count=9
+[kvmem-cont] trim: main_tokens=539 committed=539 page_count=9
+[kvmem-cont] trim: main_tokens=540 committed=540 page_count=9
+[kvmem-cont] trim: main_tokens=541 committed=541 page_count=9
+[kvmem-cont] trim: main_tokens=542 committed=542 page_count=9
+[kvmem-cont] trim: main_tokens=543 committed=543 page_count=9
+[kvmem-cont] trim: main_tokens=547 committed=547 page_count=9
+[kvmem-cont] trim: main_tokens=549 committed=549 page_count=9
+[kvmem-cont] trim: main_tokens=552 committed=552 page_count=9
+[kvmem-cont] trim: main_tokens=553 committed=553 page_count=9
+[kvmem-cont] trim: main_tokens=557 committed=557 page_count=9
+[kvmem-cont] trim: main_tokens=561 committed=561 page_count=9
+[kvmem-cont] trim: main_tokens=563 committed=563 page_count=9
+[kvmem-cont] trim: main_tokens=564 committed=564 page_count=9
+[kvmem-cont] trim: main_tokens=569 committed=569 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=573 committed=573 page_count=10
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=576 committed=576 page_count=10
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=578 committed=578 page_count=10
+[kvmem-cont] trim: main_tokens=579 committed=579 page_count=10
+[kvmem-cont] trim: main_tokens=581 committed=581 page_count=10
+[kvmem-cont] trim: main_tokens=585 committed=585 page_count=10
+[kvmem-cont] trim: main_tokens=588 committed=588 page_count=10
+[kvmem-cont] trim: main_tokens=592 committed=592 page_count=10
+[kvmem-cont] trim: main_tokens=593 committed=593 page_count=10
+[kvmem-cont] trim: main_tokens=594 committed=594 page_count=10
+[kvmem-cont] trim: main_tokens=595 committed=595 page_count=10
+[kvmem-cont] trim: main_tokens=596 committed=596 page_count=10
+[kvmem-cont] trim: main_tokens=598 committed=598 page_count=10
+[kvmem-cont] trim: main_tokens=600 committed=600 page_count=10
+[kvmem-cont] trim: main_tokens=606 committed=606 page_count=10
+[kvmem-cont] trim: main_tokens=607 committed=607 page_count=10
+[kvmem-cont] trim: main_tokens=611 committed=611 page_count=10
+[kvmem-cont] trim: main_tokens=613 committed=613 page_count=10
+[kvmem-cont] trim: main_tokens=615 committed=615 page_count=10
+[kvmem-cont] trim: main_tokens=618 committed=618 page_count=10
+[kvmem-cont] trim: main_tokens=619 committed=619 page_count=10
+[kvmem-cont] trim: main_tokens=620 committed=620 page_count=10
+[kvmem-cont] trim: main_tokens=621 committed=621 page_count=10
+[kvmem-cont] trim: main_tokens=623 committed=623 page_count=10
+[kvmem-cont] trim: main_tokens=626 committed=626 page_count=10
+[kvmem-cont] trim: main_tokens=628 committed=628 page_count=10
+[kvmem-cont] trim: main_tokens=630 committed=630 page_count=10
+[kvmem-cont] trim: main_tokens=631 committed=631 page_count=10
+[kvmem-cont] trim: main_tokens=634 committed=634 page_count=10
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=642 committed=642 page_count=11
+[kvmem-cont] trim: main_tokens=643 committed=643 page_count=11
+[kvmem-cont] trim: main_tokens=644 committed=644 page_count=11
+[kvmem-cont] trim: main_tokens=645 committed=645 page_count=11
+[kvmem-cont] trim: main_tokens=649 committed=649 page_count=11
+[kvmem-cont] trim: main_tokens=653 committed=653 page_count=11
+[kvmem-cont] trim: main_tokens=660 committed=660 page_count=11
+[kvmem-cont] trim: main_tokens=662 committed=662 page_count=11
+[kvmem-cont] trim: main_tokens=665 committed=665 page_count=11
+[kvmem-cont] trim: main_tokens=666 committed=666 page_count=11
+[kvmem-cont] trim: main_tokens=668 committed=668 page_count=11
+[kvmem-cont] trim: main_tokens=670 committed=670 page_count=11
+[kvmem-cont] trim: main_tokens=671 committed=671 page_count=11
+[kvmem-cont] trim: main_tokens=674 committed=674 page_count=11
+[kvmem-cont] trim: main_tokens=679 committed=679 page_count=11
+[kvmem-cont] trim: main_tokens=680 committed=680 page_count=11
+[kvmem-cont] trim: main_tokens=688 committed=688 page_count=11
+[kvmem-cont] trim: main_tokens=691 committed=691 page_count=11
+[kvmem-cont] trim: main_tokens=692 committed=692 page_count=11
+[kvmem-cont] trim: main_tokens=694 committed=694 page_count=11
+[kvmem-cont] trim: main_tokens=695 committed=695 page_count=11
+[kvmem-cont] trim: main_tokens=696 committed=696 page_count=11
+[kvmem-cont] trim: main_tokens=704 committed=704 page_count=11
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=708 committed=708 page_count=12
+[kvmem-cont] trim: main_tokens=710 committed=710 page_count=12
+[kvmem-cont] trim: main_tokens=711 committed=711 page_count=12
+[kvmem-cont] trim: main_tokens=713 committed=713 page_count=12
+[kvmem-cont] trim: main_tokens=715 committed=715 page_count=12
+[kvmem-cont] trim: main_tokens=716 committed=716 page_count=12
+[kvmem-cont] trim: main_tokens=717 committed=717 page_count=12
+[kvmem-cont] trim: main_tokens=718 committed=718 page_count=12
+[kvmem-cont] trim: main_tokens=722 committed=722 page_count=12
+[kvmem-cont] trim: main_tokens=727 committed=727 page_count=12
+[kvmem-cont] trim: main_tokens=728 committed=728 page_count=12
+[kvmem-cont] trim: main_tokens=729 committed=729 page_count=12
+[kvmem-cont] trim: main_tokens=730 committed=730 page_count=12
+[kvmem-cont] trim: main_tokens=731 committed=731 page_count=12
+[kvmem-cont] trim: main_tokens=732 committed=732 page_count=12
+[kvmem-cont] trim: main_tokens=736 committed=736 page_count=12
+[kvmem-cont] trim: main_tokens=737 committed=737 page_count=12
+[kvmem-cont] trim: main_tokens=738 committed=738 page_count=12
+[kvmem-cont] trim: main_tokens=742 committed=742 page_count=12
+[kvmem-cont] trim: main_tokens=744 committed=744 page_count=12
+[kvmem-cont] trim: main_tokens=745 committed=745 page_count=12
+[kvmem-cont] trim: main_tokens=747 committed=747 page_count=12
+[kvmem-cont] trim: main_tokens=748 committed=748 page_count=12
+[kvmem-cont] trim: main_tokens=749 committed=749 page_count=12
+[kvmem-cont] trim: main_tokens=750 committed=750 page_count=12
+[kvmem-cont] trim: main_tokens=752 committed=752 page_count=12
+[kvmem-cont] trim: main_tokens=753 committed=753 page_count=12
+[kvmem-cont] trim: main_tokens=754 committed=754 page_count=12
+[kvmem-cont] trim: main_tokens=755 committed=755 page_count=12
+[kvmem-cont] trim: main_tokens=757 committed=757 page_count=12
+[kvmem-cont] trim: main_tokens=759 committed=759 page_count=12
+[kvmem-cont] trim: main_tokens=764 committed=764 page_count=12
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=767 committed=767 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=768 committed=768 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=770 committed=770 page_count=13
+[kvmem-cont] trim: main_tokens=773 committed=773 page_count=13
+[kvmem-cont] trim: main_tokens=776 committed=776 page_count=13
+[kvmem-cont] trim: main_tokens=779 committed=779 page_count=13
+[kvmem-cont] trim: main_tokens=780 committed=780 page_count=13
+[kvmem-cont] trim: main_tokens=782 committed=782 page_count=13
+[kvmem-cont] trim: main_tokens=785 committed=785 page_count=13
+[kvmem-cont] trim: main_tokens=786 committed=786 page_count=13
+[kvmem-cont] trim: main_tokens=788 committed=788 page_count=13
+[kvmem-cont] trim: main_tokens=790 committed=790 page_count=13
+[kvmem-cont] trim: main_tokens=791 committed=791 page_count=13
+[kvmem-cont] trim: main_tokens=793 committed=793 page_count=13
+[kvmem-cont] trim: main_tokens=795 committed=795 page_count=13
+[kvmem-cont] trim: main_tokens=797 committed=797 page_count=13
+[kvmem-cont] trim: main_tokens=799 committed=799 page_count=13
+[kvmem-cont] trim: main_tokens=800 committed=800 page_count=13
+[kvmem-cont] trim: main_tokens=801 committed=801 page_count=13
+[kvmem-cont] trim: main_tokens=802 committed=802 page_count=13
+[kvmem-cont] trim: main_tokens=805 committed=805 page_count=13
+2026-09-28 14:08:48.386  INFO  req#3 done | openai-chat | stop token | prompt 26 | output 780 | cache 19 (73.1%, turn closure) | TTFT 73.0 ms | total 12.4s | queue 15.1 ms | prefill 119.8 tok/s | decode 63.4 tok/s | dflash2 accepted 414/2,562 (16.2%)
+2026-09-28 14:08:48.390  INFO  req#4 started | openai-chat non-stream | 1 message | max output 3,000 | thinking off
+[kvmem-cont] admission: compacting=0 base=46 prompt_tokens=53 ledger=2894 exec_frontier=2893 asm_frontier=0 text_kv_valid=46 asm_exec=0 ident=2894
+[kvmem-cont] trim: main_tokens=46 committed=46 page_count=1
+[kvmem-cont] trim: main_tokens=46 committed=46 page_count=1
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=49 dropped=0 releasable=0 staged=0 free_after=496
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=53 dropped=0 releasable=0 staged=0 free_after=496
+[kvmem-cont] trim: main_tokens=53 committed=53 page_count=1
+[kvmem-cont] trim: main_tokens=61 committed=61 page_count=1
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=69 committed=69 page_count=2
+[kvmem-cont] trim: main_tokens=77 committed=77 page_count=2
+[kvmem-cont] trim: main_tokens=79 committed=79 page_count=2
+[kvmem-cont] trim: main_tokens=87 committed=87 page_count=2
+[kvmem-cont] trim: main_tokens=95 committed=95 page_count=2
+[kvmem-cont] trim: main_tokens=100 committed=100 page_count=2
+[kvmem-cont] trim: main_tokens=106 committed=106 page_count=2
+[kvmem-cont] trim: main_tokens=110 committed=110 page_count=2
+[kvmem-cont] trim: main_tokens=114 committed=114 page_count=2
+[kvmem-cont] trim: main_tokens=122 committed=122 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=130 committed=130 page_count=3
+[kvmem-cont] trim: main_tokens=138 committed=138 page_count=3
+[kvmem-cont] trim: main_tokens=139 committed=139 page_count=3
+[kvmem-cont] trim: main_tokens=147 committed=147 page_count=3
+[kvmem-cont] trim: main_tokens=152 committed=152 page_count=3
+[kvmem-cont] trim: main_tokens=156 committed=156 page_count=3
+[kvmem-cont] trim: main_tokens=160 committed=160 page_count=3
+[kvmem-cont] trim: main_tokens=162 committed=162 page_count=3
+[kvmem-cont] trim: main_tokens=165 committed=165 page_count=3
+[kvmem-cont] trim: main_tokens=169 committed=169 page_count=3
+[kvmem-cont] trim: main_tokens=173 committed=173 page_count=3
+[kvmem-cont] trim: main_tokens=181 committed=181 page_count=3
+[kvmem-cont] trim: main_tokens=189 committed=189 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=197 committed=197 page_count=4
+[kvmem-cont] trim: main_tokens=204 committed=204 page_count=4
+2026-09-28 14:08:49.353  INFO  throughput | 5.0s | prefill 1.4 tok/s (7 tok) | decode 84.0 tok/s (420 tok) | running 1 (decode-ready 1) | batch 1.00 | host 1.2% (60.2 ms)
+[kvmem-cont] trim: main_tokens=212 committed=212 page_count=4
+[kvmem-cont] trim: main_tokens=215 committed=215 page_count=4
+[kvmem-cont] trim: main_tokens=220 committed=220 page_count=4
+[kvmem-cont] trim: main_tokens=227 committed=227 page_count=4
+[kvmem-cont] trim: main_tokens=228 committed=228 page_count=4
+[kvmem-cont] trim: main_tokens=234 committed=234 page_count=4
+[kvmem-cont] trim: main_tokens=241 committed=241 page_count=4
+[kvmem-cont] trim: main_tokens=249 committed=249 page_count=4
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=257 committed=257 page_count=5
+[kvmem-cont] trim: main_tokens=263 committed=263 page_count=5
+[kvmem-cont] trim: main_tokens=271 committed=271 page_count=5
+[kvmem-cont] trim: main_tokens=279 committed=279 page_count=5
+[kvmem-cont] trim: main_tokens=281 committed=281 page_count=5
+[kvmem-cont] trim: main_tokens=285 committed=285 page_count=5
+[kvmem-cont] trim: main_tokens=289 committed=289 page_count=5
+[kvmem-cont] trim: main_tokens=297 committed=297 page_count=5
+[kvmem-cont] trim: main_tokens=304 committed=304 page_count=5
+[kvmem-cont] trim: main_tokens=312 committed=312 page_count=5
+[kvmem-cont] trim: main_tokens=317 committed=317 page_count=5
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=325 committed=325 page_count=6
+[kvmem-cont] trim: main_tokens=329 committed=329 page_count=6
+[kvmem-cont] trim: main_tokens=337 committed=337 page_count=6
+[kvmem-cont] trim: main_tokens=340 committed=340 page_count=6
+[kvmem-cont] trim: main_tokens=348 committed=348 page_count=6
+[kvmem-cont] trim: main_tokens=356 committed=356 page_count=6
+[kvmem-cont] trim: main_tokens=364 committed=364 page_count=6
+[kvmem-cont] trim: main_tokens=368 committed=368 page_count=6
+[kvmem-cont] trim: main_tokens=372 committed=372 page_count=6
+[kvmem-cont] trim: main_tokens=376 committed=376 page_count=6
+[kvmem-cont] trim: main_tokens=379 committed=379 page_count=6
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=387 committed=387 page_count=7
+[kvmem-cont] trim: main_tokens=390 committed=390 page_count=7
+[kvmem-cont] trim: main_tokens=398 committed=398 page_count=7
+[kvmem-cont] trim: main_tokens=406 committed=406 page_count=7
+[kvmem-cont] trim: main_tokens=412 committed=412 page_count=7
+[kvmem-cont] trim: main_tokens=416 committed=416 page_count=7
+[kvmem-cont] trim: main_tokens=424 committed=424 page_count=7
+[kvmem-cont] trim: main_tokens=430 committed=430 page_count=7
+[kvmem-cont] trim: main_tokens=438 committed=438 page_count=7
+[kvmem-cont] trim: main_tokens=439 committed=439 page_count=7
+[kvmem-cont] trim: main_tokens=447 committed=447 page_count=7
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=455 committed=455 page_count=8
+[kvmem-cont] trim: main_tokens=457 committed=457 page_count=8
+[kvmem-cont] trim: main_tokens=459 committed=459 page_count=8
+[kvmem-cont] trim: main_tokens=465 committed=465 page_count=8
+[kvmem-cont] trim: main_tokens=470 committed=470 page_count=8
+[kvmem-cont] trim: main_tokens=476 committed=476 page_count=8
+[kvmem-cont] trim: main_tokens=479 committed=479 page_count=8
+[kvmem-cont] trim: main_tokens=484 committed=484 page_count=8
+[kvmem-cont] trim: main_tokens=487 committed=487 page_count=8
+[kvmem-cont] trim: main_tokens=492 committed=492 page_count=8
+[kvmem-cont] trim: main_tokens=496 committed=496 page_count=8
+[kvmem-cont] trim: main_tokens=499 committed=499 page_count=8
+[kvmem-cont] trim: main_tokens=507 committed=507 page_count=8
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=514 committed=514 page_count=9
+[kvmem-cont] trim: main_tokens=522 committed=522 page_count=9
+[kvmem-cont] trim: main_tokens=530 committed=530 page_count=9
+[kvmem-cont] trim: main_tokens=533 committed=533 page_count=9
+[kvmem-cont] trim: main_tokens=536 committed=536 page_count=9
+[kvmem-cont] trim: main_tokens=544 committed=544 page_count=9
+[kvmem-cont] trim: main_tokens=547 committed=547 page_count=9
+[kvmem-cont] trim: main_tokens=555 committed=555 page_count=9
+[kvmem-cont] trim: main_tokens=563 committed=563 page_count=9
+[kvmem-cont] trim: main_tokens=571 committed=571 page_count=9
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=579 committed=579 page_count=10
+[kvmem-cont] trim: main_tokens=587 committed=587 page_count=10
+[kvmem-cont] trim: main_tokens=595 committed=595 page_count=10
+[kvmem-cont] trim: main_tokens=602 committed=602 page_count=10
+[kvmem-cont] trim: main_tokens=607 committed=607 page_count=10
+[kvmem-cont] trim: main_tokens=611 committed=611 page_count=10
+[kvmem-cont] trim: main_tokens=617 committed=617 page_count=10
+[kvmem-cont] trim: main_tokens=623 committed=623 page_count=10
+[kvmem-cont] trim: main_tokens=629 committed=629 page_count=10
+[kvmem-cont] trim: main_tokens=637 committed=637 page_count=10
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=645 committed=645 page_count=11
+[kvmem-cont] trim: main_tokens=647 committed=647 page_count=11
+[kvmem-cont] trim: main_tokens=651 committed=651 page_count=11
+[kvmem-cont] trim: main_tokens=659 committed=659 page_count=11
+[kvmem-cont] trim: main_tokens=667 committed=667 page_count=11
+[kvmem-cont] trim: main_tokens=672 committed=672 page_count=11
+[kvmem-cont] trim: main_tokens=680 committed=680 page_count=11
+[kvmem-cont] trim: main_tokens=681 committed=681 page_count=11
+[kvmem-cont] trim: main_tokens=682 committed=682 page_count=11
+[kvmem-cont] trim: main_tokens=688 committed=688 page_count=11
+[kvmem-cont] trim: main_tokens=694 committed=694 page_count=11
+[kvmem-cont] trim: main_tokens=695 committed=695 page_count=11
+[kvmem-cont] trim: main_tokens=699 committed=699 page_count=11
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=705 committed=705 page_count=12
+[kvmem-cont] trim: main_tokens=712 committed=712 page_count=12
+[kvmem-cont] trim: main_tokens=714 committed=714 page_count=12
+[kvmem-cont] trim: main_tokens=721 committed=721 page_count=12
+[kvmem-cont] trim: main_tokens=722 committed=722 page_count=12
+[kvmem-cont] trim: main_tokens=729 committed=729 page_count=12
+[kvmem-cont] trim: main_tokens=730 committed=730 page_count=12
+[kvmem-cont] trim: main_tokens=731 committed=731 page_count=12
+[kvmem-cont] trim: main_tokens=736 committed=736 page_count=12
+[kvmem-cont] trim: main_tokens=743 committed=743 page_count=12
+[kvmem-cont] trim: main_tokens=746 committed=746 page_count=12
+[kvmem-cont] trim: main_tokens=749 committed=749 page_count=12
+[kvmem-cont] trim: main_tokens=757 committed=757 page_count=12
+[kvmem-cont] trim: main_tokens=761 committed=761 page_count=12
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=763 committed=763 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=764 committed=764 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=772 committed=772 page_count=13
+[kvmem-cont] trim: main_tokens=778 committed=778 page_count=13
+[kvmem-cont] trim: main_tokens=786 committed=786 page_count=13
+[kvmem-cont] trim: main_tokens=790 committed=790 page_count=13
+[kvmem-cont] trim: main_tokens=795 committed=795 page_count=13
+[kvmem-cont] trim: main_tokens=796 committed=796 page_count=13
+[kvmem-cont] trim: main_tokens=799 committed=799 page_count=13
+[kvmem-cont] trim: main_tokens=806 committed=806 page_count=13
+[kvmem-cont] trim: main_tokens=812 committed=812 page_count=13
+[kvmem-cont] trim: main_tokens=816 committed=816 page_count=13
+[kvmem-cont] trim: main_tokens=817 committed=817 page_count=13
+[kvmem-cont] trim: main_tokens=825 committed=825 page_count=13
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=829 committed=829 page_count=14
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=834 committed=834 page_count=14
+[kvmem-cont] trim: main_tokens=841 committed=841 page_count=14
+[kvmem-cont] trim: main_tokens=842 committed=842 page_count=14
+[kvmem-cont] trim: main_tokens=844 committed=844 page_count=14
+[kvmem-cont] trim: main_tokens=847 committed=847 page_count=14
+[kvmem-cont] trim: main_tokens=855 committed=855 page_count=14
+[kvmem-cont] trim: main_tokens=858 committed=858 page_count=14
+[kvmem-cont] trim: main_tokens=861 committed=861 page_count=14
+[kvmem-cont] trim: main_tokens=867 committed=867 page_count=14
+[kvmem-cont] trim: main_tokens=875 committed=875 page_count=14
+[kvmem-cont] trim: main_tokens=879 committed=879 page_count=14
+[kvmem-cont] trim: main_tokens=887 committed=887 page_count=14
+[kvmem-cont] trim: main_tokens=891 committed=891 page_count=14
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=894 committed=894 page_count=15
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=898 committed=898 page_count=15
+[kvmem-cont] trim: main_tokens=904 committed=904 page_count=15
+[kvmem-cont] trim: main_tokens=908 committed=908 page_count=15
+[kvmem-cont] trim: main_tokens=909 committed=909 page_count=15
+[kvmem-cont] trim: main_tokens=910 committed=910 page_count=15
+[kvmem-cont] trim: main_tokens=916 committed=916 page_count=15
+[kvmem-cont] trim: main_tokens=919 committed=919 page_count=15
+[kvmem-cont] trim: main_tokens=922 committed=922 page_count=15
+[kvmem-cont] trim: main_tokens=927 committed=927 page_count=15
+[kvmem-cont] trim: main_tokens=929 committed=929 page_count=15
+[kvmem-cont] trim: main_tokens=930 committed=930 page_count=15
+[kvmem-cont] trim: main_tokens=932 committed=932 page_count=15
+[kvmem-cont] trim: main_tokens=935 committed=935 page_count=15
+[kvmem-cont] trim: main_tokens=937 committed=937 page_count=15
+[kvmem-cont] trim: main_tokens=939 committed=939 page_count=15
+[kvmem-cont] trim: main_tokens=940 committed=940 page_count=15
+[kvmem-cont] trim: main_tokens=942 committed=942 page_count=15
+2026-09-28 14:08:54.348  INFO  throughput | 5.0s | decode 147.7 tok/s (738 tok) | running 1 (decode-ready 1) | batch 1.00 | host 0.9% (42.8 ms)
+[kvmem-cont] trim: main_tokens=944 committed=944 page_count=15
+[kvmem-cont] trim: main_tokens=945 committed=945 page_count=15
+[kvmem-cont] trim: main_tokens=947 committed=947 page_count=15
+[kvmem-cont] trim: main_tokens=953 committed=953 page_count=15
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=955 committed=955 page_count=16
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=957 committed=957 page_count=16
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=959 committed=959 page_count=16
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=960 committed=960 page_count=16
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=961 committed=961 page_count=16
+[kvmem-cont] trim: main_tokens=969 committed=969 page_count=16
+[kvmem-cont] trim: main_tokens=973 committed=973 page_count=16
+[kvmem-cont] trim: main_tokens=981 committed=981 page_count=16
+[kvmem-cont] trim: main_tokens=988 committed=988 page_count=16
+[kvmem-cont] trim: main_tokens=992 committed=992 page_count=16
+[kvmem-cont] trim: main_tokens=1000 committed=1000 page_count=16
+[kvmem-cont] trim: main_tokens=1008 committed=1008 page_count=16
+[kvmem-cont] trim: main_tokens=1016 committed=1016 page_count=16
+[kvmem-cont] trim: main_tokens=1020 committed=1020 page_count=16
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1024 committed=1024 page_count=17
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1028 committed=1028 page_count=17
+[kvmem-cont] trim: main_tokens=1036 committed=1036 page_count=17
+[kvmem-cont] trim: main_tokens=1039 committed=1039 page_count=17
+[kvmem-cont] trim: main_tokens=1040 committed=1040 page_count=17
+[kvmem-cont] trim: main_tokens=1042 committed=1042 page_count=17
+[kvmem-cont] trim: main_tokens=1044 committed=1044 page_count=17
+[kvmem-cont] trim: main_tokens=1052 committed=1052 page_count=17
+[kvmem-cont] trim: main_tokens=1053 committed=1053 page_count=17
+[kvmem-cont] trim: main_tokens=1061 committed=1061 page_count=17
+[kvmem-cont] trim: main_tokens=1069 committed=1069 page_count=17
+[kvmem-cont] trim: main_tokens=1073 committed=1073 page_count=17
+[kvmem-cont] trim: main_tokens=1081 committed=1081 page_count=17
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1089 committed=1089 page_count=18
+[kvmem-cont] trim: main_tokens=1097 committed=1097 page_count=18
+[kvmem-cont] trim: main_tokens=1099 committed=1099 page_count=18
+[kvmem-cont] trim: main_tokens=1107 committed=1107 page_count=18
+[kvmem-cont] trim: main_tokens=1115 committed=1115 page_count=18
+[kvmem-cont] trim: main_tokens=1123 committed=1123 page_count=18
+[kvmem-cont] trim: main_tokens=1131 committed=1131 page_count=18
+[kvmem-cont] trim: main_tokens=1139 committed=1139 page_count=18
+[kvmem-cont] trim: main_tokens=1144 committed=1144 page_count=18
+[kvmem-cont] trim: main_tokens=1152 committed=1152 page_count=18
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1160 committed=1160 page_count=19
+[kvmem-cont] trim: main_tokens=1168 committed=1168 page_count=19
+[kvmem-cont] trim: main_tokens=1176 committed=1176 page_count=19
+[kvmem-cont] trim: main_tokens=1184 committed=1184 page_count=19
+[kvmem-cont] trim: main_tokens=1185 committed=1185 page_count=19
+[kvmem-cont] trim: main_tokens=1193 committed=1193 page_count=19
+[kvmem-cont] trim: main_tokens=1198 committed=1198 page_count=19
+[kvmem-cont] trim: main_tokens=1203 committed=1203 page_count=19
+[kvmem-cont] trim: main_tokens=1211 committed=1211 page_count=19
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1219 committed=1219 page_count=20
+[kvmem-cont] trim: main_tokens=1227 committed=1227 page_count=20
+[kvmem-cont] trim: main_tokens=1235 committed=1235 page_count=20
+[kvmem-cont] trim: main_tokens=1243 committed=1243 page_count=20
+[kvmem-cont] trim: main_tokens=1251 committed=1251 page_count=20
+[kvmem-cont] trim: main_tokens=1259 committed=1259 page_count=20
+[kvmem-cont] trim: main_tokens=1267 committed=1267 page_count=20
+[kvmem-cont] trim: main_tokens=1275 committed=1275 page_count=20
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1280 committed=1280 page_count=21
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1288 committed=1288 page_count=21
+[kvmem-cont] trim: main_tokens=1296 committed=1296 page_count=21
+[kvmem-cont] trim: main_tokens=1304 committed=1304 page_count=21
+[kvmem-cont] trim: main_tokens=1312 committed=1312 page_count=21
+[kvmem-cont] trim: main_tokens=1320 committed=1320 page_count=21
+[kvmem-cont] trim: main_tokens=1324 committed=1324 page_count=21
+[kvmem-cont] trim: main_tokens=1331 committed=1331 page_count=21
+[kvmem-cont] trim: main_tokens=1335 committed=1335 page_count=21
+[kvmem-cont] trim: main_tokens=1339 committed=1339 page_count=21
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1347 committed=1347 page_count=22
+[kvmem-cont] trim: main_tokens=1355 committed=1355 page_count=22
+[kvmem-cont] trim: main_tokens=1363 committed=1363 page_count=22
+[kvmem-cont] trim: main_tokens=1371 committed=1371 page_count=22
+[kvmem-cont] trim: main_tokens=1378 committed=1378 page_count=22
+[kvmem-cont] trim: main_tokens=1384 committed=1384 page_count=22
+[kvmem-cont] trim: main_tokens=1391 committed=1391 page_count=22
+[kvmem-cont] trim: main_tokens=1395 committed=1395 page_count=22
+[kvmem-cont] trim: main_tokens=1397 committed=1397 page_count=22
+[kvmem-cont] trim: main_tokens=1404 committed=1404 page_count=22
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1412 committed=1412 page_count=23
+[kvmem-cont] trim: main_tokens=1415 committed=1415 page_count=23
+[kvmem-cont] trim: main_tokens=1423 committed=1423 page_count=23
+[kvmem-cont] trim: main_tokens=1431 committed=1431 page_count=23
+[kvmem-cont] trim: main_tokens=1439 committed=1439 page_count=23
+[kvmem-cont] trim: main_tokens=1446 committed=1446 page_count=23
+[kvmem-cont] trim: main_tokens=1454 committed=1454 page_count=23
+[kvmem-cont] trim: main_tokens=1456 committed=1456 page_count=23
+[kvmem-cont] trim: main_tokens=1458 committed=1458 page_count=23
+[kvmem-cont] trim: main_tokens=1463 committed=1463 page_count=23
+[kvmem-cont] trim: main_tokens=1465 committed=1465 page_count=23
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1467 committed=1467 page_count=24
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1473 committed=1473 page_count=24
+[kvmem-cont] trim: main_tokens=1480 committed=1480 page_count=24
+[kvmem-cont] trim: main_tokens=1481 committed=1481 page_count=24
+[kvmem-cont] trim: main_tokens=1489 committed=1489 page_count=24
+[kvmem-cont] trim: main_tokens=1494 committed=1494 page_count=24
+[kvmem-cont] trim: main_tokens=1497 committed=1497 page_count=24
+[kvmem-cont] trim: main_tokens=1500 committed=1500 page_count=24
+[kvmem-cont] trim: main_tokens=1503 committed=1503 page_count=24
+[kvmem-cont] trim: main_tokens=1509 committed=1509 page_count=24
+[kvmem-cont] trim: main_tokens=1511 committed=1511 page_count=24
+[kvmem-cont] trim: main_tokens=1513 committed=1513 page_count=24
+[kvmem-cont] trim: main_tokens=1519 committed=1519 page_count=24
+[kvmem-cont] trim: main_tokens=1527 committed=1527 page_count=24
+[kvmem-cont] trim: main_tokens=1535 committed=1535 page_count=24
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1543 committed=1543 page_count=25
+[kvmem-cont] trim: main_tokens=1549 committed=1549 page_count=25
+[kvmem-cont] trim: main_tokens=1550 committed=1550 page_count=25
+[kvmem-cont] trim: main_tokens=1558 committed=1558 page_count=25
+[kvmem-cont] trim: main_tokens=1562 committed=1562 page_count=25
+[kvmem-cont] trim: main_tokens=1570 committed=1570 page_count=25
+[kvmem-cont] trim: main_tokens=1578 committed=1578 page_count=25
+[kvmem-cont] trim: main_tokens=1579 committed=1579 page_count=25
+[kvmem-cont] trim: main_tokens=1587 committed=1587 page_count=25
+[kvmem-cont] trim: main_tokens=1591 committed=1591 page_count=25
+[kvmem-cont] trim: main_tokens=1599 committed=1599 page_count=25
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1604 committed=1604 page_count=26
+[kvmem-cont] trim: main_tokens=1611 committed=1611 page_count=26
+[kvmem-cont] trim: main_tokens=1618 committed=1618 page_count=26
+[kvmem-cont] trim: main_tokens=1622 committed=1622 page_count=26
+[kvmem-cont] trim: main_tokens=1626 committed=1626 page_count=26
+[kvmem-cont] trim: main_tokens=1630 committed=1630 page_count=26
+[kvmem-cont] trim: main_tokens=1638 committed=1638 page_count=26
+[kvmem-cont] trim: main_tokens=1646 committed=1646 page_count=26
+[kvmem-cont] trim: main_tokens=1647 committed=1647 page_count=26
+[kvmem-cont] trim: main_tokens=1655 committed=1655 page_count=26
+[kvmem-cont] trim: main_tokens=1656 committed=1656 page_count=26
+[kvmem-cont] trim: main_tokens=1660 committed=1660 page_count=26
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1667 committed=1667 page_count=27
+[kvmem-cont] trim: main_tokens=1675 committed=1675 page_count=27
+[kvmem-cont] trim: main_tokens=1683 committed=1683 page_count=27
+[kvmem-cont] trim: main_tokens=1684 committed=1684 page_count=27
+[kvmem-cont] trim: main_tokens=1692 committed=1692 page_count=27
+[kvmem-cont] trim: main_tokens=1700 committed=1700 page_count=27
+[kvmem-cont] trim: main_tokens=1708 committed=1708 page_count=27
+[kvmem-cont] trim: main_tokens=1716 committed=1716 page_count=27
+[kvmem-cont] trim: main_tokens=1720 committed=1720 page_count=27
+[kvmem-cont] trim: main_tokens=1725 committed=1725 page_count=27
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1733 committed=1733 page_count=28
+[kvmem-cont] trim: main_tokens=1739 committed=1739 page_count=28
+[kvmem-cont] trim: main_tokens=1745 committed=1745 page_count=28
+[kvmem-cont] trim: main_tokens=1753 committed=1753 page_count=28
+[kvmem-cont] trim: main_tokens=1759 committed=1759 page_count=28
+[kvmem-cont] trim: main_tokens=1766 committed=1766 page_count=28
+[kvmem-cont] trim: main_tokens=1774 committed=1774 page_count=28
+[kvmem-cont] trim: main_tokens=1782 committed=1782 page_count=28
+[kvmem-cont] trim: main_tokens=1790 committed=1790 page_count=28
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1798 committed=1798 page_count=29
+2026-09-28 14:08:59.355  INFO  throughput | 5.0s | decode 171.0 tok/s (856 tok) | running 1 (decode-ready 1) | batch 1.00 | host 0.8% (39.5 ms)
+[kvmem-cont] trim: main_tokens=1806 committed=1806 page_count=29
+[kvmem-cont] trim: main_tokens=1814 committed=1814 page_count=29
+[kvmem-cont] trim: main_tokens=1820 committed=1820 page_count=29
+[kvmem-cont] trim: main_tokens=1822 committed=1822 page_count=29
+[kvmem-cont] trim: main_tokens=1828 committed=1828 page_count=29
+[kvmem-cont] trim: main_tokens=1832 committed=1832 page_count=29
+[kvmem-cont] trim: main_tokens=1835 committed=1835 page_count=29
+[kvmem-cont] trim: main_tokens=1842 committed=1842 page_count=29
+[kvmem-cont] trim: main_tokens=1844 committed=1844 page_count=29
+[kvmem-cont] trim: main_tokens=1852 committed=1852 page_count=29
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1860 committed=1860 page_count=30
+[kvmem-cont] trim: main_tokens=1864 committed=1864 page_count=30
+[kvmem-cont] trim: main_tokens=1870 committed=1870 page_count=30
+[kvmem-cont] trim: main_tokens=1871 committed=1871 page_count=30
+[kvmem-cont] trim: main_tokens=1872 committed=1872 page_count=30
+[kvmem-cont] trim: main_tokens=1878 committed=1878 page_count=30
+[kvmem-cont] trim: main_tokens=1880 committed=1880 page_count=30
+[kvmem-cont] trim: main_tokens=1882 committed=1882 page_count=30
+[kvmem-cont] trim: main_tokens=1885 committed=1885 page_count=30
+[kvmem-cont] trim: main_tokens=1891 committed=1891 page_count=30
+[kvmem-cont] trim: main_tokens=1892 committed=1892 page_count=30
+[kvmem-cont] trim: main_tokens=1895 committed=1895 page_count=30
+[kvmem-cont] trim: main_tokens=1897 committed=1897 page_count=30
+[kvmem-cont] trim: main_tokens=1900 committed=1900 page_count=30
+[kvmem-cont] trim: main_tokens=1908 committed=1908 page_count=30
+[kvmem-cont] trim: main_tokens=1916 committed=1916 page_count=30
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1923 committed=1923 page_count=31
+[kvmem-cont] trim: main_tokens=1931 committed=1931 page_count=31
+[kvmem-cont] trim: main_tokens=1937 committed=1937 page_count=31
+[kvmem-cont] trim: main_tokens=1939 committed=1939 page_count=31
+[kvmem-cont] trim: main_tokens=1940 committed=1940 page_count=31
+[kvmem-cont] trim: main_tokens=1942 committed=1942 page_count=31
+[kvmem-cont] trim: main_tokens=1944 committed=1944 page_count=31
+[kvmem-cont] trim: main_tokens=1949 committed=1949 page_count=31
+[kvmem-cont] trim: main_tokens=1955 committed=1955 page_count=31
+[kvmem-cont] trim: main_tokens=1956 committed=1956 page_count=31
+[kvmem-cont] trim: main_tokens=1964 committed=1964 page_count=31
+[kvmem-cont] trim: main_tokens=1972 committed=1972 page_count=31
+[kvmem-cont] trim: main_tokens=1980 committed=1980 page_count=31
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=1988 committed=1988 page_count=32
+[kvmem-cont] trim: main_tokens=1996 committed=1996 page_count=32
+[kvmem-cont] trim: main_tokens=2003 committed=2003 page_count=32
+[kvmem-cont] trim: main_tokens=2008 committed=2008 page_count=32
+[kvmem-cont] trim: main_tokens=2016 committed=2016 page_count=32
+[kvmem-cont] trim: main_tokens=2024 committed=2024 page_count=32
+[kvmem-cont] trim: main_tokens=2032 committed=2032 page_count=32
+[kvmem-cont] trim: main_tokens=2040 committed=2040 page_count=32
+[kvmem-cont] trim: main_tokens=2048 committed=2048 page_count=32
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2052 committed=2052 page_count=33
+[kvmem-cont] trim: main_tokens=2054 committed=2054 page_count=33
+[kvmem-cont] trim: main_tokens=2056 committed=2056 page_count=33
+[kvmem-cont] trim: main_tokens=2057 committed=2057 page_count=33
+[kvmem-cont] trim: main_tokens=2065 committed=2065 page_count=33
+[kvmem-cont] trim: main_tokens=2073 committed=2073 page_count=33
+[kvmem-cont] trim: main_tokens=2081 committed=2081 page_count=33
+[kvmem-cont] trim: main_tokens=2089 committed=2089 page_count=33
+[kvmem-cont] trim: main_tokens=2096 committed=2096 page_count=33
+[kvmem-cont] trim: main_tokens=2104 committed=2104 page_count=33
+[kvmem-cont] trim: main_tokens=2112 committed=2112 page_count=33
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2120 committed=2120 page_count=34
+[kvmem-cont] trim: main_tokens=2124 committed=2124 page_count=34
+[kvmem-cont] trim: main_tokens=2128 committed=2128 page_count=34
+[kvmem-cont] trim: main_tokens=2130 committed=2130 page_count=34
+[kvmem-cont] trim: main_tokens=2131 committed=2131 page_count=34
+[kvmem-cont] trim: main_tokens=2136 committed=2136 page_count=34
+[kvmem-cont] trim: main_tokens=2143 committed=2143 page_count=34
+[kvmem-cont] trim: main_tokens=2148 committed=2148 page_count=34
+[kvmem-cont] trim: main_tokens=2155 committed=2155 page_count=34
+[kvmem-cont] trim: main_tokens=2157 committed=2157 page_count=34
+[kvmem-cont] trim: main_tokens=2160 committed=2160 page_count=34
+[kvmem-cont] trim: main_tokens=2166 committed=2166 page_count=34
+[kvmem-cont] trim: main_tokens=2171 committed=2171 page_count=34
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2172 committed=2172 page_count=35
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2178 committed=2178 page_count=35
+[kvmem-cont] trim: main_tokens=2179 committed=2179 page_count=35
+[kvmem-cont] trim: main_tokens=2185 committed=2185 page_count=35
+[kvmem-cont] trim: main_tokens=2191 committed=2191 page_count=35
+[kvmem-cont] trim: main_tokens=2199 committed=2199 page_count=35
+[kvmem-cont] trim: main_tokens=2207 committed=2207 page_count=35
+[kvmem-cont] trim: main_tokens=2213 committed=2213 page_count=35
+[kvmem-cont] trim: main_tokens=2221 committed=2221 page_count=35
+[kvmem-cont] trim: main_tokens=2224 committed=2224 page_count=35
+[kvmem-cont] trim: main_tokens=2232 committed=2232 page_count=35
+[kvmem-cont] trim: main_tokens=2238 committed=2238 page_count=35
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2246 committed=2246 page_count=36
+[kvmem-cont] trim: main_tokens=2254 committed=2254 page_count=36
+[kvmem-cont] trim: main_tokens=2257 committed=2257 page_count=36
+[kvmem-cont] trim: main_tokens=2261 committed=2261 page_count=36
+[kvmem-cont] trim: main_tokens=2263 committed=2263 page_count=36
+[kvmem-cont] trim: main_tokens=2266 committed=2266 page_count=36
+[kvmem-cont] trim: main_tokens=2274 committed=2274 page_count=36
+[kvmem-cont] trim: main_tokens=2278 committed=2278 page_count=36
+[kvmem-cont] trim: main_tokens=2286 committed=2286 page_count=36
+[kvmem-cont] trim: main_tokens=2294 committed=2294 page_count=36
+[kvmem-cont] trim: main_tokens=2302 committed=2302 page_count=36
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2310 committed=2310 page_count=37
+[kvmem-cont] trim: main_tokens=2318 committed=2318 page_count=37
+[kvmem-cont] trim: main_tokens=2326 committed=2326 page_count=37
+[kvmem-cont] trim: main_tokens=2332 committed=2332 page_count=37
+[kvmem-cont] trim: main_tokens=2340 committed=2340 page_count=37
+[kvmem-cont] trim: main_tokens=2346 committed=2346 page_count=37
+[kvmem-cont] trim: main_tokens=2350 committed=2350 page_count=37
+[kvmem-cont] trim: main_tokens=2351 committed=2351 page_count=37
+[kvmem-cont] trim: main_tokens=2355 committed=2355 page_count=37
+[kvmem-cont] trim: main_tokens=2363 committed=2363 page_count=37
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2365 committed=2365 page_count=38
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2367 committed=2367 page_count=38
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2375 committed=2375 page_count=38
+[kvmem-cont] trim: main_tokens=2380 committed=2380 page_count=38
+[kvmem-cont] trim: main_tokens=2388 committed=2388 page_count=38
+[kvmem-cont] trim: main_tokens=2393 committed=2393 page_count=38
+[kvmem-cont] trim: main_tokens=2401 committed=2401 page_count=38
+[kvmem-cont] trim: main_tokens=2402 committed=2402 page_count=38
+[kvmem-cont] trim: main_tokens=2410 committed=2410 page_count=38
+[kvmem-cont] trim: main_tokens=2415 committed=2415 page_count=38
+[kvmem-cont] trim: main_tokens=2423 committed=2423 page_count=38
+[kvmem-cont] trim: main_tokens=2431 committed=2431 page_count=38
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2439 committed=2439 page_count=39
+[kvmem-cont] trim: main_tokens=2447 committed=2447 page_count=39
+[kvmem-cont] trim: main_tokens=2454 committed=2454 page_count=39
+[kvmem-cont] trim: main_tokens=2462 committed=2462 page_count=39
+[kvmem-cont] trim: main_tokens=2470 committed=2470 page_count=39
+[kvmem-cont] trim: main_tokens=2477 committed=2477 page_count=39
+[kvmem-cont] trim: main_tokens=2485 committed=2485 page_count=39
+[kvmem-cont] trim: main_tokens=2493 committed=2493 page_count=39
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2500 committed=2500 page_count=40
+[kvmem-cont] trim: main_tokens=2502 committed=2502 page_count=40
+[kvmem-cont] trim: main_tokens=2504 committed=2504 page_count=40
+[kvmem-cont] trim: main_tokens=2505 committed=2505 page_count=40
+[kvmem-cont] trim: main_tokens=2513 committed=2513 page_count=40
+[kvmem-cont] trim: main_tokens=2516 committed=2516 page_count=40
+[kvmem-cont] trim: main_tokens=2519 committed=2519 page_count=40
+[kvmem-cont] trim: main_tokens=2527 committed=2527 page_count=40
+[kvmem-cont] trim: main_tokens=2535 committed=2535 page_count=40
+[kvmem-cont] trim: main_tokens=2541 committed=2541 page_count=40
+[kvmem-cont] trim: main_tokens=2549 committed=2549 page_count=40
+[kvmem-cont] trim: main_tokens=2553 committed=2553 page_count=40
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2561 committed=2561 page_count=41
+[kvmem-cont] trim: main_tokens=2569 committed=2569 page_count=41
+[kvmem-cont] trim: main_tokens=2572 committed=2572 page_count=41
+[kvmem-cont] trim: main_tokens=2580 committed=2580 page_count=41
+[kvmem-cont] trim: main_tokens=2584 committed=2584 page_count=41
+[kvmem-cont] trim: main_tokens=2592 committed=2592 page_count=41
+[kvmem-cont] trim: main_tokens=2600 committed=2600 page_count=41
+[kvmem-cont] trim: main_tokens=2608 committed=2608 page_count=41
+2026-09-28 14:09:04.342  INFO  throughput | 5.0s | decode 162.4 tok/s (810 tok) | running 1 (decode-ready 1) | batch 1.00 | host 0.7% (34.4 ms)
+[kvmem-cont] trim: main_tokens=2609 committed=2609 page_count=41
+[kvmem-cont] trim: main_tokens=2610 committed=2610 page_count=41
+[kvmem-cont] trim: main_tokens=2614 committed=2614 page_count=41
+[kvmem-cont] trim: main_tokens=2618 committed=2618 page_count=41
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2626 committed=2626 page_count=42
+[kvmem-cont] trim: main_tokens=2630 committed=2630 page_count=42
+[kvmem-cont] trim: main_tokens=2637 committed=2637 page_count=42
+[kvmem-cont] trim: main_tokens=2643 committed=2643 page_count=42
+[kvmem-cont] trim: main_tokens=2651 committed=2651 page_count=42
+[kvmem-cont] trim: main_tokens=2659 committed=2659 page_count=42
+[kvmem-cont] trim: main_tokens=2667 committed=2667 page_count=42
+[kvmem-cont] trim: main_tokens=2669 committed=2669 page_count=42
+[kvmem-cont] trim: main_tokens=2674 committed=2674 page_count=42
+[kvmem-cont] trim: main_tokens=2682 committed=2682 page_count=42
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2690 committed=2690 page_count=43
+[kvmem-cont] trim: main_tokens=2698 committed=2698 page_count=43
+[kvmem-cont] trim: main_tokens=2702 committed=2702 page_count=43
+[kvmem-cont] trim: main_tokens=2705 committed=2705 page_count=43
+[kvmem-cont] trim: main_tokens=2713 committed=2713 page_count=43
+[kvmem-cont] trim: main_tokens=2720 committed=2720 page_count=43
+[kvmem-cont] trim: main_tokens=2728 committed=2728 page_count=43
+[kvmem-cont] trim: main_tokens=2736 committed=2736 page_count=43
+[kvmem-cont] trim: main_tokens=2744 committed=2744 page_count=43
+[kvmem-cont] trim: main_tokens=2747 committed=2747 page_count=43
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2751 committed=2751 page_count=44
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2754 committed=2754 page_count=44
+[kvmem-cont] trim: main_tokens=2755 committed=2755 page_count=44
+[kvmem-cont] trim: main_tokens=2756 committed=2756 page_count=44
+[kvmem-cont] trim: main_tokens=2759 committed=2759 page_count=44
+[kvmem-cont] trim: main_tokens=2761 committed=2761 page_count=44
+[kvmem-cont] trim: main_tokens=2762 committed=2762 page_count=44
+[kvmem-cont] trim: main_tokens=2763 committed=2763 page_count=44
+[kvmem-cont] trim: main_tokens=2764 committed=2764 page_count=44
+[kvmem-cont] trim: main_tokens=2765 committed=2765 page_count=44
+[kvmem-cont] trim: main_tokens=2766 committed=2766 page_count=44
+[kvmem-cont] trim: main_tokens=2772 committed=2772 page_count=44
+[kvmem-cont] trim: main_tokens=2780 committed=2780 page_count=44
+[kvmem-cont] trim: main_tokens=2782 committed=2782 page_count=44
+[kvmem-cont] trim: main_tokens=2785 committed=2785 page_count=44
+[kvmem-cont] trim: main_tokens=2793 committed=2793 page_count=44
+[kvmem-cont] trim: main_tokens=2797 committed=2797 page_count=44
+[kvmem-cont] trim: main_tokens=2800 committed=2800 page_count=44
+[kvmem-cont] trim: main_tokens=2801 committed=2801 page_count=44
+[kvmem-cont] trim: main_tokens=2802 committed=2802 page_count=44
+[kvmem-cont] trim: main_tokens=2803 committed=2803 page_count=44
+[kvmem-cont] trim: main_tokens=2804 committed=2804 page_count=44
+[kvmem-cont] trim: main_tokens=2805 committed=2805 page_count=44
+[kvmem-cont] trim: main_tokens=2806 committed=2806 page_count=44
+[kvmem-cont] trim: main_tokens=2807 committed=2807 page_count=44
+[kvmem-cont] trim: main_tokens=2813 committed=2813 page_count=44
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2817 committed=2817 page_count=45
+[kvmem-cont] trim: main_tokens=2820 committed=2820 page_count=45
+[kvmem-cont] trim: main_tokens=2824 committed=2824 page_count=45
+[kvmem-cont] trim: main_tokens=2827 committed=2827 page_count=45
+[kvmem-cont] trim: main_tokens=2835 committed=2835 page_count=45
+[kvmem-cont] trim: main_tokens=2843 committed=2843 page_count=45
+[kvmem-cont] trim: main_tokens=2851 committed=2851 page_count=45
+[kvmem-cont] trim: main_tokens=2853 committed=2853 page_count=45
+[kvmem-cont] trim: main_tokens=2861 committed=2861 page_count=45
+[kvmem-cont] trim: main_tokens=2869 committed=2869 page_count=45
+[kvmem-cont] trim: main_tokens=2877 committed=2877 page_count=45
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=2881 committed=2881 page_count=46
+[kvmem-cont] trim: main_tokens=2885 committed=2885 page_count=46
+[kvmem-cont] trim: main_tokens=2889 committed=2889 page_count=46
+[kvmem-cont] trim: main_tokens=2892 committed=2892 page_count=46
+[kvmem-cont] trim: main_tokens=2893 committed=2893 page_count=46
+2026-09-28 14:09:06.603  INFO  req#4 done | openai-chat | stop token | prompt 53 | output 2,841 | cache 46 (86.8%, turn closure) | TTFT 72.2 ms | total 18.2s | queue 12.9 ms | prefill 116.8 tok/s | decode 157.3 tok/s | dflash2 accepted 2,309/3,717 (62.1%)

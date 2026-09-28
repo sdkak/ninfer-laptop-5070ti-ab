@@ -1,0 +1,3 @@
+2026-09-28 14:02:23.587  INFO  starting engine
+2026-09-28 14:02:23.680  ERROR startup failed | planning runtime | 595 us
+2026-09-28 14:02:23.682  FATAL server failed during startup | requested Engine runtime reservation requires 2188398336 bytes, but only 2185726976 bytes are available for runtime capacity

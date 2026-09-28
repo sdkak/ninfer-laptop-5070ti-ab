@@ -1,0 +1,153 @@
+2026-09-28 13:57:21.399  INFO  starting engine
+2026-09-28 13:57:21.475  INFO  loading weights | 9.38 GiB
+2026-09-28 13:57:24.224  INFO  weights ready | 9.38 GiB | 2.7s | 3.41 GiB/s
+[kv-capacity-trace] mode=0 explicit=32768 curve_min=512 curve_max=512 resolved_pages=512 resolved_tokens=32768
+2026-09-28 13:57:24.765  INFO  pinning host state | 1.46 GiB
+2026-09-28 13:57:24.930  INFO  host state pinned | 1.46 GiB | 166 ms
+2026-09-28 13:57:24.933  INFO  pinning host KV | 2.00 GiB
+2026-09-28 13:57:25.169  INFO  host KV pinned | 2.00 GiB | 236 ms
+[kvmem-map] publish ok
+2026-09-28 13:57:26.404  INFO  CUDA graphs ready | 1.2s
+2026-09-28 13:57:26.410  INFO  engine ready | qwen3.8-27b/groupwise-int | total 5.0s | weights 9.38 GiB
+2026-09-28 13:57:26.410  INFO  capacity | KV 32,768 tokens, nvfp4, explicit | pages 512/512 | runtime 1.57 GiB | free 0 B
+2026-09-28 13:57:26.411  INFO  context cache | 1 active + 1 cached device states | host 8 states, 2.00 GiB KV | private 2 | shared 4 | anchors 2
+2026-09-28 13:57:26.411  INFO  media | 16 preprocess workers | cache 1.00 GiB | live 2.00 GiB
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=13 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=9 dropped=0 releasable=0 staged=0 free_after=511
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=13 dropped=0 releasable=0 staged=0 free_after=511
+[kvmem-cont] trim: main_tokens=13 committed=13 page_count=1
+[kvmem-cont] trim: main_tokens=16 committed=16 page_count=1
+2026-09-28 13:57:26.527  INFO  listening on http://127.0.0.1:8086 | model qwen3.8-27b | auth disabled
+2026-09-28 13:57:26.599  INFO  req#1 started | openai-chat non-stream | 1 message | max output 32 | thinking off
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=34 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=25 dropped=0 releasable=0 staged=0 free_after=511
+[kvmem-cont] trim: main_tokens=25 committed=25 page_count=1
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=27 dropped=0 releasable=0 staged=0 free_after=510
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=30 dropped=0 releasable=0 staged=0 free_after=510
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=34 dropped=0 releasable=0 staged=0 free_after=510
+[kvmem-cont] trim: main_tokens=34 committed=34 page_count=1
+[kvmem-cont] trim: main_tokens=35 committed=35 page_count=1
+[kvmem-cont] trim: main_tokens=40 committed=40 page_count=1
+[kvmem-cont] trim: main_tokens=46 committed=46 page_count=1
+[kvmem-cont] trim: main_tokens=48 committed=48 page_count=1
+[kvmem-cont] trim: main_tokens=50 committed=50 page_count=1
+[kvmem-cont] trim: main_tokens=54 committed=54 page_count=1
+[kvmem-cont] trim: main_tokens=62 committed=62 page_count=1
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=65 committed=65 page_count=2
+2026-09-28 13:57:27.057  INFO  req#1 done | openai-chat | output limit | prompt 34 | output 32 | cache 0 (0.0%) | TTFT 202 ms | total 458 ms | prefill 196.1 tok/s | decode 122.0 tok/s | dflash2 accepted 23/51 (45.1%)
+2026-09-28 13:57:27.060  INFO  req#2 started | openai-chat non-stream | 1 message | max output 32 | thinking off
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=50 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=41 dropped=0 releasable=0 staged=0 free_after=508
+[kvmem-cont] trim: main_tokens=41 committed=41 page_count=1
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=43 dropped=0 releasable=0 staged=0 free_after=507
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=46 dropped=0 releasable=0 staged=0 free_after=507
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=50 dropped=0 releasable=0 staged=0 free_after=507
+[kvmem-cont] trim: main_tokens=50 committed=50 page_count=1
+[kvmem-cont] trim: main_tokens=51 committed=51 page_count=1
+[kvmem-cont] trim: main_tokens=52 committed=52 page_count=1
+[kvmem-cont] trim: main_tokens=59 committed=59 page_count=1
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=60 committed=60 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=61 committed=61 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=63 committed=63 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=66 committed=66 page_count=2
+[kvmem-cont] trim: main_tokens=72 committed=72 page_count=2
+[kvmem-cont] trim: main_tokens=73 committed=73 page_count=2
+[kvmem-cont] trim: main_tokens=76 committed=76 page_count=2
+[kvmem-cont] trim: main_tokens=79 committed=79 page_count=2
+[kvmem-cont] trim: main_tokens=80 committed=80 page_count=2
+[kvmem-cont] trim: main_tokens=81 committed=81 page_count=2
+2026-09-28 13:57:27.657  INFO  req#2 done | openai-chat | output limit | prompt 50 | output 32 | cache 0 (0.0%) | TTFT 174 ms | total 597 ms | prefill 360.5 tok/s | decode 73.8 tok/s | dflash2 accepted 18/75 (24.0%)
+2026-09-28 13:57:27.660  INFO  req#3 started | openai-chat non-stream | 1 message | max output 32 | thinking off
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=28 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=19 dropped=0 releasable=0 staged=0 free_after=507
+[kvmem-cont] trim: main_tokens=19 committed=19 page_count=1
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=21 dropped=0 releasable=0 staged=0 free_after=506
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=24 dropped=0 releasable=0 staged=0 free_after=506
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=28 dropped=0 releasable=0 staged=0 free_after=506
+[kvmem-cont] trim: main_tokens=28 committed=28 page_count=1
+[kvmem-cont] trim: main_tokens=36 committed=36 page_count=1
+[kvmem-cont] trim: main_tokens=38 committed=38 page_count=1
+[kvmem-cont] trim: main_tokens=42 committed=42 page_count=1
+[kvmem-cont] trim: main_tokens=44 committed=44 page_count=1
+[kvmem-cont] trim: main_tokens=45 committed=45 page_count=1
+[kvmem-cont] trim: main_tokens=46 committed=46 page_count=1
+[kvmem-cont] trim: main_tokens=49 committed=49 page_count=1
+[kvmem-cont] trim: main_tokens=57 committed=57 page_count=1
+[kvmem-cont] trim: main_tokens=58 committed=58 page_count=1
+[kvmem-cont] trim: main_tokens=59 committed=59 page_count=1
+2026-09-28 13:57:28.179  INFO  req#3 done | openai-chat | output limit | prompt 28 | output 32 | cache 0 (0.0%) | TTFT 197 ms | total 519 ms | prefill 175.6 tok/s | decode 96.7 tok/s | dflash2 accepted 21/57 (36.8%)
+2026-09-28 13:57:28.182  INFO  req#4 started | openai-chat non-stream | 1 message | max output 64 | thinking off
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=44 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=35 dropped=0 releasable=0 staged=0 free_after=506
+[kvmem-cont] trim: main_tokens=35 committed=35 page_count=1
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=37 dropped=0 releasable=0 staged=0 free_after=505
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=40 dropped=0 releasable=0 staged=0 free_after=505
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=44 dropped=0 releasable=0 staged=0 free_after=505
+[kvmem-cont] trim: main_tokens=44 committed=44 page_count=1
+[kvmem-cont] trim: main_tokens=52 committed=52 page_count=1
+[kvmem-cont] trim: main_tokens=60 committed=60 page_count=1
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=61 committed=61 page_count=2
+2026-09-28 13:57:28.453  INFO  req#4 done | openai-chat | stop token | prompt 44 | output 18 | cache 0 (0.0%) | TTFT 173 ms | total 271 ms | prefill 325.8 tok/s | decode 175.2 tok/s | dflash2 accepted 15/21 (71.4%)
+2026-09-28 13:57:28.456  INFO  req#5 started | openai-chat non-stream | 1 message | max output 64 | thinking off
+[kvmem-cont] admission: compacting=0 base=0 prompt_tokens=74 ledger=0 exec_frontier=0 asm_frontier=0 text_kv_valid=0 asm_exec=0 ident=0
+[kvmem-cont] trim: main_tokens=0 committed=0 page_count=0
+[kvmem-map] publish ok
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=67 dropped=0 releasable=0 staged=0 free_after=504
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=70 dropped=0 releasable=0 staged=0 free_after=504
+[kvmem-so] enter dropped=0
+kvmem_window: prefill-stage-out cursor=74 dropped=0 releasable=0 staged=0 free_after=504
+[kvmem-cont] trim: main_tokens=74 committed=74 page_count=2
+[kvmem-cont] trim: main_tokens=75 committed=75 page_count=2
+[kvmem-cont] trim: main_tokens=78 committed=78 page_count=2
+[kvmem-cont] trim: main_tokens=79 committed=79 page_count=2
+[kvmem-cont] trim: main_tokens=82 committed=82 page_count=2
+[kvmem-cont] trim: main_tokens=90 committed=90 page_count=2
+[kvmem-cont] trim: main_tokens=98 committed=98 page_count=2
+[kvmem-cont] trim: main_tokens=106 committed=106 page_count=2
+[kvmem-cont] trim: main_tokens=107 committed=107 page_count=2
+[kvmem-cont] trim: main_tokens=109 committed=109 page_count=2
+[kvmem-cont] trim: main_tokens=112 committed=112 page_count=2
+[kvmem-cont] trim: main_tokens=115 committed=115 page_count=2
+[kvmem-cont] trim: main_tokens=123 committed=123 page_count=2
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=128 committed=128 page_count=3
+[kvmem-map] publish ok
+[kvmem-cont] trim: main_tokens=130 committed=130 page_count=3
+[kvmem-cont] trim: main_tokens=131 committed=131 page_count=3
+2026-09-28 13:57:29.111  INFO  req#5 done | openai-chat | stop token | prompt 74 | output 58 | cache 0 (0.0%) | TTFT 164 ms | total 655 ms | prefill 529.4 tok/s | decode 116.8 tok/s | dflash2 accepted 43/104 (41.3%)

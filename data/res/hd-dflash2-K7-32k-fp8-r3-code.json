@@ -1,0 +1,21 @@
+{
+  "arm": "hd-dflash2-K7-32k-fp8",
+  "rep": 3,
+  "req": "code",
+  "ok": true,
+  "tries": 1,
+  "wall_s": 10.22,
+  "err": "",
+  "usage": {
+    "completion_tokens": 1500,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 53,
+    "prompt_tokens_details": {
+      "cached_tokens": 46
+    },
+    "total_tokens": 1553
+  },
+  "content": "好的，下面是一个完整的单文件扫雷游戏。直接保存为 `.html` 打开即可运行：\n\n```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>扫雷</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    min-height: 100vh;\n    background: #1a1a2e;\n    font-family: 'Segoe UI', system-ui, sans-serif;\n    color: #eee;\n    user-select: none;\n  }\n  h1 { font-size: 1.6rem; margin-bottom: 12px; letter-spacing: 2px; }\n  .toolbar {\n    display: flex;\n    gap: 14px;\n    align-items: center;\n    margin-bottom: 14px;\n    background: #16213e;\n    padding: 10px 18px;\n    border-radius: 10px;\n    box-shadow: 0 4px 15px rgba(0,0,0,.4);\n  }\n  .stat {\n    display: flex;\n    align-items: center;\n    gap: 6px;\n    font-size: 1.05rem;\n    font-weight: 600;\n    min-width: 70px;\n    justify-content: center;\n  }\n  .stat span { color: #f9d423; font-size: 1.15rem; }\n  button {\n    background: #e94560;\n    color: #fff;\n    border: none;\n    padding: 8px 16px;\n    border-radius: 6px;\n    cursor: pointer;\n    font-size: .95rem;\n    font-weight: 600;\n    transition: transform .1s, background .15s;\n  }\n  button:hover { background: #ff6b6b; transform: translateY(-1px); }\n  button:active { transform: translateY(1px); }\n  .board-wrap {\n    position: relative;\n    background: #0f3460;\n    padding: 10px;\n    border-radius: 12px;\n    box-shadow: 0 6px 25px rgba(0,0,0,.5);\n  }\n  .board {\n    display: grid;\n    gap: 3px;\n  }\n  .cell {\n    width: 38px;\n    height: 38px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 1.1rem;\n    font-weight: 700;\n    border-radius: 5px;\n    cursor: pointer;\n    transition: background .1s, transform .05s;\n    border: 1px solid #1a3a5c;\n  }\n  .cell.hidden { background: #2a5a8c; }\n  .cell.hidden:hover { background: #3a6fa8; }\n  .cell.revealed { background: #e8e8e8; color: #222; cursor: default; }\n  .cell.mine { background: #e94560; color: #fff; }\n  .cell.flagged { background: #2a5a8c; }\n  .cell.flagged:hover { background: #3a6fa8; }\n  .cell.safe { background: #2a5a8c; }\n  .num { color: #2a6db8; }\n  .num[data-n=\"1\"] { color: #2a6db8; }\n  .num[data-n=\"2\"] { color: #2e7d32; }\n  .num[data-n=\"3\"] { color: #c62828; }\n  .num[data-n=\"4\"] { color: #4a148c; }\n  .num[data-n=\"5\"] { color: #7b1fa2; }\n  .num[data-n=\"6\"] { color: #004d40; }\n  .num[data-n=\"7\"] { color: #451a93; }\n  .num[data-n=\"8\"] { color: #1a1a1a; }\n  .num[data-n=\"9\"] { color: #b71c1c; }\n  .overlay {\n    position: absolute;\n    inset: 0;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background: rgba(0,0,0,.65);\n    border-radius: 12px;\n    z-index: 10;\n    opacity: 0;\n    pointer-events: none;\n    transition: opacity .25s;\n  }\n  .overlay.show { opacity: 1; pointer-events: auto; }\n  .overlay .msg {\n    font-size: 1.8rem;\n    font-weight: 700;\n    text-align: center;\n    line-height: 1.5;\n  }\n  .overlay .msg.win { color: #4caf50; }\n  .overlay .msg.lose { color: #e94560; }\n  .hint {\n    margin-top: 10px;\n    font-size: .8rem;\n    color: #888;\n  }\n</style>\n</head>\n<body>\n\n<h1>⚡ 扫雷</h1>\n\n<div class=\"toolbar\">\n  <div class=\"stat\">🚩 <span id=\"flags\">0</span></div>\n  <div class=\"stat\">💣 <span id=\"mines\">0</span></div>\n  <div class=\"stat\">⏱️ <span id=\"timer\">0</span>s</div>\n  <button id=\"restartBtn\">重开</button>\n</div>\n\n<div class=\"board-wrap\">\n  <div class=\"board\" id=\"board\"></div>\n  <div class=\"overlay\" id=\"overlay\">\n    <div class=\"msg\" id=\"overlayMsg\"></div>\n  </div>\n</div>"
+}

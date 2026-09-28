@@ -1,0 +1,11 @@
+{
+  "tag": "needle-raw",
+  "spec": "mtp",
+  "k": 4,
+  "ctx": 163840,
+  "chars": 98132,
+  "prompt_tokens": 57750,
+  "answer": "好的，我找到了。\n\n**KX-7742-QN**",
+  "wall_s": 50.95,
+  "hit": true
+}

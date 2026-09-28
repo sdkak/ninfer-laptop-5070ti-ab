@@ -1,0 +1,20 @@
+{
+  "arm": "qual-mtp-d4-163840",
+  "rep": 1,
+  "req": "q3-pct",
+  "ok": true,
+  "wall_s": 0.37,
+  "err": "",
+  "usage": {
+    "completion_tokens": 17,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 28,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 45
+  },
+  "content": "35 人的 60% 是 21 人。"
+}

@@ -1,0 +1,10 @@
+{
+  "arm": "dflash2-K7-32k-v2048",
+  "rep": 3,
+  "req": "count",
+  "ok": false,
+  "wall_s": 2.05,
+  "err": "由于目标计算机积极拒绝，无法连接。 (127.0.0.1:8086)",
+  "usage": null,
+  "content": ""
+}

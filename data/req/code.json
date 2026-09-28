@@ -1,0 +1,1 @@
+{"messages":[{"role":"user","content":"写一个单文件 HTML+JS 扫雷游戏，要求：左键翻开、右键插旗、显示剩余雷数、点空白自动展开、可重开。直接给完整代码。"}],"temperature":0,"model":"qwen3.8-27b","max_tokens":1500}

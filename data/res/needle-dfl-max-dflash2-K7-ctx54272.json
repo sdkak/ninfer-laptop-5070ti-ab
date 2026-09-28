@@ -1,0 +1,11 @@
+{
+  "tag": "needle-dfl-max",
+  "spec": "dflash2",
+  "k": 7,
+  "ctx": 54272,
+  "chars": 88030,
+  "prompt_tokens": 51535,
+  "answer": "好的，根据您提供的长文内容，嵌入的唯一关键编号是：\n\n**KX-7742-QN**",
+  "wall_s": 44.69,
+  "hit": true
+}

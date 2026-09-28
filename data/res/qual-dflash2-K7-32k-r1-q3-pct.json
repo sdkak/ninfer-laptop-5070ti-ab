@@ -1,0 +1,20 @@
+{
+  "arm": "qual-dflash2-K7-32k",
+  "rep": 1,
+  "req": "q3-pct",
+  "ok": true,
+  "wall_s": 0.52,
+  "err": "",
+  "usage": {
+    "completion_tokens": 32,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 28,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 60
+  },
+  "content": "35 人的 60% 是 21 人。\n\n计算过程：\n$35 \\times 0.6 = "
+}

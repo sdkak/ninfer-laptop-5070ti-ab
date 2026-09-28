@@ -1,0 +1,20 @@
+{
+  "arm": "qual-dflash2-K7-32k",
+  "rep": 1,
+  "req": "q2-prob",
+  "ok": true,
+  "wall_s": 0.6,
+  "err": "",
+  "usage": {
+    "completion_tokens": 32,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 50,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 82
+  },
+  "content": "要计算取到红球的概率，我们需要知道红球的数量和总球数。\n\n1.  **确定红球数量**：题目给出有"
+}

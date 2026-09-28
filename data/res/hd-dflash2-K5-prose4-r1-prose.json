@@ -1,0 +1,21 @@
+{
+  "arm": "hd-dflash2-K5-prose4",
+  "rep": 1,
+  "req": "prose",
+  "ok": true,
+  "tries": 1,
+  "wall_s": 6.02,
+  "err": "",
+  "usage": {
+    "completion_tokens": 400,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 26,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 426
+  },
+  "content": "在深度学习模型部署与推理加速领域，**三元量化权重（Ternary Quantization）** 是一种极具代表性的低精度量化技术。与传统二值化（Binary）或常规8位整数量化不同，三元量化将模型中的浮点权重映射为三个离散值：**-1、0 和 +1**。这种技术不仅保留了比二值化更丰富的表达能力，同时显著降低了模型的存储占用和计算复杂度，是边缘计算、移动端AI以及实时推理场景中的重要优化手段。\n\n### 1. 核心原理与机制\n\n三元量化的核心思想在于通过“截断”或“舍入”操作，将原本连续分布的浮点数权重 $w$ 转换为集合 $\\{-1, 0, 1\\}$ 中的元素。其基本转换逻辑通常如下：\n\n$$\nq(w) = \\begin{cases} \n-1 & \\text{if } w < -\\theta \\\\\n0 & \\text{if } -\\theta \\leq w \\leq \\theta \\\\\n+1 & \\text{if } w > \\theta \n\\end{cases}\n$$\n\n其中 $\\theta$ 是一个阈值参数，通常根据权重的统计特性（如均值、方差或百分位数）动态确定。部分高级方法还会引入缩放因子 $\\alpha$，使得输出为 $\\{-\\alpha, 0, \\alpha\\}$，以更好地适应不同层级的数值范围。\n\n### 2. 技术优势\n\n*   **极致压缩率**：由于每个权重仅需约1.58比特（log₂3 ≈ 1.585）即可表示，相比FP32（32比特）或INT8（8比特），三元量化可将模型体积压缩至原大小的1/20左右。这对于带宽受限的移动设备和嵌入式系统至关重要。\n*   **计算效率提升**：在矩阵乘法运算中，涉及0"
+}

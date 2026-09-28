@@ -1,0 +1,20 @@
+{
+  "arm": "dflash2-K7-32k-v8192",
+  "rep": 2,
+  "req": "vision",
+  "ok": true,
+  "wall_s": 0.17,
+  "err": "",
+  "usage": {
+    "completion_tokens": 4,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 134,
+    "prompt_tokens_details": {
+      "cached_tokens": 125
+    },
+    "total_tokens": 138
+  },
+  "content": "847"
+}

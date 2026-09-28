@@ -1,0 +1,21 @@
+{
+  "arm": "hd-mtp-d3-32k-v2048",
+  "rep": 3,
+  "req": "vision",
+  "ok": true,
+  "tries": 1,
+  "wall_s": 0.21,
+  "err": "",
+  "usage": {
+    "completion_tokens": 4,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 134,
+    "prompt_tokens_details": {
+      "cached_tokens": 125
+    },
+    "total_tokens": 138
+  },
+  "content": "847"
+}

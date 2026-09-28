@@ -1,0 +1,20 @@
+{
+  "arm": "qual-dflash2-K7-32k",
+  "rep": 1,
+  "req": "q5-neg",
+  "ok": true,
+  "wall_s": 0.66,
+  "err": "",
+  "usage": {
+    "completion_tokens": 58,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 74,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 132
+  },
+  "content": "根据您提供的文字：“今天的会议讨论了三条路线：第一条优先推进，第二条延后评估，第三条直接取消。会议没有留下任何编号。”\n\n经过检查，该文字中**没有**形如 `KX-####-??` 的关键编号。\n\n无"
+}

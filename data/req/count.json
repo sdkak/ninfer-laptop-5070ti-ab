@@ -1,0 +1,1 @@
+{"messages":[{"content":"请从 1 数到 400，每个数字独占一行，不要任何其他文字。","role":"user"}],"model":"qwen3.8-27b","temperature":0,"max_tokens":400}

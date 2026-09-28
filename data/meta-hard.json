@@ -1,0 +1,62 @@
+[
+  {
+    "engsha": "FE170EB23FFDBFF5",
+    "arm": "hd-dflash2-K7-prose6",
+    "spec": "dflash2",
+    "k": 7,
+    "ctx": 32768,
+    "vmt": 2048,
+    "reps": 6,
+    "reqs": "prose",
+    "state": "ready",
+    "ready_s": 5.5,
+    "weights_gib": null,
+    "fatal": "",
+    "cmdline": "\"D:\\ai\\ninfer\\pkg1-fast-pq2\\engine\\ninfer-serve-sm120.exe\" \"D:\\ai\\ninfer\\pkg1-fast-pq2\\model\\bonsai2_27b_ternary_v2-dflash2.ninfer\" \"--host\" \"127.0.0.1\" \"--port\" \"8086\" \"--model-id\" \"qwen3.8-27b\" \"--max-context\" \"32768\" \"--kv-capacity\" \"32768\" \"--kv-dtype\" \"nvfp4\" \"--max-concurrency\" \"1\" \"--no-thinking\" \"--default-max-tokens\" \"32768\" \"--default-thinking-budget\" \"8192\" \"--host-kv-mib\" \"2048\" \"--wddm-evictable-budget\" \"--vision\" \"--vision-max-tokens\" \"2048\" \"--cors\" \"--spec\" \"dflash2\" \"--draft-tokens\" \"7\" \"--lm-head-draft\""
+  },
+  {
+    "engsha": "FE170EB23FFDBFF5",
+    "arm": "hd-qual-mtp-d5",
+    "spec": "mtp",
+    "k": 5,
+    "ctx": 32768,
+    "vmt": 2048,
+    "reps": 1,
+    "reqs": "q1-calc+q2-prob+q3-pct+q4-json+q5-neg",
+    "state": "ready",
+    "ready_s": 4.7,
+    "weights_gib": null,
+    "fatal": "",
+    "cmdline": "\"D:\\ai\\ninfer\\pkg1-fast-pq2\\engine\\ninfer-serve-sm120.exe\" \"D:\\ai\\ninfer\\pkg1-fast-pq2\\model\\bonsai2_27b_ternary_v2.ninfer\" \"--host\" \"127.0.0.1\" \"--port\" \"8086\" \"--model-id\" \"qwen3.8-27b\" \"--max-context\" \"32768\" \"--kv-capacity\" \"32768\" \"--kv-dtype\" \"nvfp4\" \"--max-concurrency\" \"1\" \"--no-thinking\" \"--default-max-tokens\" \"32768\" \"--default-thinking-budget\" \"8192\" \"--host-kv-mib\" \"2048\" \"--wddm-evictable-budget\" \"--vision\" \"--vision-max-tokens\" \"2048\" \"--cors\" \"--spec\" \"mtp\" \"--draft-tokens\" \"5\""
+  },
+  {
+    "engsha": "FE170EB23FFDBFF5",
+    "arm": "hd-mtp-d4-prose6",
+    "spec": "mtp",
+    "k": 4,
+    "ctx": 32768,
+    "vmt": 2048,
+    "reps": 6,
+    "reqs": "prose",
+    "state": "ready",
+    "ready_s": 4.5,
+    "weights_gib": null,
+    "fatal": "",
+    "cmdline": "\"D:\\ai\\ninfer\\pkg1-fast-pq2\\engine\\ninfer-serve-sm120.exe\" \"D:\\ai\\ninfer\\pkg1-fast-pq2\\model\\bonsai2_27b_ternary_v2.ninfer\" \"--host\" \"127.0.0.1\" \"--port\" \"8086\" \"--model-id\" \"qwen3.8-27b\" \"--max-context\" \"32768\" \"--kv-capacity\" \"32768\" \"--kv-dtype\" \"nvfp4\" \"--max-concurrency\" \"1\" \"--no-thinking\" \"--default-max-tokens\" \"32768\" \"--default-thinking-budget\" \"8192\" \"--host-kv-mib\" \"2048\" \"--wddm-evictable-budget\" \"--vision\" \"--vision-max-tokens\" \"2048\" \"--cors\" \"--spec\" \"mtp\" \"--draft-tokens\" \"4\""
+  },
+  {
+    "engsha": "FE170EB23FFDBFF5",
+    "arm": "hd-mtp-d5-prose6",
+    "spec": "mtp",
+    "k": 5,
+    "ctx": 32768,
+    "vmt": 2048,
+    "reps": 6,
+    "reqs": "prose",
+    "state": "ready",
+    "ready_s": 4.7,
+    "weights_gib": null,
+    "fatal": "",
+    "cmdline": "\"D:\\ai\\ninfer\\pkg1-fast-pq2\\engine\\ninfer-serve-sm120.exe\" \"D:\\ai\\ninfer\\pkg1-fast-pq2\\model\\bonsai2_27b_ternary_v2.ninfer\" \"--host\" \"127.0.0.1\" \"--port\" \"8086\" \"--model-id\" \"qwen3.8-27b\" \"--max-context\" \"32768\" \"--kv-capacity\" \"32768\" \"--kv-dtype\" \"nvfp4\" \"--max-concurrency\" \"1\" \"--no-thinking\" \"--default-max-tokens\" \"32768\" \"--default-thinking-budget\" \"8192\" \"--host-kv-mib\" \"2048\" \"--wddm-evictable-budget\" \"--vision\" \"--vision-max-tokens\" \"2048\" \"--cors\" \"--spec\" \"mtp\" \"--draft-tokens\" \"5\""
+  }
+]

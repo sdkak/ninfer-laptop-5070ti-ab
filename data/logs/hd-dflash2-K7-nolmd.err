@@ -1,0 +1,11 @@
+2026-09-28 14:10:23.617  INFO  starting engine
+2026-09-28 14:10:23.692  INFO  loading weights | 9.05 GiB
+2026-09-28 14:10:26.646  INFO  weights ready | 9.05 GiB | 3.0s | 3.06 GiB/s
+[kv-capacity-trace] mode=0 explicit=32768 curve_min=512 curve_max=512 resolved_pages=512 resolved_tokens=32768
+2026-09-28 14:10:27.094  INFO  pinning host state | 1.46 GiB
+2026-09-28 14:10:27.246  INFO  host state pinned | 1.46 GiB | 153 ms
+2026-09-28 14:10:27.250  INFO  pinning host KV | 2.00 GiB
+2026-09-28 14:10:27.466  INFO  host KV pinned | 2.00 GiB | 216 ms
+[kvmem-map] publish ok
+2026-09-28 14:10:28.410  ERROR startup failed | preparing CUDA graphs | 883 ms
+2026-09-28 14:10:28.578  FATAL server failed during startup | linear_topk: unsupported head profile

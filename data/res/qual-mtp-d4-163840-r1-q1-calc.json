@@ -1,0 +1,20 @@
+{
+  "arm": "qual-mtp-d4-163840",
+  "rep": 1,
+  "req": "q1-calc",
+  "ok": true,
+  "wall_s": 0.54,
+  "err": "",
+  "usage": {
+    "completion_tokens": 32,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 34,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 66
+  },
+  "content": "为了计算 847 乘以 293，我们可以将其分解为：\n\n$$847 \\times 293 = 8"
+}

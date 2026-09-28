@@ -1,0 +1,11 @@
+{
+  "tag": "needle",
+  "spec": "mtp",
+  "k": 4,
+  "ctx": 163840,
+  "chars": 80848,
+  "prompt_tokens": 47261,
+  "answer": "好的，根据您提供的长文本内容，我仔细搜索了全文。\n\n在整篇文档中，**没有**发现任何形如 `KX-7742-QN` 或类似格式的关键编号（Key ID / Ticket ID）。\n\n文档主要包含：\n1.  **引擎",
+  "wall_s": 40.83,
+  "hit": true
+}

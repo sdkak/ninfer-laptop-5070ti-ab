@@ -1,0 +1,8 @@
+# 空文件（引擎日志的 stdout 侧）
+*.out
+# 动态生成的取针夹具（每次运行重建）
+data/req/needle-dyn.json
+# 系统杂物
+Thumbs.db
+.DS_Store
+desktop.ini

@@ -1,0 +1,1 @@
+{"messages":[{"role":"user","content":"袋子里有 12 个红球和 8 个蓝球，随机取出一个。取到红球的概率是多少？用最简分数表示，只输出分数。"}],"max_tokens":300,"model":"qwen3.8-27b","temperature":0}
