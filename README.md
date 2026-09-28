@@ -1,6 +1,10 @@
-# ninfer / Bonsai-2-27B 三元量化 · RTX 5070 Ti Laptop 12G 实测
+# 笔记本 RTX 5070 Ti（Laptop 12G）· Bonsai-2-27B 三元量化 · MTP vs DFlash2 同上下文 A/B
 
-> 一台 **12 GB 笔记本卡**（RTX 5070 Ti Laptop，cc 12.0 / SM 46）上，对 Bonsai-2-27B 三元量化离线推理包的
+> ⚠ **先说清机器口径**：本仓库全部读数来自 **笔记本版 RTX 5070 Ti Laptop**
+> （**12,227 MiB 显存 / cc 12.0 / SM 46 / 功耗上限 140 W**）。
+> **不是桌面版 RTX 5070 Ti** —— 桌面版是 **16 GB / ~300 W**，显存与带宽都不同，两边读数**不可比**。
+
+> 一台 **12 GB 笔记本卡**上，对 Bonsai-2-27B 三元量化离线推理包的
 > **两条投机路线（MTP / DFlash2）做的同口径 A/B 实测**，含**原始引擎日志、每臂完整命令行、合并矩阵**。
 >
 > 目的：让后来者不必重跑一遍就能知道"在 12 GB 卡上该选哪条路、能开到多少上下文、哪些读数会骗人"。
@@ -9,7 +13,7 @@
 
 ## TL;DR (English)
 
-Same-context A/B of two speculative-decoding backends (`--spec mtp` vs `--spec dflash2`) for the **Bonsai-2-27B ternary-quantized** inference pack, on a single **12 GB laptop GPU** (RTX 5070 Ti Laptop, cc 12.0, SM 46).
+Same-context A/B of two speculative-decoding backends (`--spec mtp` vs `--spec dflash2`) for the **Bonsai-2-27B ternary-quantized** inference pack, on a single **12 GB laptop** GPU — **RTX 5070 Ti Laptop** (12,227 MiB / 140 W TGP / cc 12.0 / SM 46), *not* the desktop 5070 Ti (16 GB / ~300 W). Numbers are not comparable across the two.
 
 | | MTP d4 | DFlash2 K=7 |
 |---|---|---|
@@ -134,5 +138,6 @@ pwsh -File scripts\ab.ps1
 
 > 本实测**不构成对性能的普适承诺**：所有数字都是在上述硬件 + 上述 sha 的制品 + 上述口径下取得，
 > **跨卡不可比**（同一推理由不同卡得出不同结论是正常的，详见主报告 §十四 的跨架构互证）。
+
 
 

@@ -1,6 +1,6 @@
 # dflash2 vs MTP 同 ctx A/B 实测（收口）
 
-> 机器：RTX 5070 Ti **Laptop** / cc 12.0 / SM 46 / 12,227 MiB ｜ 日期：2026-09-28
+> 机器：**笔记本** RTX 5070 Ti **Laptop**（12,227 MiB / cc 12.0 / SM 46 / 功耗上限 140 W）—— **不是桌面版 5070 Ti（16 GB / ~300 W），跨机型不可比** ｜ 日期：2026-09-28
 > 引擎：`pkg1-fast-pq2\engine\ninfer-serve-sm120.exe`（官方 sm_120，sha `FE170EB2…`；另用自制 120a `9EF3D66E…` 做对照）
 > 权重：base `bonsai2_27b_ternary_v2.ninfer`（7.39 GiB 载入）／ dflash2 `…-dflash2.ninfer`（9.38 GiB 载入）
 > 口径：**贪心**（temperature=0）、`--no-thinking`、`--host-kv-mib 2048`、`--wddm-evictable-budget`、`--kv-dtype nvfp4`、带视觉、`ctx 32768`（除标注外）、**每个读数 3 次取中位**、报数一律带内容类型与接受率
@@ -451,3 +451,4 @@ ninfer-serve-sm120.exe bonsai2_27b_ternary_v2-dflash2.ninfer ^
 1. **"输出与基座逐字节相同"** → 过度概括：包内文档明写"开放任务早分叉"；**本机实测 d3/d4/d5 输出各不相同**（3990/3996/4171 字符），只有同 K 重复才逐字一致。正解：**高置信任务一致、开放任务会分叉**。
 2. **"距带宽目标 173 t/s 达成 63%"** → 尺子偏软：173 是把 4080 的"高可预测文本"读数 353.8 按带宽比 360/736 缩放得来，而它自己承认真瓶颈是 SM 并行度。不宜引用。
 3. **"6.21× / +70%"** → 分母（无投机 17.5 t/s）含 sm_86 架构惩罚（FP8 单元被 stub），不可外推。
+
